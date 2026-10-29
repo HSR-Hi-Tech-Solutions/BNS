@@ -51,6 +51,15 @@ const contactSchema = new mongoose.Schema(
       enum: ['new', 'read', 'replied', 'archived'],
       default: 'new',
     },
+    notificationStatus: {
+      type: String,
+      enum: ['pending', 'sent', 'failed', 'skipped'],
+      default: 'pending',
+    },
+    notificationError: {
+      type: String,
+      default: '',
+    },
   },
   {
     timestamps: true,
@@ -65,9 +74,10 @@ const contactSchema = new mongoose.Schema(
   }
 );
 
-// Index for admin queries
+// Index for admin queries and monitoring
 contactSchema.index({ createdAt: -1 });
 contactSchema.index({ status: 1 });
+contactSchema.index({ notificationStatus: 1 });
 
 const Contact = mongoose.model('Contact', contactSchema);
 
