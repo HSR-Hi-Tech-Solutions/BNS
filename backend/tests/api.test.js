@@ -5,7 +5,7 @@ import http from 'node:http';
 process.env.NODE_ENV = 'test';
 process.env.ALLOWED_ORIGINS = 'http://localhost:5173,http://127.0.0.1';
 
-const { default: app } = await import('../server/index.js');
+const { default: app } = await import('../src/app.js');
 
 let server;
 let baseUrl;

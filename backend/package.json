@@ -1,11 +1,12 @@
 {
-  "name": "bns-server",
+  "name": "bns-backend",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node --watch index.js"
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/*.test.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
