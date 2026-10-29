@@ -1,7 +1,18 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Globe, Newspaper, Building, Users, Target, Eye, CheckCircle } from 'lucide-react';
+import {
+  ArrowRight,
+  Globe,
+  Newspaper,
+  Building,
+  Users,
+  Target,
+  Eye,
+  ShieldCheck,
+  CheckCircle,
+} from 'lucide-react';
+import { COMPANY } from '../constants';
 import { setPageMeta } from '../utils/seo';
 
 const fadeUp = {
@@ -9,47 +20,52 @@ const fadeUp = {
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1], delay },
   }),
 };
 
 const PILLARS = [
   {
     Icon: Globe,
-    title: 'Digital-First Approach',
-    desc: 'Built for the digital age — leveraging the latest platforms, formats, and distribution channels to reach modern audiences wherever they are.',
+    title: 'Digital-First Architecture',
+    desc: 'Engineered for modern multi-platform consumption — utilizing streaming video, responsive web, podcasting, and social channels to reach audiences across devices.',
   },
   {
     Icon: Newspaper,
     title: 'Journalism-Led Communications',
-    desc: 'Our PR and communications services are informed by real journalism experience. We understand what makes a compelling story and how to tell it effectively.',
+    desc: 'Our corporate PR practice is rooted in real newsroom experience. We know what journalists look for and how to structure narratives that generate organic coverage.',
   },
   {
     Icon: Building,
-    title: 'Bengal Expertise',
-    desc: 'Deep roots in Bengal\'s media landscape, political environment, cultural fabric, and business community give us an unmatched regional knowledge base.',
+    title: 'Deep Bengal Rooting',
+    desc: 'Native command over Bengal\'s complex political currents, regional socio-economics, language nuances, and business community dynamics.',
   },
   {
     Icon: Users,
-    title: 'Integrated Services',
-    desc: 'News, PR, digital marketing, and consultancy under one roof — providing clients with a seamless, coherent communications partnership.',
+    title: 'Integrated Service Continuum',
+    desc: 'Independent news media, executive PR, digital advertising campaigns, and advisory under one roof — ensuring brand coherence across touchpoints.',
   },
   {
     Icon: Target,
-    title: 'Strategic Thinking',
-    desc: 'Every engagement is approached with clarity — understanding objectives, audiences, and the media environment to deliver outcomes that matter.',
+    title: 'Strategic Rigor',
+    desc: 'Every client brief is addressed with strict strategic discipline — mapping stakeholders, media environments, and measurable outcomes.',
   },
   {
     Icon: Eye,
     title: 'Editorial Integrity',
-    desc: 'Journalism operates independently of commercial interests. PR work is clearly distinguished from editorial content, maintaining trust and credibility.',
+    desc: 'Strict firewalls separate our news reporting from client communications assignments, safeguarding public trust and credibility.',
   },
 ];
 
 const FOCUS_AREAS = [
-  'Political Coverage', 'Business & Economy', 'Cultural Affairs',
-  'Social Issues', 'National Policy', 'Parliamentary Affairs',
-  'International Developments', 'Community Stories',
+  'Parliamentary & Legislative Affairs',
+  'Political & Electoral Analysis',
+  'Regional Economy & Industry',
+  'Social & Cultural Currents',
+  'National Governance & Policy',
+  'Infrastructure & Development',
+  'International Affairs & Bharat',
+  'Grassroots Community Stories',
 ];
 
 export default function About() {
@@ -62,31 +78,35 @@ export default function About() {
   }, []);
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       {/* ── PAGE HERO ─────────────────────────────────── */}
-      <section className="page-hero pt-32">
-        <div className="container mx-auto">
+      <section className="page-hero">
+        <div className="container relative z-10">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="max-w-3xl mx-auto text-center relative z-10"
+            className="max-w-3xl mx-auto text-center"
           >
-            <p className="eyebrow mb-5">About BNS</p>
-            <h1 className="font-serif text-white mb-5">Our Story &amp; Purpose</h1>
-            <p className="text-white/70 text-lg leading-relaxed max-w-xl mx-auto">
-              A digital-first media and communications company rooted in Bengal,
-              committed to credible journalism and strategic communications.
+            <div className="eyebrow-badge justify-center mb-4">
+              <span className="accent-line" />
+              <span>Institutional Overview</span>
+              <span className="accent-line" />
+            </div>
+            <h1 className="font-serif text-white mb-4">Our Story &amp; Purpose</h1>
+            <p className="text-white/75 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+              A digital-first media and communications company rooted in West Bengal,
+              dedicated to credible journalism and strategic corporate advocacy.
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* ── COMPANY INTRODUCTION ────────────────────────── */}
-      <section className="section-py bg-white">
-        <div className="container mx-auto px-4 lg:px-6">
-          <div className="grid lg:grid-cols-12 gap-12 items-start">
-            {/* Text */}
+      <section className="section-py bg-white" aria-label="Company Overview">
+        <div className="container">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Text narrative */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -94,45 +114,47 @@ export default function About() {
               variants={fadeUp}
               className="lg:col-span-7"
             >
-              <p className="eyebrow mb-4">Company Overview</p>
-              <h2
-                className="font-serif text-[var(--bns-navy)] leading-tight mb-6"
-                style={{ fontSize: 'var(--text-h2)' }}
-              >
+              <div className="eyebrow-badge mb-3">
+                <span className="accent-line" />
+                <span>Incorporation &amp; Heritage</span>
+              </div>
+              <h2 className="section-heading mb-6">
                 Bengal News Service PR &amp; Consultancy Pvt. Ltd.
               </h2>
-              <div className="rule-gold mb-7" />
 
-              <p className="text-[var(--bns-gray-600)] leading-relaxed mb-4">
-                Bengal News Service PR &amp; Consultancy Private Limited (BNS) is a
-                registered company incorporated in West Bengal, India. We are a
-                digital-first media and communications company that combines the
-                credibility of established journalism with the agility of modern
-                digital communications.
+              <p
+                className="text-base sm:text-lg text-[var(--bns-navy)] font-medium leading-relaxed mb-5 pl-4 border-l-2"
+                style={{ borderColor: 'var(--bns-gold)' }}
+              >
+                Bengal News Service PR &amp; Consultancy Private Limited (BNS) is an incorporated
+                enterprise based in West Bengal, India, combining newsroom journalistic rigor
+                with sophisticated public relations counsel.
               </p>
-              <p className="text-[var(--bns-gray-600)] leading-relaxed mb-4">
-                BNS operates at the intersection of media, public relations, digital
-                marketing, and communications consultancy — offering an integrated
-                suite of services to news audiences, businesses, institutions, and
-                individuals seeking professional communications support.
-              </p>
-              <p className="text-[var(--bns-gray-600)] leading-relaxed mb-8">
-                Our company is anchored in West Bengal, with a focus on regional
-                news, politics, business, culture, and society — while maintaining a
-                pan-India perspective on national and international developments.
-              </p>
+
+              <div className="space-y-4 text-[var(--bns-gray-600)] text-sm sm:text-base leading-relaxed mb-8">
+                <p>
+                  We operate at the convergence of digital news dissemination, corporate communications,
+                  public affairs, and brand promotion. Our media operation reports on West Bengal&apos;s
+                  politics, economy, culture, and society, while interpreting national policies that impact eastern India.
+                </p>
+                <p>
+                  Simultaneously, our corporate communications division advises businesses, institutions,
+                  trade bodies, and public leaders on message architecture, crisis preparedness, and media positioning.
+                </p>
+              </div>
 
               <div className="flex flex-wrap gap-4">
                 <Link to="/services" className="btn-primary">
-                  Our Services <ArrowRight size={15} />
+                  <span>Explore Practice Areas</span>
+                  <ArrowRight size={15} />
                 </Link>
                 <Link to="/contact" className="btn-secondary">
-                  Contact Us
+                  <span>Enquire With BNS</span>
                 </Link>
               </div>
             </motion.div>
 
-            {/* Registration details */}
+            {/* Corporate Registration Card */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -141,185 +163,201 @@ export default function About() {
               variants={fadeUp}
               className="lg:col-span-5"
             >
-              {/* Logo */}
-              <div className="mb-6 p-8 rounded-sm flex items-center justify-center"
-                style={{ background: 'var(--bns-cream)', border: '1px solid var(--bns-gray-200)' }}>
-                <img
-                  src="/bns-logo-full.png"
-                  alt="Bengal News Service PR & Consultancy"
-                  className="w-full max-w-xs"
-                />
-              </div>
-
-              {/* Details table */}
-              <div
-                className="rounded-sm overflow-hidden"
-                style={{ border: '1px solid var(--bns-gray-200)' }}
-              >
-                <div
-                  className="px-5 py-3"
-                  style={{ background: 'var(--bns-navy)' }}
-                >
-                  <p className="text-xs font-bold uppercase tracking-widest text-white/70">
-                    Registration Details
-                  </p>
-                </div>
-                {[
-                  { label: 'Company Name', value: 'Bengal News Service PR & Consultancy Pvt. Ltd.' },
-                  { label: 'Brand', value: 'BNS — Bengal News Service' },
-                  { label: 'CIN', value: 'U73100WB2024PTC275987' },
-                  { label: 'State', value: 'West Bengal, India' },
-                ].map(({ label, value }, i) => (
-                  <div
-                    key={label}
-                    className="px-5 py-3 text-sm flex gap-3"
-                    style={{
-                      borderTop: i === 0 ? 'none' : '1px solid var(--bns-gray-200)',
-                      background: i % 2 === 0 ? '#fff' : 'var(--bns-cream)',
-                    }}
-                  >
-                    <span className="font-semibold text-[var(--bns-navy)] flex-shrink-0 w-28">{label}</span>
-                    <span className="text-[var(--bns-gray-600)]">{value}</span>
+              <div className="bns-card p-7 border border-slate-200">
+                <div className="flex items-center gap-3 pb-5 mb-5 border-b border-slate-100">
+                  <ShieldCheck size={28} className="text-[var(--bns-gold)] flex-shrink-0" />
+                  <div>
+                    <h3 className="font-serif font-bold text-lg text-[var(--bns-navy)] leading-tight">
+                      Statutory Information
+                    </h3>
+                    <p className="text-xs text-[var(--bns-gray-500)] mt-0.5">
+                      Ministry of Corporate Affairs, Government of India
+                    </p>
                   </div>
-                ))}
+                </div>
+
+                <div className="space-y-3.5 text-sm">
+                  {[
+                    { label: 'Entity Name', value: 'Bengal News Service PR & Consultancy Private Limited' },
+                    { label: 'Trade Brand', value: 'BNS — Bengal News Service' },
+                    { label: 'CIN', value: COMPANY.cin },
+                    { label: 'Company Class', value: 'Private Limited Company (PTC)' },
+                    { label: 'Jurisdiction', value: 'RoC Kolkata, West Bengal, India' },
+                    { label: 'Operations', value: 'West Bengal & Pan-India' },
+                  ].map((row, idx) => (
+                    <div
+                      key={row.label}
+                      className="flex justify-between gap-3 pb-3 border-b border-slate-100 last:border-0 last:pb-0"
+                    >
+                      <span className="text-xs font-semibold text-[var(--bns-gray-500)] flex-shrink-0">
+                        {row.label}
+                      </span>
+                      <span className="text-xs sm:text-sm font-medium text-[var(--bns-navy)] text-right">
+                        {row.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── VISION & MISSION ─────────────────────────────── */}
+      {/* ── VISION & MISSION (Harmonized Uniform Cards) ── */}
       <section
         className="section-py"
-        style={{ background: 'var(--bns-navy)' }}
+        style={{ background: 'var(--bns-gray-50)' }}
         aria-label="Vision and Mission"
       >
-        <div className="container mx-auto px-4 lg:px-6">
+        <div className="container">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="mb-12"
+            className="section-header text-center"
           >
-            <p className="eyebrow mb-4" style={{ color: 'var(--bns-gold)' }}>Our Purpose</p>
-            <h2
-              className="font-serif text-white leading-tight"
-              style={{ fontSize: 'var(--text-h2)' }}
-            >
-              Vision &amp; Mission
-            </h2>
+            <div className="eyebrow-badge justify-center mb-3">
+              <span className="accent-line" />
+              <span>Foundational Values</span>
+              <span className="accent-line" />
+            </div>
+            <h2 className="section-heading">Our Institutional Purpose</h2>
+            <p className="section-subheading">
+              Guided by a commitment to responsible journalism and high-integrity strategic communication.
+            </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Vision Card */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUp}
-              className="p-8 rounded-sm"
-              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
+              className="bns-card p-8 sm:p-10 border border-slate-200 flex flex-col justify-between"
             >
-              <p className="eyebrow mb-4" style={{ color: 'var(--bns-gold)' }}>Vision</p>
-              <h3
-                className="font-serif text-white text-2xl mb-5"
-              >
-                Our Vision
-              </h3>
-              <p className="text-white/70 leading-relaxed mb-4">
-                To be the most trusted and impactful digital news and communications
-                platform representing Bengal&apos;s voice on the national and international stage.
-              </p>
-              <p className="text-white/70 leading-relaxed">
-                We envision a platform where credible journalism meets strategic
-                communications — empowering businesses, individuals, and communities.
-              </p>
+              <div>
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+                  style={{ background: 'rgba(14, 24, 42, 0.05)', color: 'var(--bns-navy)' }}
+                >
+                  <Eye size={24} />
+                </div>
+                <div className="eyebrow-badge mb-2">
+                  <span>Vision Statement</span>
+                </div>
+                <h3 className="font-serif text-2xl font-bold text-[var(--bns-navy)] mb-4">
+                  Voice Of Bengal, Vision For Bharat
+                </h3>
+                <p className="text-sm sm:text-base text-[var(--bns-gray-600)] leading-relaxed">
+                  To be the preeminent digital news and communications platform representing
+                  Bengal&apos;s intellect, culture, and economic aspirations — contributing to an
+                  informed citizenry and empowering institutions with strategic communications that matter.
+                </p>
+              </div>
+              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-[var(--bns-gold)]">
+                <CheckCircle size={14} />
+                <span>Regional Integrity · National Reach</span>
+              </div>
             </motion.div>
 
+            {/* Mission Card (Uniform styling with Vision card) */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               custom={0.12}
               variants={fadeUp}
-              className="p-8 rounded-sm"
-              style={{ background: 'var(--bns-gold)' }}
+              className="bns-card p-8 sm:p-10 border border-slate-200 flex flex-col justify-between"
             >
-              <p className="eyebrow mb-4" style={{ color: 'var(--bns-navy)', opacity: 0.7 }}>Mission</p>
-              <h3 className="font-serif text-[var(--bns-navy)] text-2xl mb-5">
-                Our Mission
-              </h3>
-              <p className="text-[var(--bns-navy)]/80 leading-relaxed mb-4">
-                To deliver credible, responsible, and impactful digital journalism
-                that informs, connects, and empowers citizens — while providing
-                businesses and organisations with expert PR, communications, and
-                marketing solutions.
-              </p>
-              <p className="text-[var(--bns-navy)]/80 leading-relaxed">
-                Committed to editorial integrity, professional excellence, and the
-                highest standards of communication — serving Bengal, Bharat, and beyond.
-              </p>
+              <div>
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+                  style={{ background: 'rgba(201, 168, 76, 0.12)', color: 'var(--bns-gold)' }}
+                >
+                  <Target size={24} />
+                </div>
+                <div className="eyebrow-badge mb-2">
+                  <span>Mission Mandate</span>
+                </div>
+                <h3 className="font-serif text-2xl font-bold text-[var(--bns-navy)] mb-4">
+                  Credible Reporting. Strategic Impact.
+                </h3>
+                <p className="text-sm sm:text-base text-[var(--bns-gray-600)] leading-relaxed">
+                  To produce accurate, balanced, and independent digital journalism while providing
+                  businesses, public sector entities, and leaders with newsroom-backed PR,
+                  reputation management, and media consultancy that deliver measurable visibility and trust.
+                </p>
+              </div>
+              <div className="pt-6 mt-6 border-t border-slate-100 flex items-center gap-2 text-xs font-semibold text-[var(--bns-gold)]">
+                <CheckCircle size={14} />
+                <span>Ethical Separation · Commercial Excellence</span>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── BUSINESS POSITIONING ─────────────────────────── */}
+      {/* ── BUSINESS POSITIONING (6 Pillars Grid) ──────── */}
       <section className="section-py bg-white" aria-label="Business positioning">
-        <div className="container mx-auto px-4 lg:px-6">
+        <div className="container">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="mb-12"
+            className="section-header text-center"
           >
-            <p className="eyebrow mb-4">What Sets Us Apart</p>
-            <h2
-              className="font-serif text-[var(--bns-navy)] leading-tight"
-              style={{ fontSize: 'var(--text-h2)' }}
-            >
-              Our Business Positioning
-            </h2>
+            <div className="eyebrow-badge justify-center mb-3">
+              <span className="accent-line" />
+              <span>Strategic Advantages</span>
+              <span className="accent-line" />
+            </div>
+            <h2 className="section-heading">Our Business Positioning</h2>
+            <p className="section-subheading">
+              How BNS bridges journalism and corporate advisory to deliver differentiated value.
+            </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {PILLARS.map(({ Icon, title, desc }, idx) => (
               <motion.div
                 key={title}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                custom={idx * 0.07}
+                custom={idx * 0.06}
                 variants={fadeUp}
-                className="group"
+                className="bns-card p-7 group"
               >
                 <div
-                  className="w-10 h-10 flex items-center justify-center mb-5 rounded-sm"
-                  style={{ background: 'var(--bns-cream)', border: '1px solid var(--bns-gray-200)' }}
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
+                  style={{ background: 'rgba(14, 24, 42, 0.05)', color: 'var(--bns-navy)' }}
                 >
-                  <Icon size={18} style={{ color: 'var(--bns-navy)' }} />
+                  <Icon size={20} />
                 </div>
-                <h3 className="font-serif text-[var(--bns-navy)] text-lg mb-3">{title}</h3>
-                <div
-                  className="w-8 h-0.5 mb-4"
-                  style={{ background: 'var(--bns-gold)', transition: 'width 0.3s' }}
-                />
-                <p className="text-sm text-[var(--bns-gray-500)] leading-relaxed">{desc}</p>
+                <h3 className="font-serif text-lg font-bold text-[var(--bns-navy)] mb-2.5">
+                  {title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[var(--bns-gray-500)] leading-relaxed">
+                  {desc}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── REGIONAL FOCUS ───────────────────────────────── */}
+      {/* ── REGIONAL & NATIONAL FOCUS ─────────────────── */}
       <section
         className="section-py"
-        style={{ background: 'var(--bns-cream)' }}
-        aria-label="Regional focus"
+        style={{ background: 'var(--bns-gray-50)' }}
+        aria-label="Editorial Focus"
       >
-        <div className="container mx-auto px-4 lg:px-6">
-          <div className="grid lg:grid-cols-12 gap-12 items-start">
+        <div className="container">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -327,38 +365,25 @@ export default function About() {
               variants={fadeUp}
               className="lg:col-span-6"
             >
-              <p className="eyebrow mb-4">Regional Focus</p>
-              <h2
-                className="font-serif text-[var(--bns-navy)] leading-tight mb-5"
-                style={{ fontSize: 'var(--text-h2)' }}
-              >
-                West Bengal &amp; Wider Indian Developments
+              <div className="eyebrow-badge mb-3">
+                <span className="accent-line" />
+                <span>Editorial Focus</span>
+              </div>
+              <h2 className="section-heading mb-5">
+                Bengal&apos;s Voice, Pan-India Coverage
               </h2>
-              <div className="rule-gold mb-7" />
-
-              <p className="text-[var(--bns-gray-600)] leading-relaxed mb-4">
-                West Bengal is one of India&apos;s most politically significant,
-                culturally rich, and economically dynamic states. BNS is committed
-                to bringing in-depth, authentic coverage of Bengal&apos;s affairs to a
-                digital audience — while contextualising them within the broader
-                national and international landscape.
-              </p>
-              <p className="text-[var(--bns-gray-600)] leading-relaxed mb-4">
-                Our editorial focus includes political developments, business and
-                economy, cultural affairs, social issues, education, infrastructure,
-                and the stories of ordinary Bengalis that often go untold in
-                mainstream national media.
-              </p>
-              <p className="text-[var(--bns-gray-600)] leading-relaxed mb-8">
-                At the same time, we maintain a strong pan-India perspective —
-                covering national governance, Parliament, policy, business, and
-                international affairs that shape Bharat&apos;s future.
+              <p className="text-sm sm:text-base text-[var(--bns-gray-600)] leading-relaxed mb-6">
+                With a population exceeding 90 million, West Bengal is one of India&apos;s political
+                and cultural epicenters. BNS dedicates focused editorial resources to investigate
+                state developments and contextualize their impact for the nation.
               </p>
 
-              {/* Focus areas as clean tags */}
-              <div className="flex flex-wrap gap-2">
+              {/* Tags Grid */}
+              <div className="flex flex-wrap gap-2.5">
                 {FOCUS_AREAS.map((item) => (
-                  <span key={item} className="tag-chip">{item}</span>
+                  <span key={item} className="tag-chip">
+                    {item}
+                  </span>
                 ))}
               </div>
             </motion.div>
@@ -369,80 +394,72 @@ export default function About() {
               viewport={{ once: true }}
               custom={0.12}
               variants={fadeUp}
-              className="lg:col-span-6 space-y-5"
+              className="lg:col-span-6"
             >
-              {[
-                {
-                  bg: 'var(--bns-navy)',
-                  color: '#fff',
-                  eyebrowColor: 'var(--bns-gold)',
-                  title: 'Why Bengal Matters',
-                  text: 'With over 90 million people, a storied intellectual and cultural heritage, and a pivotal role in Indian politics, West Bengal deserves a dedicated, professional, and credible digital news platform.',
-                },
-                {
-                  bg: 'var(--bns-gold)',
-                  color: 'var(--bns-navy)',
-                  eyebrowColor: 'rgba(26,39,68,0.55)',
-                  title: 'Bengal for Bharat',
-                  text: 'Our tagline — Voice Of Bengal, Vision For Bharat — captures our dual commitment: to be the authentic voice of Bengal\'s stories while contributing to a broader, pan-Indian vision of informed citizens.',
-                },
-                {
-                  bg: 'var(--bns-burgundy)',
-                  color: '#fff',
-                  eyebrowColor: 'rgba(255,255,255,0.55)',
-                  title: 'Multi-Format, Multi-Language',
-                  text: 'BNS plans to serve audiences in English and Bengali — reaching both the urban professional and the regional news consumer with content in formats and languages they prefer.',
-                },
-              ].map(({ bg, color, eyebrowColor, title, text }) => (
-                <div
-                  key={title}
-                  className="p-7 rounded-sm"
-                  style={{ background: bg, color }}
-                >
-                  <p
-                    className="text-xs font-bold uppercase tracking-widest mb-3"
-                    style={{ color: eyebrowColor }}
-                  >
-                    Context
-                  </p>
-                  <h4 className="font-serif text-xl font-bold mb-3" style={{ color }}>
-                    {title}
-                  </h4>
-                  <p className="text-sm leading-relaxed" style={{ color: `${color}CC` }}>
-                    {text}
-                  </p>
+              <div
+                className="rounded-2xl p-8 border border-white/10 text-white"
+                style={{
+                  background: 'linear-gradient(145deg, #070c16 0%, #14223d 100%)',
+                  boxShadow: '0 20px 40px -10px rgba(0,0,0,0.4)',
+                }}
+              >
+                <div className="eyebrow-badge mb-3">
+                  <span className="accent-line" />
+                  <span>Dual Editorial Commitment</span>
                 </div>
-              ))}
+                <h3 className="font-serif text-2xl font-bold text-white mb-4">
+                  Multi-Format, Dual-Language Strategy
+                </h3>
+                <p className="text-white/70 text-sm leading-relaxed mb-6">
+                  BNS delivers content in English and Bengali to reach senior executives,
+                  policymakers, and regional communities across digital video, long-form
+                  reporting, podcasts, and social newsrooms.
+                </p>
+
+                <div className="space-y-3 pt-6 border-t border-white/10 text-xs">
+                  <div className="flex items-center gap-2.5 text-white/85">
+                    <CheckCircle size={15} className="text-[var(--bns-gold)] flex-shrink-0" />
+                    <span>English Corporate &amp; Policy Analysis</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-white/85">
+                    <CheckCircle size={15} className="text-[var(--bns-gold)] flex-shrink-0" />
+                    <span>Bengali Regional &amp; Cultural Reporting</span>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────── */}
+      {/* ── CALL TO ACTION ────────────────────────────── */}
       <section
-        className="py-16"
-        style={{ background: 'var(--bns-navy)' }}
-        aria-label="CTA"
+        className="section-py text-white text-center"
+        style={{
+          background: 'linear-gradient(135deg, #070c16 0%, #14223d 50%, #7a1717 100%)',
+        }}
       >
-        <div className="container mx-auto px-4 lg:px-6">
+        <div className="container">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
+            className="max-w-2xl mx-auto"
           >
-            <h2 className="font-serif text-white text-3xl mb-4">
-              Explore What BNS Offers
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4">
+              Collaborate with BNS
             </h2>
-            <p className="text-white/65 text-lg mb-8">
-              Discover our services or get in touch for a business enquiry.
+            <p className="text-white/75 text-sm sm:text-base mb-8 leading-relaxed">
+              Discover our media solutions or arrange an executive consultation for PR and communications.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/services" className="btn-gold">
-                Our Services <ArrowRight size={15} />
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link to="/services" className="btn-gold !rounded-full">
+                <span>View Practice Areas</span>
+                <ArrowRight size={15} />
               </Link>
-              <Link to="/contact" className="btn-outline-white">
-                Contact Us
+              <Link to="/contact" className="btn-outline-white !rounded-full">
+                <span>Contact Business Team</span>
               </Link>
             </div>
           </motion.div>

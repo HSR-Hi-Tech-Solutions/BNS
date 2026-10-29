@@ -23,18 +23,22 @@ export default function Terms() {
 
   return (
     <div>
-      <section className="page-hero pt-32">
-        <div className="container mx-auto">
+      <section className="page-hero">
+        <div className="container relative z-10">
           <motion.div
             initial="hidden" animate="visible" variants={fadeUp}
             className="max-w-3xl mx-auto text-center"
           >
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Terms & Conditions
+            <div className="eyebrow-badge justify-center mb-4">
+              <span className="accent-line" />
+              <span>Terms of Engagement</span>
+              <span className="accent-line" />
+            </div>
+            <h1 className="font-serif text-white mb-4">
+              Terms &amp; Conditions
             </h1>
-            <div className="gold-divider center mb-4" />
-            <p className="text-gray-400 text-sm">
-              Last updated: {today}
+            <p className="text-white/60 text-xs sm:text-sm">
+              Last updated: {today} · Bengal News Service PR &amp; Consultancy Pvt. Ltd.
             </p>
           </motion.div>
         </div>

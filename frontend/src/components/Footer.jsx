@@ -1,51 +1,63 @@
 import { Link } from 'react-router-dom';
 import { COMPANY, NAV_LINKS } from '../constants';
-import { Mail, MapPin, Globe, Share2, Video, Rss, X as Twitter } from 'lucide-react';
+import { Mail, MapPin, Globe, Share2, Video, Rss, X as Twitter, ShieldCheck } from 'lucide-react';
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer
-      className="text-gray-300"
+      className="text-gray-300 relative overflow-hidden"
       style={{ background: 'var(--bns-navy-dark)' }}
       role="contentinfo"
       aria-label="Site footer"
     >
-      {/* Gold top accent */}
+      {/* Top Hairline Gold Accent */}
       <div
-        className="h-0.5"
-        style={{ background: 'linear-gradient(90deg, transparent 0%, var(--bns-gold) 30%, var(--bns-gold-light) 70%, transparent 100%)' }}
+        className="h-[2px]"
+        style={{
+          background:
+            'linear-gradient(90deg, transparent 0%, var(--bns-gold) 35%, var(--bns-gold-light) 65%, transparent 100%)',
+        }}
       />
 
-      {/* Main footer */}
-      <div className="container mx-auto px-4 lg:px-6 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      {/* Main Footer Container */}
+      <div className="container py-14 sm:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
 
-          {/* Brand column */}
-          <div className="lg:col-span-1">
-            <Link to="/" aria-label="BNS home" className="inline-block mb-5">
+          {/* Brand & Identity Column */}
+          <div className="lg:col-span-5">
+            <Link to="/" aria-label="BNS home" className="inline-flex items-center gap-3.5 mb-5 group">
               <img
-                src="/bns-logo-full.png"
-                alt="Bengal News Service PR & Consultancy Private Limited"
-                className="h-16 w-auto object-contain"
-                style={{ filter: 'brightness(0) invert(1) opacity(0.85)' }}
+                src="/bns-logo-icon.png"
+                alt="BNS logo"
+                className="navbar-logo"
               />
+              <div className="flex flex-col">
+                <span className="font-serif font-bold text-white text-lg tracking-tight leading-tight">
+                  Bengal News Service
+                </span>
+                <span
+                  className="text-[11px] font-semibold tracking-widest uppercase mt-0.5"
+                  style={{ color: 'var(--bns-gold)' }}
+                >
+                  PR &amp; Consultancy Pvt. Ltd.
+                </span>
+              </div>
             </Link>
-            <p className="text-sm text-white/45 leading-relaxed mb-5">
-              Bengal News Service PR &amp; Consultancy Private Limited — a digital-first
-              media and communications company committed to credible journalism and
-              strategic communications.
-            </p>
-            <p
-              className="font-serif italic text-sm mb-6"
-              style={{ color: 'var(--bns-gold)' }}
-            >
-              &ldquo;Voice Of Bengal, Vision For Bharat&rdquo;
+
+            <p className="text-sm text-white/55 leading-relaxed mb-6 max-w-md">
+              A digital-first media enterprise and corporate communications practice.
+              Connecting Bengal&apos;s cultural and policy landscape with national perspectives
+              while delivering newsroom-backed strategic PR and advisory services.
             </p>
 
-            {/* Social icons */}
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2 mb-6 text-xs text-[var(--bns-gold)] font-serif italic">
+              <span>&ldquo;Voice Of Bengal, Vision For Bharat&rdquo;</span>
+            </div>
+
+            {/* Social Icons Strip */}
+            <div className="flex items-center gap-2">
               {[
                 { Icon: Globe, href: COMPANY.socialMedia.facebook, label: 'Facebook' },
                 { Icon: Twitter, href: COMPANY.socialMedia.twitter, label: 'Twitter/X' },
@@ -57,15 +69,21 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-8 h-8 rounded-sm flex items-center justify-center transition-all duration-200"
-                  style={{ background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.35)' }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.background = 'var(--bns-gold)';
-                    e.currentTarget.style.color = 'var(--bns-navy)';
+                  className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200"
+                  style={{
+                    background: 'rgba(255,255,255,0.05)',
+                    color: 'rgba(255,255,255,0.45)',
+                    border: '1px solid rgba(255,255,255,0.08)',
                   }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-                    e.currentTarget.style.color = 'rgba(255,255,255,0.35)';
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'var(--bns-gold)';
+                    e.currentTarget.style.color = 'var(--bns-navy-dark)';
+                    e.currentTarget.style.borderColor = 'var(--bns-gold)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
+                    e.currentTarget.style.color = 'rgba(255,255,255,0.45)';
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
                   }}
                 >
                   <Icon size={14} />
@@ -74,99 +92,111 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <h3
-              className="font-sans font-bold text-xs uppercase tracking-widest mb-5 text-white/60"
-            >
+          {/* Practice Areas Column */}
+          <div className="lg:col-span-3">
+            <h3 className="font-sans font-bold text-xs uppercase tracking-widest mb-5 text-white/70">
+              Practice Areas
+            </h3>
+            <ul className="space-y-2.5 text-sm">
+              {[
+                { label: 'Digital News & Media', anchor: 'digital-news-media' },
+                { label: 'Public Relations', anchor: 'public-relations' },
+                { label: 'Corporate Communications', anchor: 'public-relations' },
+                { label: 'Digital Marketing & Ads', anchor: 'digital-marketing' },
+                { label: 'Strategic Media Advisory', anchor: 'consultancy' },
+              ].map(({ label, anchor }) => (
+                <li key={label}>
+                  <Link
+                    to={`/services#${anchor}`}
+                    className="text-white/55 hover:text-white transition-colors flex items-center gap-1.5"
+                  >
+                    <span>{label}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Quick Navigation Column */}
+          <div className="lg:col-span-2">
+            <h3 className="font-sans font-bold text-xs uppercase tracking-widest mb-5 text-white/70">
               Navigation
             </h3>
-            <ul className="space-y-2.5">
+            <ul className="space-y-2.5 text-sm">
               {NAV_LINKS.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-sm text-white/45 transition-colors hover:text-white/80"
+                    className="text-white/55 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/privacy-policy"
+                  className="text-white/55 hover:text-white transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/terms"
+                  className="text-white/55 hover:text-white transition-colors"
+                >
+                  Terms &amp; Conditions
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Services */}
-          <div>
-            <h3 className="font-sans font-bold text-xs uppercase tracking-widest mb-5 text-white/60">
-              Our Services
+          {/* Corporate Office & Direct Reach */}
+          <div className="lg:col-span-2">
+            <h3 className="font-sans font-bold text-xs uppercase tracking-widest mb-5 text-white/70">
+              Corporate Desk
             </h3>
-            <ul className="space-y-2.5">
-              {[
-                { label: 'Digital News & Media', anchor: 'digital-news-media' },
-                { label: 'Public Relations', anchor: 'public-relations' },
-                { label: 'Corporate Communications', anchor: 'public-relations' },
-                { label: 'Digital Marketing', anchor: 'digital-marketing' },
-                { label: 'Consultancy', anchor: 'consultancy' },
-              ].map(({ label, anchor }) => (
-                <li key={label}>
-                  <Link
-                    to={`/services#${anchor}`}
-                    className="text-sm text-white/45 transition-colors hover:text-white/80"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact & Legal */}
-          <div>
-            <h3 className="font-sans font-bold text-xs uppercase tracking-widest mb-5 text-white/60">
-              Contact &amp; Legal
-            </h3>
-            <div className="space-y-3 mb-5">
+            <div className="space-y-3.5 text-xs text-white/55 mb-5">
               <a
                 href={`mailto:${COMPANY.email}`}
-                className="flex items-start gap-2.5 text-sm text-white/45 transition-colors hover:text-white/80"
+                className="flex items-start gap-2 hover:text-white transition-colors"
               >
-                <Mail size={13} className="mt-0.5 flex-shrink-0" />
+                <Mail size={14} className="mt-0.5 text-[var(--bns-gold)] flex-shrink-0" />
                 <span>{COMPANY.email}</span>
               </a>
-              <div className="flex items-start gap-2.5 text-sm text-white/35">
-                <MapPin size={13} className="mt-0.5 flex-shrink-0" />
-                <span>West Bengal, India</span>
+              <div className="flex items-start gap-2">
+                <MapPin size={14} className="mt-0.5 text-[var(--bns-gold)] flex-shrink-0" />
+                <span>Kolkata, West Bengal, India</span>
               </div>
             </div>
-            <ul className="space-y-2.5">
-              {[
-                { label: 'Privacy Policy', to: '/privacy-policy' },
-                { label: 'Terms & Conditions', to: '/terms' },
-                { label: 'Business Enquiries', to: '/contact' },
-              ].map(({ label, to }) => (
-                <li key={to}>
-                  <Link
-                    to={to}
-                    className="text-sm text-white/45 transition-colors hover:text-white/80"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+
+            <div className="pt-4 border-t border-white/[0.08] text-[11px] text-white/40">
+              <p>CIN: {COMPANY.cin}</p>
+              <p className="mt-0.5">Incorporated in West Bengal</p>
+            </div>
           </div>
+
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-        <div className="container mx-auto px-4 lg:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/25">
+      {/* Bottom Legal Band */}
+      <div className="border-t border-white/[0.07]">
+        <div className="container py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
           <p>
             &copy; {year} Bengal News Service PR &amp; Consultancy Private Limited. All rights reserved.
           </p>
-          <p className="text-center sm:text-right">
-            CIN: {COMPANY.cin} &nbsp;|&nbsp; Registered in West Bengal, India
-          </p>
+          <div className="flex items-center gap-4 text-xs">
+            <Link to="/privacy-policy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <span>·</span>
+            <Link to="/terms" className="hover:text-white transition-colors">
+              Terms of Use
+            </Link>
+            <span>·</span>
+            <span className="text-white/30">RoC Kolkata</span>
+          </div>
         </div>
       </div>
     </footer>

@@ -2,101 +2,115 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  Award, Globe, Mic, BookOpen, Users, Briefcase,
-  X as Twitter, Rss, Mail, ArrowRight,
+  Award,
+  Globe,
+  Mic,
+  BookOpen,
+  Users,
+  Briefcase,
+  X as Twitter,
+  Rss,
+  Mail,
+  ArrowRight,
+  Quote,
+  ShieldCheck,
 } from 'lucide-react';
+import { COMPANY } from '../constants';
 import { setPageMeta } from '../utils/seo';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (delay = 0) => ({
-    opacity: 1, y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1], delay },
   }),
 };
 
 const EXPERTISE = [
-  'Parliamentary Reporting',
-  'Political Journalism',
-  'National & International Coverage',
-  'Media Relations',
-  'Corporate Communications',
-  'Public Relations Strategy',
-  'Digital Media',
-  'Brand & Reputation Management',
+  'Parliamentary & Legislative Reporting',
+  'Political Dynamics & Electoral Analysis',
+  'National Governance & Policy Tracking',
+  'Media Relations & Editorial Networks',
+  'Crisis Communications & Advisory',
+  'Corporate Communications Strategy',
+  'Multi-Format Digital Journalism',
+  'Executive Reputation Architecture',
 ];
 
 const EXPERIENCE = [
   {
     Icon: BookOpen,
-    title: 'Parliamentary Reporting',
-    desc: 'Extensive experience reporting from India\'s Parliament — covering legislative debates, policy discussions, budget sessions, and the full range of parliamentary proceedings.',
+    title: 'Parliamentary Journalism',
+    desc: 'Extensive on-the-ground experience reporting from Parliament House — covering legislative debates, budgetary sessions, and policy decisions that shape Indian governance.',
   },
   {
     Icon: Globe,
-    title: 'Political Coverage',
-    desc: 'In-depth coverage of Bengal politics and national political developments — election campaigns, party dynamics, governance, and political analysis.',
+    title: 'Political & Electoral Affairs',
+    desc: 'In-depth coverage of regional Bengal politics and national electoral movements — analyzing party strategies, coalition dynamics, and socio-economic shifts.',
   },
   {
     Icon: Mic,
-    title: 'National & International Assignments',
-    desc: 'Reporting across India and internationally on developments that shape India\'s position in global affairs, business, and diplomacy.',
+    title: 'National & Global Assignments',
+    desc: 'Reporting from across Bharat and international conferences on developments influencing trade, regional stability, and national strategy.',
   },
   {
     Icon: Users,
-    title: 'Media Relations',
-    desc: 'Deep professional networks with journalists, editors, news organisations, and media houses — built over decades in the industry.',
+    title: 'Senior Newsroom Networks',
+    desc: 'Deep professional relationships built over decades with chief editors, bureau chiefs, and key opinion leaders across print, broadcast, and digital media.',
   },
   {
     Icon: Briefcase,
-    title: 'Corporate Communications',
-    desc: 'Advisory and communications support for businesses, institutions, and public figures seeking effective, strategic communications.',
+    title: 'Corporate Advisory Experience',
+    desc: 'Counseling business leaders, institutions, and public figures on message framing, crisis de-escalation, and high-stakes announcements.',
   },
   {
     Icon: Award,
-    title: 'Editorial Leadership',
-    desc: 'Experience in editorial strategy, content direction, and the journalistic standards that ensure credibility and audience trust.',
+    title: 'Editorial Standards Leadership',
+    desc: 'Instilling strict journalistic accuracy, source verification, and ethical boundaries across all BNS news and corporate assignments.',
   },
 ];
 
 export default function Leadership() {
   useEffect(() => {
     setPageMeta({
-      title: 'Leadership — Ujjwal Roy | BNS Bengal News Service',
+      title: 'Executive Leadership — Ujjwal Roy | BNS Bengal News Service',
       description:
-        'Meet Ujjwal Roy, Founder and Director of Bengal News Service PR & Consultancy Pvt. Ltd. — a veteran journalist with decades of experience in Parliament reporting, political coverage, and media relations.',
+        'Meet Ujjwal Roy, Founder and Director of Bengal News Service PR & Consultancy Pvt. Ltd. — veteran journalist with decades of parliamentary reporting and media advisory experience.',
     });
   }, []);
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       {/* ── PAGE HERO ─────────────────────────────────── */}
-      <section className="page-hero pt-32">
-        <div className="container mx-auto">
+      <section className="page-hero">
+        <div className="container relative z-10">
           <motion.div
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="max-w-3xl mx-auto text-center relative z-10"
+            className="max-w-3xl mx-auto text-center"
           >
-            <p className="eyebrow mb-5">Our Leadership</p>
-            <h1 className="font-serif text-white mb-5">
-              The Vision Behind BNS
-            </h1>
-            <p className="text-white/70 text-lg leading-relaxed">
-              Led by a veteran journalist and media professional with decades of
-              national and international experience.
+            <div className="eyebrow-badge justify-center mb-4">
+              <span className="accent-line" />
+              <span>Executive Profile</span>
+              <span className="accent-line" />
+            </div>
+            <h1 className="font-serif text-white mb-4">The Leadership Behind BNS</h1>
+            <p className="text-white/75 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+              Headed by a veteran journalist and media strategist with decades of
+              national parliamentary reporting and editorial leadership experience.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* ── DIRECTOR PROFILE ─────────────────────────────── */}
-      <section className="section-py bg-white" aria-label="Director profile">
-        <div className="container mx-auto px-4 lg:px-6">
-          <div className="grid lg:grid-cols-12 gap-12 items-start">
+      {/* ── DIRECTOR PROFILE SECTION ──────────────────── */}
+      <section className="section-py bg-white" aria-label="Director Profile">
+        <div className="container">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-start">
 
-            {/* Left — profile card */}
+            {/* Left Column: Profile Card */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -105,89 +119,72 @@ export default function Leadership() {
               className="lg:col-span-4"
             >
               <div
-                className="rounded-sm overflow-hidden"
-                style={{ background: 'var(--bns-navy)' }}
+                className="rounded-2xl overflow-hidden border border-white/10 text-white"
+                style={{
+                  background: 'linear-gradient(150deg, #070c16 0%, #111d33 60%, #0c1424 100%)',
+                  boxShadow: '0 20px 40px -10px rgba(0,0,0,0.3)',
+                }}
               >
-                {/* Monogram portrait */}
-                <div
-                  className="flex flex-col items-center justify-center text-center py-14 px-8"
-                  style={{
-                    background: 'linear-gradient(160deg, var(--bns-navy-dark) 0%, var(--bns-navy) 60%, var(--bns-navy-light) 100%)',
-                    borderBottom: '1px solid rgba(201,168,76,0.2)',
-                  }}
-                >
-                  {/* Large typographic monogram */}
+                {/* Monogram Seal & Name */}
+                <div className="p-8 text-center border-b border-white/10">
                   <div
-                    className="font-serif font-bold leading-none mb-6 select-none"
-                    style={{ fontSize: '5rem', color: 'var(--bns-gold)', letterSpacing: '-0.04em' }}
-                    aria-label="Ujjwal Roy initials"
+                    className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(201,168,76,0.2) 0%, rgba(201,168,76,0.05) 100%)',
+                      border: '2px solid var(--bns-gold)',
+                    }}
                   >
-                    UR
+                    <span
+                      className="font-serif font-bold text-3xl tracking-tight"
+                      style={{ color: 'var(--bns-gold)' }}
+                    >
+                      UR
+                    </span>
                   </div>
-                  <h2 className="font-serif text-2xl text-white font-bold mb-1">
+                  <h2 className="font-serif text-2xl font-bold text-white mb-1">
                     Ujjwal Roy
                   </h2>
-                  <p className="text-sm font-medium" style={{ color: 'var(--bns-gold)' }}>
+                  <p className="text-xs font-semibold text-[var(--bns-gold)] uppercase tracking-wider">
                     Founder &amp; Director
                   </p>
-                  <p className="text-xs mt-1 text-white/40">
+                  <p className="text-xs text-white/50 mt-1">
                     Bengal News Service PR &amp; Consultancy Pvt. Ltd.
                   </p>
                 </div>
 
-                {/* Facts */}
-                <div className="px-6 py-5 space-y-3">
+                {/* Facts Table */}
+                <div className="p-6 space-y-3 text-xs">
                   {[
                     { label: 'Role', value: 'Founder & Director' },
-                    { label: 'Expertise', value: 'Journalism, PR, Media Relations' },
-                    { label: 'Specialisation', value: 'Parliamentary & Political Reporting' },
-                    { label: 'Coverage', value: 'National & International Affairs' },
-                    { label: 'Based In', value: 'West Bengal, India' },
-                  ].map(({ label, value }, i) => (
+                    { label: 'Primary Field', value: 'Journalism & Media Advisory' },
+                    { label: 'Specialization', value: 'Parliamentary Affairs & Politics' },
+                    { label: 'Jurisdiction', value: 'West Bengal & New Delhi' },
+                    { label: 'Organization', value: 'Bengal News Service Pvt. Ltd.' },
+                  ].map((row, i) => (
                     <div
-                      key={label}
-                      className="flex justify-between gap-4 text-sm pb-3"
-                      style={{ borderBottom: i < 4 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}
+                      key={row.label}
+                      className="flex justify-between gap-3 pb-3 border-b border-white/[0.08] last:border-0 last:pb-0"
                     >
-                      <span className="text-white/40 font-medium flex-shrink-0">{label}</span>
-                      <span className="text-white/80 text-right">{value}</span>
+                      <span className="text-white/45 flex-shrink-0">{row.label}</span>
+                      <span className="text-white/85 text-right font-medium">{row.value}</span>
                     </div>
                   ))}
                 </div>
 
-                {/* Social */}
-                <div className="px-6 pb-6 flex items-center gap-3">
-                  {[
-                    { Icon: Rss, href: '#', label: 'LinkedIn' },
-                    { Icon: Twitter, href: '#', label: 'Twitter/X' },
-                    { Icon: Mail, href: 'mailto:contact@bengalnewsservice.com', label: 'Email' },
-                  ].map(({ Icon, href, label }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      aria-label={label}
-                      className="w-9 h-9 rounded-sm flex items-center justify-center transition-all"
-                      style={{
-                        background: 'rgba(255,255,255,0.06)',
-                        color: 'rgba(255,255,255,0.4)',
-                      }}
-                      onMouseEnter={e => {
-                        e.currentTarget.style.background = 'var(--bns-gold)';
-                        e.currentTarget.style.color = 'var(--bns-navy)';
-                      }}
-                      onMouseLeave={e => {
-                        e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
-                        e.currentTarget.style.color = 'rgba(255,255,255,0.4)';
-                      }}
-                    >
-                      <Icon size={15} />
-                    </a>
-                  ))}
+                {/* Direct Action Link */}
+                <div className="p-6 pt-0">
+                  <Link
+                    to="/contact"
+                    className="btn-gold w-full !rounded-xl !py-2.5 !text-xs justify-center"
+                  >
+                    <span>Connect with Executive Office</span>
+                    <ArrowRight size={13} />
+                  </Link>
                 </div>
               </div>
             </motion.div>
 
-            {/* Right — bio */}
+            {/* Right Column: Comprehensive Biography */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -196,177 +193,174 @@ export default function Leadership() {
               variants={fadeUp}
               className="lg:col-span-8"
             >
-              <p className="eyebrow mb-4">Director Profile</p>
-              <h2
-                className="font-serif text-[var(--bns-navy)] leading-tight mb-5"
-                style={{ fontSize: 'var(--text-h2)' }}
-              >
-                Ujjwal Roy
+              <div className="eyebrow-badge mb-3">
+                <span className="accent-line" />
+                <span>Biography &amp; Record</span>
+              </div>
+              <h2 className="section-heading mb-6">
+                Decades of Journalism and Communications Leadership
               </h2>
-              <div className="rule-gold mb-7" />
 
-              <div className="space-y-4 text-[var(--bns-gray-600)] leading-relaxed mb-8">
+              <div className="space-y-4 text-[var(--bns-gray-600)] text-sm sm:text-base leading-relaxed mb-8">
                 <p>
-                  Ujjwal Roy is the Founder and Director of Bengal News Service PR
-                  &amp; Consultancy Private Limited. A veteran journalist and media
-                  professional, he brings decades of experience spanning some of
-                  India&apos;s most demanding and significant reporting environments.
+                  Ujjwal Roy is the Founder and Director of Bengal News Service PR &amp; Consultancy Private Limited.
+                  With decades of career experience spanning some of India&apos;s most demanding reporting environments,
+                  he brings unparalleled authority and media acumen to the organization.
                 </p>
                 <p>
-                  His journalistic career encompasses comprehensive coverage of
-                  parliamentary affairs — reporting from the corridors of India&apos;s
-                  Parliament on debates, legislation, and the personalities who shape
-                  national policy. This experience provides an unparalleled
-                  understanding of the intersection between politics, governance,
-                  and media.
+                  His journalism career encompasses comprehensive reporting from the corridors of the Parliament of
+                  India — analyzing key legislative debates, budgetary policies, and national political dynamics.
+                  This background provides a deep, practical understanding of how governance, media, and public policy intersect.
                 </p>
                 <p>
-                  Ujjwal Roy&apos;s career includes extensive political coverage across
-                  West Bengal and nationally — tracking electoral politics, party
-                  dynamics, governance, and the socio-political currents that define
-                  the contemporary Indian landscape.
+                  Across West Bengal and eastern India, his reporting has consistently unpacked regional political currents,
+                  electoral strategies, state economic policy, and grassroots societal concerns. His assignments have also
+                  included national and international events that shaped India&apos;s evolving role on the world stage.
                 </p>
                 <p>
-                  His professional work has included national and international
-                  assignments, covering events and developments that span India&apos;s
-                  growing role on the world stage. With extensive media relations
-                  expertise built across years in the journalism industry, Ujjwal
-                  Roy is uniquely positioned to lead a company that bridges
-                  journalism and communications consultancy.
+                  At BNS, Ujjwal Roy leads the editorial vision of the news service while steering the corporate
+                  communications and PR practice — helping enterprises, institutions, and leaders build lasting public trust.
                 </p>
               </div>
 
-              {/* Expertise chips */}
-              <div
-                className="p-6 rounded-sm"
-                style={{ background: 'var(--bns-cream)', border: '1px solid var(--bns-gray-200)' }}
-              >
-                <p className="text-xs font-bold uppercase tracking-widest text-[var(--bns-gray-500)] mb-4">
-                  Areas of Expertise
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {EXPERTISE.map((item) => (
-                    <span key={item} className="tag-chip">{item}</span>
+              {/* Competencies Grid */}
+              <div className="bns-card p-6 sm:p-7 border border-slate-200">
+                <h3 className="font-serif font-bold text-base text-[var(--bns-navy)] mb-4">
+                  Areas of Strategic Competence
+                </h3>
+                <div className="flex flex-wrap gap-2.5">
+                  {EXPERTISE.map((skill) => (
+                    <span key={skill} className="tag-chip">
+                      {skill}
+                    </span>
                   ))}
                 </div>
               </div>
             </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* ── EXPERIENCE HIGHLIGHTS ────────────────────────── */}
+      {/* ── KEY EXPERIENCE HIGHLIGHTS ─────────────────── */}
       <section
         className="section-py"
-        style={{ background: 'var(--bns-cream)' }}
-        aria-label="Experience highlights"
+        style={{ background: 'var(--bns-gray-50)' }}
+        aria-label="Experience Highlights"
       >
-        <div className="container mx-auto px-4 lg:px-6">
+        <div className="container">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="mb-12"
+            className="section-header text-center"
           >
-            <p className="eyebrow mb-4">Professional Background</p>
-            <h2
-              className="font-serif text-[var(--bns-navy)] leading-tight"
-              style={{ fontSize: 'var(--text-h2)' }}
-            >
-              Key Experience &amp; Expertise
-            </h2>
+            <div className="eyebrow-badge justify-center mb-3">
+              <span className="accent-line" />
+              <span>Career Highlights</span>
+              <span className="accent-line" />
+            </div>
+            <h2 className="section-heading">Professional Career Milestones</h2>
+            <p className="section-subheading">
+              Foundational reporting and communications expertise that informs BNS&apos;s strategic approach.
+            </p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {EXPERIENCE.map(({ Icon, title, desc }, idx) => (
               <motion.div
                 key={title}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                custom={idx * 0.07}
+                custom={idx * 0.06}
                 variants={fadeUp}
-                className="group"
+                className="bns-card p-7 group"
               >
                 <div
-                  className="w-10 h-10 flex items-center justify-center mb-5 rounded-sm"
-                  style={{ background: '#fff', border: '1px solid var(--bns-gray-200)' }}
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
+                  style={{ background: 'rgba(14, 24, 42, 0.05)', color: 'var(--bns-navy)' }}
                 >
-                  <Icon size={18} style={{ color: 'var(--bns-navy)' }} />
+                  <Icon size={20} />
                 </div>
-                <h3 className="font-serif text-[var(--bns-navy)] text-lg mb-3">{title}</h3>
-                <div className="w-8 h-0.5 mb-4" style={{ background: 'var(--bns-gold)' }} />
-                <p className="text-sm text-[var(--bns-gray-500)] leading-relaxed">{desc}</p>
+                <h3 className="font-serif text-lg font-bold text-[var(--bns-navy)] mb-2.5">
+                  {title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[var(--bns-gray-500)] leading-relaxed">
+                  {desc}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── DIRECTOR QUOTE ───────────────────────────────── */}
+      {/* ── DIRECTOR QUOTATION (Balanced, not oversized) ── */}
       <section
-        className="section-py"
-        style={{ background: 'var(--bns-navy)' }}
-        aria-label="Director message"
+        className="section-py text-white"
+        style={{ background: 'var(--bns-navy-dark)' }}
+        aria-label="Director Perspective"
       >
-        <div className="container mx-auto px-4 lg:px-6">
+        <div className="container">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
-            className="max-w-4xl"
+            className="max-w-4xl mx-auto rounded-3xl p-8 sm:p-12 border border-white/10"
+            style={{
+              background: 'linear-gradient(145deg, #0a1120 0%, #111d33 60%, #0c1424 100%)',
+            }}
           >
-            <p className="eyebrow mb-6" style={{ color: 'var(--bns-gold)' }}>
-              In His Own Words
-            </p>
-            <blockquote
-              className="font-serif text-white leading-snug mb-8"
-              style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontStyle: 'italic' }}
-            >
-              &ldquo;Bengal has a story that deserves to be told with depth, accuracy,
-              and pride. BNS is our commitment to telling that story — and to
-              helping others communicate their stories with the professionalism
-              they deserve.&rdquo;
+            <Quote size={36} className="text-[var(--bns-gold)] opacity-40 mb-6" />
+
+            <blockquote className="font-serif text-xl sm:text-2xl lg:text-3xl text-white/95 leading-snug font-normal italic mb-8">
+              &ldquo;Bengal has a story that deserves to be told with depth, accuracy, and pride.
+              BNS is our commitment to telling that story — and to helping others communicate
+              their stories with the professionalism they deserve.&rdquo;
             </blockquote>
-            <div
-              className="flex items-center gap-5 pt-6"
-              style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}
-            >
+
+            <div className="pt-6 border-t border-white/10 flex items-center justify-between">
               <div>
-                <p className="font-serif font-bold text-white text-lg">Ujjwal Roy</p>
-                <p className="text-sm mt-0.5" style={{ color: 'var(--bns-gold)' }}>
-                  Founder &amp; Director, BNS — Bengal News Service
+                <p className="font-serif font-bold text-white text-base">Ujjwal Roy</p>
+                <p className="text-xs text-[var(--bns-gold)] mt-0.5">
+                  Founder &amp; Director, Bengal News Service PR &amp; Consultancy Pvt. Ltd.
                 </p>
               </div>
+              <span className="text-xs text-white/40 hidden sm:inline-block">
+                Registered in West Bengal, India
+              </span>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────── */}
-      <section className="py-16 bg-white" aria-label="Leadership CTA">
-        <div className="container mx-auto px-4 lg:px-6">
+      {/* ── CALL TO ACTION ────────────────────────────── */}
+      <section
+        className="section-py text-white text-center"
+        style={{
+          background: 'linear-gradient(135deg, #070c16 0%, #14223d 50%, #7a1717 100%)',
+        }}
+      >
+        <div className="container">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
+            className="max-w-2xl mx-auto"
           >
-            <h2 className="font-serif text-[var(--bns-navy)] text-3xl mb-4">
-              Work with an Experienced Media Professional
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4">
+              Consult with Experienced Media Leadership
             </h2>
-            <p className="text-[var(--bns-gray-600)] text-lg mb-8 max-w-xl">
-              Get in touch to discuss how BNS can support your media, PR, or
-              communications objectives.
+            <p className="text-white/75 text-sm sm:text-base mb-8 leading-relaxed">
+              Reach out to arrange a confidential briefing on PR strategy, corporate positioning, or media inquiries.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="btn-primary">
-                Contact BNS <ArrowRight size={15} />
-              </Link>
-              <Link to="/services" className="btn-secondary">
-                Our Services
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link to="/contact" className="btn-gold !rounded-full">
+                <span>Contact Leadership Office</span>
+                <ArrowRight size={15} />
               </Link>
             </div>
           </motion.div>
