@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Newspaper, Megaphone, TrendingUp, Briefcase,
-  CheckCircle, ArrowRight, ChevronRight,
+  ArrowRight, ChevronRight,
 } from 'lucide-react';
 import { SERVICES } from '../constants';
 import { setPageMeta } from '../utils/seo';
@@ -12,50 +12,14 @@ const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (delay = 0) => ({
     opacity: 1, y: 0,
-    transition: { duration: 0.55, ease: 'easeOut', delay },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
   }),
 };
 
 const ICON_MAP = { Newspaper, Megaphone, TrendingUp, Briefcase };
 
-const SECTION_THEMES = [
-  {
-    headerBg: 'bg-[#1a2744]',
-    headerText: 'text-white',
-    iconColor: 'text-[#c9a84c]',
-    accent: 'bg-[#c9a84c]',
-    sectionBg: 'bg-white',
-    numberBg: 'bg-[#1a2744]/8',
-    numberText: 'text-[#1a2744]',
-  },
-  {
-    headerBg: 'bg-[#8b1a1a]',
-    headerText: 'text-white',
-    iconColor: 'text-white',
-    accent: 'bg-[#c9a84c]',
-    sectionBg: 'bg-[#faf8f3]',
-    numberBg: 'bg-[#8b1a1a]/8',
-    numberText: 'text-[#8b1a1a]',
-  },
-  {
-    headerBg: 'bg-[#c9a84c]',
-    headerText: 'text-[#1a2744]',
-    iconColor: 'text-[#1a2744]',
-    accent: 'bg-[#1a2744]',
-    sectionBg: 'bg-white',
-    numberBg: 'bg-[#c9a84c]/15',
-    numberText: 'text-[#1a2744]',
-  },
-  {
-    headerBg: 'bg-[#243362]',
-    headerText: 'text-white',
-    iconColor: 'text-[#c9a84c]',
-    accent: 'bg-[#c9a84c]',
-    sectionBg: 'bg-[#faf8f3]',
-    numberBg: 'bg-[#243362]/8',
-    numberText: 'text-[#243362]',
-  },
-];
+// Alternating section backgrounds
+const SECTION_BG = ['bg-white', 'bg-[var(--bns-cream)]', 'bg-white', 'bg-[var(--bns-cream)]'];
 
 export default function Services() {
   const location = useLocation();
@@ -81,21 +45,18 @@ export default function Services() {
 
   return (
     <div>
-      {/* Hero */}
+      {/* ── PAGE HERO ─────────────────────────────────── */}
       <section className="page-hero pt-32">
         <div className="container mx-auto">
           <motion.div
-            initial="hidden" animate="visible" variants={fadeUp}
-            className="max-w-3xl mx-auto text-center"
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="max-w-3xl mx-auto text-center relative z-10"
           >
-            <p className="text-[#c9a84c] font-semibold uppercase tracking-widest text-sm mb-4">
-              What We Do
-            </p>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-5">
-              Our Services
-            </h1>
-            <div className="gold-divider center mb-5" />
-            <p className="text-gray-300 text-lg leading-relaxed max-w-2xl mx-auto">
+            <p className="eyebrow mb-5">What We Do</p>
+            <h1 className="font-serif text-white mb-5">Our Services</h1>
+            <p className="text-white/70 text-lg leading-relaxed max-w-2xl mx-auto">
               An integrated suite of media, communications, marketing, and
               consultancy services — designed to inform audiences and deliver
               results for clients.
@@ -104,16 +65,41 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Service Nav Pills */}
-      <div className="bg-[#0f1729] sticky top-[64px] lg:top-[80px] z-40 shadow-md">
+      {/* ── STICKY SERVICE NAV ─────────────────────────── */}
+      <div
+        className="sticky z-40 shadow-md"
+        style={{
+          top: '64px',
+          background: 'var(--bns-navy-dark)',
+          borderBottom: '1px solid rgba(201,168,76,0.15)',
+        }}
+      >
         <div className="container mx-auto px-4 lg:px-6">
-          <div className="flex gap-1 overflow-x-auto py-3 scrollbar-hide">
-            {SERVICES.map((s) => (
+          <div className="flex gap-0 overflow-x-auto">
+            {SERVICES.map((s, idx) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className="flex-shrink-0 px-4 py-2 rounded text-sm font-medium text-gray-400 hover:text-[#c9a84c] hover:bg-white/8 transition-all whitespace-nowrap"
+                className="flex-shrink-0 px-5 py-4 text-sm font-medium whitespace-nowrap transition-all relative"
+                style={{
+                  color: 'rgba(255,255,255,0.5)',
+                  borderBottom: '2px solid transparent',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = 'var(--bns-gold)';
+                  e.currentTarget.style.borderBottomColor = 'var(--bns-gold)';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = 'rgba(255,255,255,0.5)';
+                  e.currentTarget.style.borderBottomColor = 'transparent';
+                }}
               >
+                <span
+                  className="font-bold mr-2 text-xs"
+                  style={{ color: 'rgba(201,168,76,0.5)' }}
+                >
+                  0{idx + 1}
+                </span>
                 {s.title}
               </a>
             ))}
@@ -121,114 +107,132 @@ export default function Services() {
         </div>
       </div>
 
-      {/* Service Sections */}
+      {/* ── SERVICE SECTIONS ───────────────────────────── */}
       {SERVICES.map((service, idx) => {
         const Icon = ICON_MAP[service.icon];
-        const theme = SECTION_THEMES[idx % SECTION_THEMES.length];
         const isEven = idx % 2 === 0;
 
         return (
           <section
             key={service.id}
             id={service.id}
-            className={`${theme.sectionBg} section-py scroll-mt-32`}
+            className={`${SECTION_BG[idx % SECTION_BG.length]} section-py scroll-mt-32`}
             aria-label={service.title}
           >
             <div className="container mx-auto px-4 lg:px-6">
-              <div className={`grid lg:grid-cols-5 gap-10 items-start ${isEven ? '' : 'lg:grid-flow-dense'}`}>
-                {/* Header Card */}
+              <div className="grid lg:grid-cols-12 gap-12 items-start">
+
+                {/* Service header / intro card */}
                 <motion.div
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
                   variants={fadeUp}
-                  className={`lg:col-span-2 ${!isEven ? 'lg:col-start-4' : ''}`}
+                  className={`lg:col-span-4 ${!isEven ? 'lg:order-2' : ''}`}
                 >
-                  <div className={`${theme.headerBg} rounded-xl p-8 h-full`}>
-                    <div className="mb-6">
-                      <Icon size={44} className={theme.iconColor} />
+                  <div
+                    className="rounded-sm p-8 sticky"
+                    style={{
+                      background: 'var(--bns-navy)',
+                      top: '8rem',
+                    }}
+                  >
+                    {/* Icon + number */}
+                    <div className="flex items-center justify-between mb-8">
+                      <div
+                        className="w-12 h-12 flex items-center justify-center rounded-sm"
+                        style={{ background: 'rgba(201,168,76,0.12)' }}
+                      >
+                        <Icon size={22} style={{ color: 'var(--bns-gold)' }} />
+                      </div>
+                      <span
+                        className="font-serif font-bold text-5xl leading-none select-none"
+                        style={{ color: 'rgba(201,168,76,0.15)', letterSpacing: '-0.04em' }}
+                        aria-hidden="true"
+                      >
+                        0{idx + 1}
+                      </span>
                     </div>
-                    <div className={`inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded mb-4 ${theme.accent} ${
-                      theme.headerBg === 'bg-[#c9a84c]' ? 'text-white' : 'text-[#1a2744]'
-                    }`}>
-                      Service {String(idx + 1).padStart(2, '0')}
-                    </div>
-                    <h2
-                      className={`text-2xl font-bold mb-4 ${theme.headerText}`}
-                      style={{ fontFamily: 'var(--font-serif)' }}
-                    >
+
+                    <p className="eyebrow mb-3" style={{ color: 'var(--bns-gold)' }}>
+                      Service 0{idx + 1}
+                    </p>
+                    <h2 className="font-serif text-white text-2xl leading-snug mb-4">
                       {service.title}
                     </h2>
-                    <p className={`text-sm leading-relaxed ${
-                      theme.headerBg === 'bg-[#c9a84c]' ? 'text-[#1a2744]/80' : 'text-gray-300'
-                    }`}>
+                    <div className="rule-gold mb-5" />
+                    <p className="text-sm text-white/60 leading-relaxed mb-7">
                       {service.description}
                     </p>
-                    <div className="mt-6">
-                      <Link
-                        to="/contact"
-                        className={`inline-flex items-center gap-2 text-sm font-semibold transition-all ${
-                          theme.headerBg === 'bg-[#c9a84c]'
-                            ? 'text-[#1a2744] hover:gap-3'
-                            : 'text-[#c9a84c] hover:gap-3'
-                        }`}
-                      >
-                        Enquire About This Service <ChevronRight size={16} />
-                      </Link>
-                    </div>
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
+                      style={{ color: 'var(--bns-gold)' }}
+                    >
+                      Enquire About This Service <ChevronRight size={14} />
+                    </Link>
                   </div>
                 </motion.div>
 
-                {/* Items List */}
+                {/* Items list */}
                 <motion.div
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
                   custom={0.1}
                   variants={fadeUp}
-                  className={`lg:col-span-3 ${!isEven ? 'lg:col-start-1 lg:row-start-1' : ''}`}
+                  className={`lg:col-span-8 ${!isEven ? 'lg:order-1' : ''}`}
                 >
-                  <div className="mb-6">
-                    <p className="text-[#c9a84c] font-semibold uppercase tracking-widest text-xs mb-2">
-                      What's Included
-                    </p>
+                  <div className="mb-8">
+                    <p className="eyebrow mb-3">What&apos;s Included</p>
                     <h3
-                      className="text-2xl font-bold text-[#1a2744]"
-                      style={{ fontFamily: 'var(--font-serif)' }}
+                      className="font-serif text-[var(--bns-navy)] leading-tight"
+                      style={{ fontSize: 'var(--text-h2)' }}
                     >
                       {service.title} Offerings
                     </h3>
-                    <div className="gold-divider mt-3" />
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  {/* Editorial list style instead of icon cards */}
+                  <div className="divide-y" style={{ borderTop: '1px solid var(--bns-gray-200)', borderBottom: '1px solid var(--bns-gray-200)' }}>
                     {service.items.map((item, itemIdx) => (
                       <motion.div
                         key={item}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        custom={itemIdx * 0.05}
+                        custom={itemIdx * 0.04}
                         variants={fadeUp}
-                        className="bns-card bg-white rounded-lg p-5 flex items-start gap-4 border border-gray-100"
+                        className="flex items-start gap-5 py-4"
                       >
-                        <div className={`w-8 h-8 rounded flex items-center justify-center flex-shrink-0 ${theme.numberBg}`}>
-                          <CheckCircle size={16} className="text-[#c9a84c]" />
-                        </div>
-                        <p className="text-gray-700 text-sm leading-relaxed font-medium">
+                        <span
+                          className="font-serif font-bold text-xs flex-shrink-0 w-6 text-right pt-0.5"
+                          style={{ color: 'var(--bns-gold)' }}
+                        >
+                          {String(itemIdx + 1).padStart(2, '0')}
+                        </span>
+                        <p
+                          className="text-sm leading-relaxed"
+                          style={{ color: 'var(--bns-gray-600)' }}
+                        >
                           {item}
                         </p>
                       </motion.div>
                     ))}
                   </div>
 
-                  <div className="mt-7 p-5 bg-[#1a2744]/5 border border-[#1a2744]/10 rounded-lg">
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      <span className="font-semibold text-[#1a2744]">Note: </span>
-                      All services are provided in accordance with applicable Indian
-                      laws and professional ethics. Service availability and scope are
-                      subject to consultation and agreement.
-                    </p>
+                  <div
+                    className="mt-6 p-5 rounded-sm text-sm"
+                    style={{
+                      background: 'rgba(26,39,68,0.04)',
+                      border: '1px solid rgba(26,39,68,0.08)',
+                      color: 'var(--bns-gray-500)',
+                    }}
+                  >
+                    <span className="font-semibold text-[var(--bns-navy)]">Note: </span>
+                    All services are provided in accordance with applicable Indian laws
+                    and professional ethics. Availability and scope are subject to
+                    consultation and agreement.
                   </div>
                 </motion.div>
               </div>
@@ -237,87 +241,99 @@ export default function Services() {
         );
       })}
 
-      {/* Why BNS */}
-      <section className="section-py bg-[#1a2744]" aria-label="Why choose BNS">
+      {/* ── WHY BNS ───────────────────────────────────── */}
+      <section
+        className="section-py"
+        style={{ background: 'var(--bns-navy)' }}
+        aria-label="Why choose BNS"
+      >
         <div className="container mx-auto px-4 lg:px-6">
           <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
             variants={fadeUp}
-            className="text-center mb-12"
+            className="mb-12"
           >
-            <p className="text-[#c9a84c] font-semibold uppercase tracking-widest text-sm mb-3">
-              Our Advantage
-            </p>
+            <p className="eyebrow mb-4" style={{ color: 'var(--bns-gold)' }}>Our Advantage</p>
             <h2
-              className="text-3xl sm:text-4xl font-bold text-white"
-              style={{ fontFamily: 'var(--font-serif)' }}
+              className="font-serif text-white leading-tight"
+              style={{ fontSize: 'var(--text-h2)' }}
             >
               Why Work with BNS?
             </h2>
-            <div className="gold-divider center mt-4" />
           </motion.div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px"
+            style={{ background: 'rgba(255,255,255,0.06)' }}>
             {[
               {
+                num: '01',
                 title: 'Journalism-Led PR',
-                desc: 'Our team\'s newsroom background gives your communications a credibility edge.',
+                desc: 'Our team\'s newsroom background gives your communications a credibility and insight edge.',
               },
               {
+                num: '02',
                 title: 'Bengal Expertise',
-                desc: 'Unmatched regional knowledge — languages, culture, media, and political landscape.',
+                desc: 'Unmatched regional knowledge — languages, culture, media landscape, and political dynamics.',
               },
               {
+                num: '03',
                 title: 'Integrated Approach',
-                desc: 'News, PR, marketing, and consultancy in one unified partnership.',
+                desc: 'News, PR, marketing, and consultancy in one unified partnership — coherent across channels.',
               },
               {
+                num: '04',
                 title: 'Digital-First Mindset',
                 desc: 'Built for the digital age — mobile, social, and search-ready across all deliverables.',
               },
-            ].map(({ title, desc }, idx) => (
+            ].map(({ num, title, desc }, idx) => (
               <motion.div
                 key={title}
-                initial="hidden" whileInView="visible" viewport={{ once: true }}
-                custom={idx * 0.08} variants={fadeUp}
-                className="bg-white/8 border border-white/12 rounded-xl p-6 text-center"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={idx * 0.08}
+                variants={fadeUp}
+                className="p-8"
+                style={{ background: 'rgba(255,255,255,0.03)' }}
               >
-                <div className="w-10 h-10 rounded-full bg-[#c9a84c]/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-[#c9a84c] font-bold text-sm">
-                    {String(idx + 1).padStart(2, '0')}
-                  </span>
-                </div>
-                <h3
-                  className="text-white font-bold text-base mb-3"
-                  style={{ fontFamily: 'var(--font-serif)' }}
+                <p
+                  className="font-serif font-bold text-4xl mb-5 leading-none"
+                  style={{ color: 'rgba(201,168,76,0.25)' }}
                 >
-                  {title}
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{desc}</p>
+                  {num}
+                </p>
+                <h3 className="font-serif text-white text-lg mb-3">{title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-[#c9a84c]" aria-label="Services CTA">
-        <div className="container mx-auto px-4 lg:px-6 text-center">
+      {/* ── CTA ──────────────────────────────────────── */}
+      <section
+        className="section-py-sm"
+        style={{ background: 'var(--bns-gold)' }}
+        aria-label="Services CTA"
+      >
+        <div className="container mx-auto px-4 lg:px-6">
           <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
             variants={fadeUp}
+            className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6"
           >
-            <h2
-              className="text-3xl font-bold text-[#1a2744] mb-4"
-              style={{ fontFamily: 'var(--font-serif)' }}
-            >
-              Ready to Begin?
-            </h2>
-            <p className="text-[#1a2744]/80 text-lg mb-8 max-w-xl mx-auto">
-              Contact us to discuss your requirements and explore how BNS can
-              support your communications, media, or marketing objectives.
-            </p>
-            <Link to="/contact" className="btn-primary">
-              Send a Business Enquiry <ArrowRight size={16} />
+            <div>
+              <h2 className="font-serif text-[var(--bns-navy)] text-2xl mb-1">Ready to Begin?</h2>
+              <p className="text-[var(--bns-navy)]/75 text-sm">
+                Contact us to discuss your requirements and explore how BNS can help.
+              </p>
+            </div>
+            <Link to="/contact" className="btn-primary flex-shrink-0">
+              Send a Business Enquiry <ArrowRight size={15} />
             </Link>
           </motion.div>
         </div>
@@ -325,4 +341,3 @@ export default function Services() {
     </div>
   );
 }
-

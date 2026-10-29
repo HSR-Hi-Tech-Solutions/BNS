@@ -2,6 +2,7 @@ import rateLimit from 'express-rate-limit';
 import { contactSchema } from '../validators/contactValidator.js';
 import Contact from '../models/Contact.js';
 import crypto from 'crypto';
+import mongoose from 'mongoose';
 
 // Stricter rate limit for contact form
 export const contactRateLimit = rateLimit({
@@ -49,16 +50,16 @@ export async function submitContact(req, res, next) {
       ? crypto.createHash('sha256').update(rawIp).digest('hex')
       : '';
 
-    // Persist to MongoDB if connected
-    if (process.env.MONGODB_URI) {
+    // Persist to MongoDB if connected and available
+    if (mongoose.connection.readyState === 1) {
       const contact = new Contact({
         ...value,
         ipHash,
       });
       await contact.save();
     } else {
-      // Log to server console in dev when no DB
-      console.info('[BNS Contact] New enquiry (no DB):', {
+      // Log to server console in dev or when DB is not connected
+      console.info('[BNS Contact] New enquiry (DB not connected / buffer skipped):', {
         name: value.name,
         email: value.email,
         service: value.service,

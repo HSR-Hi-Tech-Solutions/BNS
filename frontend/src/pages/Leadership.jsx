@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Award, Globe, Mic, BookOpen, Users, Briefcase,
-  X, Rss, Mail, ArrowRight, CheckCircle,
+  X as Twitter, Rss, Mail, ArrowRight,
 } from 'lucide-react';
 import { setPageMeta } from '../utils/seo';
 
@@ -11,9 +11,53 @@ const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (delay = 0) => ({
     opacity: 1, y: 0,
-    transition: { duration: 0.55, ease: 'easeOut', delay },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
   }),
 };
+
+const EXPERTISE = [
+  'Parliamentary Reporting',
+  'Political Journalism',
+  'National & International Coverage',
+  'Media Relations',
+  'Corporate Communications',
+  'Public Relations Strategy',
+  'Digital Media',
+  'Brand & Reputation Management',
+];
+
+const EXPERIENCE = [
+  {
+    Icon: BookOpen,
+    title: 'Parliamentary Reporting',
+    desc: 'Extensive experience reporting from India\'s Parliament — covering legislative debates, policy discussions, budget sessions, and the full range of parliamentary proceedings.',
+  },
+  {
+    Icon: Globe,
+    title: 'Political Coverage',
+    desc: 'In-depth coverage of Bengal politics and national political developments — election campaigns, party dynamics, governance, and political analysis.',
+  },
+  {
+    Icon: Mic,
+    title: 'National & International Assignments',
+    desc: 'Reporting across India and internationally on developments that shape India\'s position in global affairs, business, and diplomacy.',
+  },
+  {
+    Icon: Users,
+    title: 'Media Relations',
+    desc: 'Deep professional networks with journalists, editors, news organisations, and media houses — built over decades in the industry.',
+  },
+  {
+    Icon: Briefcase,
+    title: 'Corporate Communications',
+    desc: 'Advisory and communications support for businesses, institutions, and public figures seeking effective, strategic communications.',
+  },
+  {
+    Icon: Award,
+    title: 'Editorial Leadership',
+    desc: 'Experience in editorial strategy, content direction, and the journalistic standards that ensure credibility and audience trust.',
+  },
+];
 
 export default function Leadership() {
   useEffect(() => {
@@ -26,21 +70,20 @@ export default function Leadership() {
 
   return (
     <div>
-      {/* Hero */}
+      {/* ── PAGE HERO ─────────────────────────────────── */}
       <section className="page-hero pt-32">
         <div className="container mx-auto">
           <motion.div
-            initial="hidden" animate="visible" variants={fadeUp}
-            className="max-w-3xl mx-auto text-center"
+            initial="hidden"
+            animate="visible"
+            variants={fadeUp}
+            className="max-w-3xl mx-auto text-center relative z-10"
           >
-            <p className="text-[#c9a84c] font-semibold uppercase tracking-widest text-sm mb-4">
-              Our Leadership
-            </p>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-5">
+            <p className="eyebrow mb-5">Our Leadership</p>
+            <h1 className="font-serif text-white mb-5">
               The Vision Behind BNS
             </h1>
-            <div className="gold-divider center mb-5" />
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <p className="text-white/70 text-lg leading-relaxed">
               Led by a veteran journalist and media professional with decades of
               national and international experience.
             </p>
@@ -48,166 +91,162 @@ export default function Leadership() {
         </div>
       </section>
 
-      {/* Director Profile */}
+      {/* ── DIRECTOR PROFILE ─────────────────────────────── */}
       <section className="section-py bg-white" aria-label="Director profile">
         <div className="container mx-auto px-4 lg:px-6">
-          <div className="grid lg:grid-cols-5 gap-12 items-start">
-            {/* Profile Card */}
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+
+            {/* Left — profile card */}
             <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
               variants={fadeUp}
-              className="lg:col-span-2"
+              className="lg:col-span-4"
             >
-              <div className="bg-[#1a2744] rounded-xl overflow-hidden">
-                {/* Photo / Monogram */}
-                <div className="bg-gradient-to-br from-[#1a2744] via-[#243362] to-[#1a2744] p-12 flex flex-col items-center justify-center text-center border-b border-[#c9a84c]/20">
-                  <div className="w-32 h-32 rounded-full bg-[#c9a84c]/15 border-2 border-[#c9a84c] flex items-center justify-center mb-5">
-                    <span
-                      className="text-4xl font-bold text-[#c9a84c]"
-                      style={{ fontFamily: 'var(--font-serif)' }}
-                      aria-label="UR initials"
-                    >
-                      UR
-                    </span>
-                  </div>
-                  <h2
-                    className="text-2xl font-bold text-white mb-1"
-                    style={{ fontFamily: 'var(--font-serif)' }}
+              <div
+                className="rounded-sm overflow-hidden"
+                style={{ background: 'var(--bns-navy)' }}
+              >
+                {/* Monogram portrait */}
+                <div
+                  className="flex flex-col items-center justify-center text-center py-14 px-8"
+                  style={{
+                    background: 'linear-gradient(160deg, var(--bns-navy-dark) 0%, var(--bns-navy) 60%, var(--bns-navy-light) 100%)',
+                    borderBottom: '1px solid rgba(201,168,76,0.2)',
+                  }}
+                >
+                  {/* Large typographic monogram */}
+                  <div
+                    className="font-serif font-bold leading-none mb-6 select-none"
+                    style={{ fontSize: '5rem', color: 'var(--bns-gold)', letterSpacing: '-0.04em' }}
+                    aria-label="Ujjwal Roy initials"
                   >
+                    UR
+                  </div>
+                  <h2 className="font-serif text-2xl text-white font-bold mb-1">
                     Ujjwal Roy
                   </h2>
-                  <p className="text-[#c9a84c] text-sm font-medium">
-                    Founder & Director
+                  <p className="text-sm font-medium" style={{ color: 'var(--bns-gold)' }}>
+                    Founder &amp; Director
                   </p>
-                  <p className="text-gray-400 text-xs mt-1">
-                    Bengal News Service PR & Consultancy Pvt. Ltd.
+                  <p className="text-xs mt-1 text-white/40">
+                    Bengal News Service PR &amp; Consultancy Pvt. Ltd.
                   </p>
                 </div>
 
-                {/* Quick facts */}
-                <div className="p-6 space-y-4">
+                {/* Facts */}
+                <div className="px-6 py-5 space-y-3">
                   {[
                     { label: 'Role', value: 'Founder & Director' },
                     { label: 'Expertise', value: 'Journalism, PR, Media Relations' },
                     { label: 'Specialisation', value: 'Parliamentary & Political Reporting' },
                     { label: 'Coverage', value: 'National & International Affairs' },
                     { label: 'Based In', value: 'West Bengal, India' },
-                  ].map(({ label, value }) => (
-                    <div key={label} className="flex justify-between gap-4 text-sm border-b border-white/8 pb-3 last:border-0 last:pb-0">
-                      <span className="text-gray-400 font-medium flex-shrink-0">{label}</span>
-                      <span className="text-gray-200 text-right">{value}</span>
+                  ].map(({ label, value }, i) => (
+                    <div
+                      key={label}
+                      className="flex justify-between gap-4 text-sm pb-3"
+                      style={{ borderBottom: i < 4 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}
+                    >
+                      <span className="text-white/40 font-medium flex-shrink-0">{label}</span>
+                      <span className="text-white/80 text-right">{value}</span>
                     </div>
                   ))}
                 </div>
 
-                {/* Social / Contact */}
+                {/* Social */}
                 <div className="px-6 pb-6 flex items-center gap-3">
-                  <a
-                    href="#"
-                    aria-label="LinkedIn profile"
-                    className="w-9 h-9 rounded flex items-center justify-center bg-white/8 hover:bg-[#c9a84c] hover:text-[#1a2744] text-gray-400 transition-all"
-                  >
-                    <Rss size={16} />
-                  </a>
-                  <a
-                    href="#"
-                    aria-label="Twitter/X profile"
-                    className="w-9 h-9 rounded flex items-center justify-center bg-white/8 hover:bg-[#c9a84c] hover:text-[#1a2744] text-gray-400 transition-all"
-                  >
-                    <X size={16} />
-                  </a>
-                  <a
-                    href="mailto:contact@bengalnewsservice.com"
-                    aria-label="Email"
-                    className="w-9 h-9 rounded flex items-center justify-center bg-white/8 hover:bg-[#c9a84c] hover:text-[#1a2744] text-gray-400 transition-all"
-                  >
-                    <Mail size={16} />
-                  </a>
+                  {[
+                    { Icon: Rss, href: '#', label: 'LinkedIn' },
+                    { Icon: Twitter, href: '#', label: 'Twitter/X' },
+                    { Icon: Mail, href: 'mailto:contact@bengalnewsservice.com', label: 'Email' },
+                  ].map(({ Icon, href, label }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      aria-label={label}
+                      className="w-9 h-9 rounded-sm flex items-center justify-center transition-all"
+                      style={{
+                        background: 'rgba(255,255,255,0.06)',
+                        color: 'rgba(255,255,255,0.4)',
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.background = 'var(--bns-gold)';
+                        e.currentTarget.style.color = 'var(--bns-navy)';
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.background = 'rgba(255,255,255,0.06)';
+                        e.currentTarget.style.color = 'rgba(255,255,255,0.4)';
+                      }}
+                    >
+                      <Icon size={15} />
+                    </a>
+                  ))}
                 </div>
               </div>
             </motion.div>
 
-            {/* Bio Content */}
+            {/* Right — bio */}
             <motion.div
-              initial="hidden" whileInView="visible" viewport={{ once: true }}
-              custom={0.15} variants={fadeUp}
-              className="lg:col-span-3"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={0.12}
+              variants={fadeUp}
+              className="lg:col-span-8"
             >
-              <p className="text-[#c9a84c] font-semibold uppercase tracking-widest text-sm mb-3">
-                Director Profile
-              </p>
+              <p className="eyebrow mb-4">Director Profile</p>
               <h2
-                className="text-3xl font-bold text-[#1a2744] mb-4"
-                style={{ fontFamily: 'var(--font-serif)' }}
+                className="font-serif text-[var(--bns-navy)] leading-tight mb-5"
+                style={{ fontSize: 'var(--text-h2)' }}
               >
                 Ujjwal Roy
               </h2>
-              <div className="gold-divider mb-6" />
+              <div className="rule-gold mb-7" />
 
-              <div className="prose prose-gray max-w-none text-gray-600 space-y-4 mb-7">
-                <p className="leading-relaxed">
+              <div className="space-y-4 text-[var(--bns-gray-600)] leading-relaxed mb-8">
+                <p>
                   Ujjwal Roy is the Founder and Director of Bengal News Service PR
-                  & Consultancy Private Limited. A veteran journalist and media
+                  &amp; Consultancy Private Limited. A veteran journalist and media
                   professional, he brings decades of experience spanning some of
-                  India's most demanding and significant reporting environments.
+                  India&apos;s most demanding and significant reporting environments.
                 </p>
-                <p className="leading-relaxed">
+                <p>
                   His journalistic career encompasses comprehensive coverage of
-                  parliamentary affairs — reporting from the corridors of India's
+                  parliamentary affairs — reporting from the corridors of India&apos;s
                   Parliament on debates, legislation, and the personalities who shape
                   national policy. This experience provides an unparalleled
                   understanding of the intersection between politics, governance,
                   and media.
                 </p>
-                <p className="leading-relaxed">
-                  Ujjwal Roy's career includes extensive political coverage across
+                <p>
+                  Ujjwal Roy&apos;s career includes extensive political coverage across
                   West Bengal and nationally — tracking electoral politics, party
                   dynamics, governance, and the socio-political currents that define
-                  the contemporary Indian landscape. His reporting has covered both
-                  state-level Bengal politics and the broader national political arena.
+                  the contemporary Indian landscape.
                 </p>
-                <p className="leading-relaxed">
+                <p>
                   His professional work has included national and international
-                  assignments, covering events, developments, and stories that span
-                  India's growing role on the world stage. This global perspective
-                  enriches the editorial vision of BNS.
-                </p>
-                <p className="leading-relaxed">
-                  With extensive media relations expertise and professional networks
-                  built across years in the journalism industry, Ujjwal Roy is
-                  uniquely positioned to lead a company that bridges journalism
-                  and communications consultancy. His understanding of how media
-                  works — from the inside — is the foundation of BNS's PR and
-                  communications approach.
+                  assignments, covering events and developments that span India&apos;s
+                  growing role on the world stage. With extensive media relations
+                  expertise built across years in the journalism industry, Ujjwal
+                  Roy is uniquely positioned to lead a company that bridges
+                  journalism and communications consultancy.
                 </p>
               </div>
 
-              {/* Expertise Areas */}
-              <div className="bg-[#faf8f3] border border-[#e5e0d5] rounded-xl p-6">
-                <h3
-                  className="font-bold text-[#1a2744] text-base mb-4"
-                  style={{ fontFamily: 'var(--font-serif)' }}
-                >
+              {/* Expertise chips */}
+              <div
+                className="p-6 rounded-sm"
+                style={{ background: 'var(--bns-cream)', border: '1px solid var(--bns-gray-200)' }}
+              >
+                <p className="text-xs font-bold uppercase tracking-widest text-[var(--bns-gray-500)] mb-4">
                   Areas of Expertise
-                </h3>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {[
-                    'Parliamentary Reporting',
-                    'Political Journalism',
-                    'National & International Coverage',
-                    'Media Relations',
-                    'Corporate Communications',
-                    'Public Relations Strategy',
-                    'Digital Media',
-                    'Brand & Reputation Management',
-                  ].map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-2 text-sm text-gray-700"
-                    >
-                      <CheckCircle size={14} className="text-[#c9a84c] flex-shrink-0" />
-                      {item}
-                    </div>
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {EXPERTISE.map((item) => (
+                    <span key={item} className="tag-chip">{item}</span>
                   ))}
                 </div>
               </div>
@@ -216,134 +255,115 @@ export default function Leadership() {
         </div>
       </section>
 
-      {/* Experience Highlights */}
+      {/* ── EXPERIENCE HIGHLIGHTS ────────────────────────── */}
       <section
-        className="section-py bg-[#faf8f3]"
+        className="section-py"
+        style={{ background: 'var(--bns-cream)' }}
         aria-label="Experience highlights"
       >
         <div className="container mx-auto px-4 lg:px-6">
           <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
             variants={fadeUp}
-            className="section-header"
+            className="mb-12"
           >
-            <p className="text-[#c9a84c] font-semibold uppercase tracking-widest text-sm mb-3">
-              Professional Background
-            </p>
+            <p className="eyebrow mb-4">Professional Background</p>
             <h2
-              className="text-3xl sm:text-4xl font-bold text-[#1a2744]"
-              style={{ fontFamily: 'var(--font-serif)' }}
+              className="font-serif text-[var(--bns-navy)] leading-tight"
+              style={{ fontSize: 'var(--text-h2)' }}
             >
-              Key Experience & Expertise
+              Key Experience &amp; Expertise
             </h2>
-            <div className="gold-divider center mt-4" />
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                Icon: BookOpen,
-                title: 'Parliamentary Reporting',
-                desc: 'Extensive experience reporting from India\'s Parliament — covering legislative debates, policy discussions, budget sessions, and the full range of parliamentary proceedings.',
-              },
-              {
-                Icon: Globe,
-                title: 'Political Coverage',
-                desc: 'In-depth coverage of Bengal politics and national political developments — election campaigns, party dynamics, governance, and political analysis.',
-              },
-              {
-                Icon: Mic,
-                title: 'National & International Assignments',
-                desc: 'Reporting across India and internationally on developments that shape India\'s position in global affairs, business, and diplomacy.',
-              },
-              {
-                Icon: Users,
-                title: 'Media Relations',
-                desc: 'Deep professional networks with journalists, editors, news organisations, and media houses — built over decades in the industry.',
-              },
-              {
-                Icon: Briefcase,
-                title: 'Corporate Communications',
-                desc: 'Advisory and communications support for businesses, institutions, and public figures seeking effective, strategic communications.',
-              },
-              {
-                Icon: Award,
-                title: 'Editorial Leadership',
-                desc: 'Experience in editorial strategy, content direction, and the journalistic standards that ensure credibility and audience trust.',
-              },
-            ].map(({ Icon, title, desc }, idx) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {EXPERIENCE.map(({ Icon, title, desc }, idx) => (
               <motion.div
                 key={title}
-                initial="hidden" whileInView="visible" viewport={{ once: true }}
-                custom={idx * 0.08} variants={fadeUp}
-                className="bns-card bg-white rounded-xl p-6 border border-gray-100"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={idx * 0.07}
+                variants={fadeUp}
+                className="group"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#1a2744]/8 flex items-center justify-center mb-5">
-                  <Icon size={22} className="text-[#1a2744]" />
-                </div>
-                <h3
-                  className="font-bold text-[#1a2744] text-base mb-3"
-                  style={{ fontFamily: 'var(--font-serif)' }}
+                <div
+                  className="w-10 h-10 flex items-center justify-center mb-5 rounded-sm"
+                  style={{ background: '#fff', border: '1px solid var(--bns-gray-200)' }}
                 >
-                  {title}
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                  <Icon size={18} style={{ color: 'var(--bns-navy)' }} />
+                </div>
+                <h3 className="font-serif text-[var(--bns-navy)] text-lg mb-3">{title}</h3>
+                <div className="w-8 h-0.5 mb-4" style={{ background: 'var(--bns-gold)' }} />
+                <p className="text-sm text-[var(--bns-gray-500)] leading-relaxed">{desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Quote */}
-      <section className="section-py bg-[#1a2744]" aria-label="Director message">
+      {/* ── DIRECTOR QUOTE ───────────────────────────────── */}
+      <section
+        className="section-py"
+        style={{ background: 'var(--bns-navy)' }}
+        aria-label="Director message"
+      >
         <div className="container mx-auto px-4 lg:px-6">
           <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
             variants={fadeUp}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-4xl"
           >
-            <div className="text-6xl text-[#c9a84c] mb-5 leading-none"
-              style={{ fontFamily: 'Georgia, serif' }}>
-              &ldquo;
-            </div>
+            <p className="eyebrow mb-6" style={{ color: 'var(--bns-gold)' }}>
+              In His Own Words
+            </p>
             <blockquote
-              className="text-xl sm:text-2xl text-white leading-relaxed font-medium italic mb-6"
-              style={{ fontFamily: 'var(--font-serif)' }}
+              className="font-serif text-white leading-snug mb-8"
+              style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontStyle: 'italic' }}
             >
-              Bengal has a story that deserves to be told with depth, accuracy,
+              &ldquo;Bengal has a story that deserves to be told with depth, accuracy,
               and pride. BNS is our commitment to telling that story — and to
               helping others communicate their stories with the professionalism
-              they deserve.
+              they deserve.&rdquo;
             </blockquote>
-            <div className="gold-divider center mb-5" />
-            <p className="text-[#c9a84c] font-semibold">Ujjwal Roy</p>
-            <p className="text-gray-400 text-sm">
-              Founder & Director, BNS — Bengal News Service
-            </p>
+            <div
+              className="flex items-center gap-5 pt-6"
+              style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}
+            >
+              <div>
+                <p className="font-serif font-bold text-white text-lg">Ujjwal Roy</p>
+                <p className="text-sm mt-0.5" style={{ color: 'var(--bns-gold)' }}>
+                  Founder &amp; Director, BNS — Bengal News Service
+                </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ── CTA ──────────────────────────────────────────── */}
       <section className="py-16 bg-white" aria-label="Leadership CTA">
-        <div className="container mx-auto px-4 lg:px-6 text-center">
+        <div className="container mx-auto px-4 lg:px-6">
           <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
             variants={fadeUp}
           >
-            <h2
-              className="text-3xl font-bold text-[#1a2744] mb-4"
-              style={{ fontFamily: 'var(--font-serif)' }}
-            >
+            <h2 className="font-serif text-[var(--bns-navy)] text-3xl mb-4">
               Work with an Experienced Media Professional
             </h2>
-            <p className="text-gray-600 text-lg mb-8 max-w-xl mx-auto">
+            <p className="text-[var(--bns-gray-600)] text-lg mb-8 max-w-xl">
               Get in touch to discuss how BNS can support your media, PR, or
               communications objectives.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-wrap gap-4">
               <Link to="/contact" className="btn-primary">
-                Contact BNS <ArrowRight size={16} />
+                Contact BNS <ArrowRight size={15} />
               </Link>
               <Link to="/services" className="btn-secondary">
                 Our Services
@@ -355,4 +375,3 @@ export default function Leadership() {
     </div>
   );
 }
-

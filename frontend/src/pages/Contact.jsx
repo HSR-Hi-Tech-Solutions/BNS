@@ -10,7 +10,7 @@ const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (delay = 0) => ({
     opacity: 1, y: 0,
-    transition: { duration: 0.55, ease: 'easeOut', delay },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1], delay },
   }),
 };
 
@@ -91,76 +91,80 @@ export default function Contact() {
 
   return (
     <div>
-      {/* Hero */}
+      {/* ── PAGE HERO ─────────────────────────────────── */}
       <section className="page-hero pt-32">
         <div className="container mx-auto">
           <motion.div
             initial="hidden" animate="visible" variants={fadeUp}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-3xl mx-auto text-center relative z-10"
           >
-            <p className="text-[#c9a84c] font-semibold uppercase tracking-widest text-sm mb-4">
-              Get In Touch
-            </p>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-5">
-              Contact BNS
-            </h1>
-            <div className="gold-divider center mb-5" />
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <p className="eyebrow mb-5">Get In Touch</p>
+            <h1 className="font-serif text-white mb-5">Contact BNS</h1>
+            <p className="text-white/70 text-lg leading-relaxed max-w-xl mx-auto">
               For business enquiries, media partnerships, PR projects, or general
-              information — we'd love to hear from you.
+              information — we would love to hear from you.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* ── CONTACT SECTION ───────────────────────────── */}
       <section className="section-py bg-white" aria-label="Contact form and information">
         <div className="container mx-auto px-4 lg:px-6">
-          <div className="grid lg:grid-cols-5 gap-12">
+          <div className="grid lg:grid-cols-12 gap-12 items-start">
+
             {/* Contact Info Panel */}
             <motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }}
               variants={fadeUp}
-              className="lg:col-span-2"
+              className="lg:col-span-5"
             >
-              <div className="bg-[#1a2744] rounded-xl p-8 h-full">
-                <h2
-                  className="text-2xl font-bold text-white mb-2"
-                  style={{ fontFamily: 'var(--font-serif)' }}
-                >
-                  Contact Information
+              <div
+                className="rounded-sm p-8"
+                style={{ background: 'var(--bns-navy)', color: '#fff' }}
+              >
+                <p className="eyebrow mb-3" style={{ color: 'var(--bns-gold)' }}>Information</p>
+                <h2 className="font-serif text-2xl font-bold text-white mb-2">
+                  Contact Details
                 </h2>
-                <p className="text-gray-400 text-sm mb-8">
-                  Reach out through the form or contact us directly.
+                <div className="rule-gold mb-6" />
+                <p className="text-white/60 text-sm leading-relaxed mb-8">
+                  Reach out through our enquiry form or contact our team directly.
                 </p>
 
                 <div className="space-y-6 mb-8">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-[#c9a84c]/15 flex items-center justify-center flex-shrink-0">
-                      <Mail size={18} className="text-[#c9a84c]" />
+                    <div
+                      className="w-10 h-10 rounded-sm flex items-center justify-center flex-shrink-0"
+                      style={{ background: 'rgba(201,168,76,0.15)' }}
+                    >
+                      <Mail size={18} style={{ color: 'var(--bns-gold)' }} />
                     </div>
                     <div>
-                      <p className="text-gray-400 text-xs font-medium uppercase tracking-wide mb-1">
-                        Email
+                      <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-1">
+                        Email Address
                       </p>
                       <a
                         href={`mailto:${COMPANY.email}`}
-                        className="text-white text-sm hover:text-[#c9a84c] transition-colors"
+                        className="text-white text-sm hover:text-[var(--bns-gold)] transition-colors"
                       >
                         {COMPANY.email}
                       </a>
-                      <p className="text-gray-500 text-xs mt-0.5">
+                      <p className="text-white/40 text-xs mt-0.5">
                         * Placeholder — to be confirmed by company
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-[#c9a84c]/15 flex items-center justify-center flex-shrink-0">
-                      <MapPin size={18} className="text-[#c9a84c]" />
+                    <div
+                      className="w-10 h-10 rounded-sm flex items-center justify-center flex-shrink-0"
+                      style={{ background: 'rgba(201,168,76,0.15)' }}
+                    >
+                      <MapPin size={18} style={{ color: 'var(--bns-gold)' }} />
                     </div>
                     <div>
-                      <p className="text-gray-400 text-xs font-medium uppercase tracking-wide mb-1">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-1">
                         Registered Office
                       </p>
                       <p className="text-white text-sm">West Bengal, India</p>
@@ -168,11 +172,14 @@ export default function Contact() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-[#c9a84c]/15 flex items-center justify-center flex-shrink-0">
-                      <Clock size={18} className="text-[#c9a84c]" />
+                    <div
+                      className="w-10 h-10 rounded-sm flex items-center justify-center flex-shrink-0"
+                      style={{ background: 'rgba(201,168,76,0.15)' }}
+                    >
+                      <Clock size={18} style={{ color: 'var(--bns-gold)' }} />
                     </div>
                     <div>
-                      <p className="text-gray-400 text-xs font-medium uppercase tracking-wide mb-1">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-1">
                         Response Time
                       </p>
                       <p className="text-white text-sm">
@@ -182,26 +189,15 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-6">
-                  <p className="text-gray-400 text-xs font-medium uppercase tracking-wide mb-3">
-                    Company Details
+                <div
+                  className="pt-6 text-xs text-white/45 space-y-1.5"
+                  style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}
+                >
+                  <p className="font-semibold text-white/70">
+                    Bengal News Service PR &amp; Consultancy Pvt. Ltd.
                   </p>
-                  <div className="space-y-2 text-xs text-gray-400">
-                    <p>Bengal News Service PR & Consultancy Pvt. Ltd.</p>
-                    <p>CIN: U73100WB2024PTC275987</p>
-                    <p>Incorporated in West Bengal, India</p>
-                  </div>
-                </div>
-
-                <div className="mt-6 bg-[#c9a84c]/10 border border-[#c9a84c]/20 rounded-lg p-4">
-                  <p className="text-[#c9a84c] text-xs font-semibold mb-1">
-                    Business Enquiries
-                  </p>
-                  <p className="text-gray-400 text-xs leading-relaxed">
-                    For PR projects, media partnerships, digital marketing briefs,
-                    or consultancy retainers — please use the enquiry form and
-                    provide as much detail as possible.
-                  </p>
+                  <p>CIN: {COMPANY.cin}</p>
+                  <p>Incorporated in West Bengal, India</p>
                 </div>
               </div>
             </motion.div>
@@ -209,21 +205,21 @@ export default function Contact() {
             {/* Contact Form */}
             <motion.div
               initial="hidden" whileInView="visible" viewport={{ once: true }}
-              custom={0.15} variants={fadeUp}
-              className="lg:col-span-3"
+              custom={0.12} variants={fadeUp}
+              className="lg:col-span-7"
             >
               {status === 'success' ? (
-                <div className="h-full flex flex-col items-center justify-center text-center py-16">
-                  <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mb-6">
-                    <CheckCircle size={40} className="text-green-500" />
+                <div
+                  className="p-12 text-center rounded-sm"
+                  style={{ background: 'var(--bns-cream)', border: '1px solid var(--bns-gray-200)' }}
+                >
+                  <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle size={32} className="text-green-600" />
                   </div>
-                  <h2
-                    className="text-2xl font-bold text-[#1a2744] mb-3"
-                    style={{ fontFamily: 'var(--font-serif)' }}
-                  >
+                  <h2 className="font-serif text-2xl font-bold text-[var(--bns-navy)] mb-3">
                     Message Sent Successfully
                   </h2>
-                  <p className="text-gray-600 max-w-sm mb-8">
+                  <p className="text-gray-600 max-w-md mx-auto mb-8 text-sm leading-relaxed">
                     Thank you for your enquiry. Our team will review your message
                     and respond within 2 business days.
                   </p>
@@ -232,21 +228,25 @@ export default function Contact() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate aria-label="Contact form">
-                  <h2
-                    className="text-2xl font-bold text-[#1a2744] mb-2"
-                    style={{ fontFamily: 'var(--font-serif)' }}
-                  >
-                    Send Us a Message
+                <form
+                  onSubmit={handleSubmit}
+                  noValidate
+                  aria-label="Contact form"
+                  className="p-8 rounded-sm"
+                  style={{ background: '#fff', border: '1px solid var(--bns-gray-200)' }}
+                >
+                  <p className="eyebrow mb-2">Message</p>
+                  <h2 className="font-serif text-2xl font-bold text-[var(--bns-navy)] mb-2">
+                    Send Us an Enquiry
                   </h2>
-                  <p className="text-gray-500 text-sm mb-7">
-                    All fields marked <span className="text-[#8b1a1a]">*</span> are required.
+                  <p className="text-[var(--bns-gray-500)] text-sm mb-7">
+                    Fields marked <span className="text-[#8b1a1a] font-bold">*</span> are required.
                   </p>
 
                   {serverError && (
                     <div
                       role="alert"
-                      className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-lg p-4 mb-6"
+                      className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-sm p-4 mb-6"
                     >
                       <AlertCircle size={18} className="text-red-500 flex-shrink-0 mt-0.5" />
                       <p className="text-red-700 text-sm">{serverError}</p>
@@ -414,7 +414,7 @@ export default function Contact() {
                       </>
                     ) : (
                       <>
-                        <Send size={16} />
+                        <Send size={15} />
                         Send Enquiry
                       </>
                     )}
@@ -422,7 +422,7 @@ export default function Contact() {
 
                   <p className="text-gray-400 text-xs mt-4 leading-relaxed">
                     By submitting this form you agree to our{' '}
-                    <a href="/privacy-policy" className="text-[#1a2744] underline hover:text-[#c9a84c]">
+                    <a href="/privacy-policy" className="text-[var(--bns-navy)] underline hover:text-[var(--bns-gold)]">
                       Privacy Policy
                     </a>
                     . We will only use your information to respond to your enquiry.
@@ -434,27 +434,28 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="section-py bg-[#faf8f3]" aria-label="Frequently asked questions">
+      {/* ── FAQ ───────────────────────────────────────── */}
+      <section
+        className="section-py"
+        style={{ background: 'var(--bns-cream)' }}
+        aria-label="Frequently asked questions"
+      >
         <div className="container mx-auto px-4 lg:px-6 max-w-3xl">
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={fadeUp}
-            className="text-center mb-10"
+            className="mb-10"
           >
-            <p className="text-[#c9a84c] font-semibold uppercase tracking-widest text-sm mb-3">
-              Common Questions
-            </p>
+            <p className="eyebrow mb-3">FAQ</p>
             <h2
-              className="text-3xl font-bold text-[#1a2744]"
-              style={{ fontFamily: 'var(--font-serif)' }}
+              className="font-serif text-[var(--bns-navy)] leading-tight"
+              style={{ fontSize: 'var(--text-h2)' }}
             >
               Frequently Asked Questions
             </h2>
-            <div className="gold-divider center mt-4" />
           </motion.div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {[
               {
                 q: 'What types of clients does BNS work with?',
@@ -480,16 +481,16 @@ export default function Contact() {
               <motion.details
                 key={q}
                 initial="hidden" whileInView="visible" viewport={{ once: true }}
-                custom={idx * 0.07} variants={fadeUp}
-                className="bg-white rounded-lg border border-gray-100 shadow-sm group"
+                custom={idx * 0.05} variants={fadeUp}
+                className="bg-white rounded-sm border border-[var(--bns-gray-200)] group overflow-hidden"
               >
-                <summary className="flex items-center justify-between gap-3 px-6 py-4 cursor-pointer list-none font-semibold text-[#1a2744] text-sm hover:text-[#c9a84c] transition-colors">
-                  {q}
-                  <span className="flex-shrink-0 text-[#c9a84c] font-bold text-lg leading-none">
+                <summary className="flex items-center justify-between gap-4 px-6 py-4 cursor-pointer list-none font-semibold text-[var(--bns-navy)] text-sm hover:text-[var(--bns-gold)] transition-colors select-none">
+                  <span>{q}</span>
+                  <span className="text-[var(--bns-gold)] font-serif font-bold text-lg leading-none flex-shrink-0">
                     +
                   </span>
                 </summary>
-                <div className="px-6 pb-5 text-sm text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                <div className="px-6 pb-5 text-sm text-[var(--bns-gray-600)] leading-relaxed border-t border-[var(--bns-gray-200)] pt-4">
                   {a}
                 </div>
               </motion.details>
@@ -500,4 +501,3 @@ export default function Contact() {
     </div>
   );
 }
-
