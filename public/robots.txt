@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Static assets
+Allow: /bns-logo-full.png
+Allow: /bns-logo-icon.png
+
+Sitemap: https://bengalnewsservice.com/sitemap.xml
