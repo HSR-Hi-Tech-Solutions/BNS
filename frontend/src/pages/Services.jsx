@@ -1,27 +1,16 @@
 import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import {
   Newspaper,
   Megaphone,
   TrendingUp,
   Briefcase,
   ArrowRight,
-  ChevronRight,
   CheckCircle,
   ShieldCheck,
 } from 'lucide-react';
 import { SERVICES } from '../constants';
 import { setPageMeta } from '../utils/seo';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1], delay },
-  }),
-};
 
 const ICON_MAP = {
   Newspaper,
@@ -35,13 +24,12 @@ export default function Services() {
 
   useEffect(() => {
     setPageMeta({
-      title: 'Our Practice Areas — BNS Bengal News Service',
+      title: 'Our Services — BNS Bengal News Service',
       description:
         'BNS offers digital news & media, public relations & corporate communications, digital marketing & advertising, and media consultancy services.',
     });
   }, []);
 
-  // Smooth scroll to anchor on load
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
@@ -53,51 +41,35 @@ export default function Services() {
   }, [location.hash]);
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="w-full">
       {/* ── PAGE HERO ─────────────────────────────────── */}
-      <section className="page-hero">
-        <div className="container relative z-10">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <div className="eyebrow-badge justify-center mb-4">
-              <span className="accent-line" />
-              <span>Integrated Capabilities</span>
-              <span className="accent-line" />
-            </div>
-            <h1 className="font-serif text-white mb-4">Our Practice Areas</h1>
-            <p className="text-white/75 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-              Strategic media, public relations, performance marketing, and executive
-              consultancy structured to protect brand equity and drive public influence.
-            </p>
-          </motion.div>
+      <section className="bg-[#0B1120] text-[#FAF9F6] pt-32 sm:pt-36 pb-16 sm:pb-20 border-b border-slate-800 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55] mb-3 block">
+            What We Do
+          </span>
+          <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-[#FAF9F6] mb-4">
+            Our Core Services
+          </h1>
+          <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            An integrated suite of media, communications, digital marketing, and
+            consultancy services designed to inform audiences and deliver results for clients.
+          </p>
         </div>
       </section>
 
-      {/* ── STICKY SERVICE NAVIGATION PILL ────────────── */}
-      <div
-        className="sticky z-40 py-3 shadow-md border-b border-white/10"
-        style={{
-          top: '72px',
-          background: 'rgba(7, 12, 22, 0.94)',
-          backdropFilter: 'blur(16px)',
-        }}
-      >
-        <div className="container">
-          <div className="flex gap-2 overflow-x-auto no-scrollbar py-1">
+      {/* ── STICKY SERVICE NAVIGATION PILLS ────────────── */}
+      <div className="sticky top-[72px] lg:top-[80px] z-40 bg-[#0B1120]/95 backdrop-blur-md border-b border-slate-800 py-3 shadow-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex gap-2 overflow-x-auto py-1">
             {SERVICES.map((s, idx) => (
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className="flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 text-white/70 hover:text-white hover:bg-white/10 border border-transparent hover:border-white/10"
+                className="shrink-0 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap text-slate-300 hover:text-white hover:bg-white/10 border border-transparent hover:border-slate-700 transition-colors"
               >
-                <span className="text-[var(--bns-gold)] mr-2 font-serif font-bold">
-                  0{idx + 1}
-                </span>
-                <span>{s.title}</span>
+                <span className="text-[#D4AF55] mr-1.5 font-bold">0{idx + 1}</span>
+                {s.title}
               </a>
             ))}
           </div>
@@ -114,125 +86,89 @@ export default function Services() {
             <section
               key={service.id}
               id={service.id}
-              className={`section-py scroll-mt-28 ${
-                isEven ? 'bg-white' : 'bg-[var(--bns-gray-50)]'
+              className={`py-16 sm:py-20 scroll-mt-28 ${
+                isEven ? 'bg-white' : 'bg-[#FAF9F6]'
               }`}
               aria-label={service.title}
             >
-              <div className="container">
-                <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
 
                   {/* Left Column: Practice Overview Card */}
-                  <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
-                    className="lg:col-span-5"
-                  >
-                    <div
-                      className="rounded-2xl p-8 border border-white/10 text-white"
-                      style={{
-                        background: 'linear-gradient(150deg, #070c16 0%, #111d33 60%, #0c1424 100%)',
-                        boxShadow: '0 20px 40px -10px rgba(0,0,0,0.3)',
-                      }}
-                    >
+                  <div className="lg:col-span-5">
+                    <div className="bg-[#0B1120] border border-slate-800 rounded-2xl p-8 text-white shadow-xl">
                       <div className="flex items-center justify-between mb-6">
-                        <div
-                          className="w-12 h-12 rounded-xl flex items-center justify-center"
-                          style={{
-                            background: 'rgba(201, 168, 76, 0.15)',
-                            color: 'var(--bns-gold)',
-                          }}
-                        >
+                        <div className="w-12 h-12 rounded-xl bg-[#D4AF55]/15 text-[#D4AF55] flex items-center justify-center">
                           <Icon size={24} />
                         </div>
-                        <span className="font-serif font-bold text-3xl text-white/20 select-none">
+                        <span className="font-serif font-bold text-2xl text-slate-600">
                           0{idx + 1}
                         </span>
                       </div>
 
-                      <div className="eyebrow-badge mb-2">
-                        <span>Practice Area 0{idx + 1}</span>
-                      </div>
-                      <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-4 leading-snug">
+                      <span className="text-xs font-bold uppercase tracking-wider text-[#D4AF55] block mb-2">
+                        Practice Area 0{idx + 1}
+                      </span>
+                      <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#FAF9F6] mb-4 leading-snug">
                         {service.title}
                       </h2>
-                      <p className="text-white/70 text-sm leading-relaxed mb-8">
+                      <p className="text-slate-300 text-sm leading-relaxed mb-8">
                         {service.description}
                       </p>
 
-                      <div className="pt-6 border-t border-white/10">
+                      <div className="pt-6 border-t border-slate-800">
                         <Link
                           to="/contact"
-                          className="btn-gold w-full !rounded-xl !py-3 !text-xs justify-center"
+                          className="w-full bg-[#D4AF55] hover:bg-[#e0be67] text-[#0B1120] font-bold text-xs uppercase tracking-wider py-3 rounded-md text-center block shadow-sm transition-colors"
                         >
-                          <span>Enquire About This Practice</span>
-                          <ArrowRight size={14} />
+                          Enquire About This Service
                         </Link>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
 
-                  {/* Right Column: Key Deliverables Grid */}
-                  <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    custom={0.1}
-                    variants={fadeUp}
-                    className="lg:col-span-7"
-                  >
+                  {/* Right Column: Offerings Grid */}
+                  <div className="lg:col-span-7">
                     <div className="mb-6">
-                      <div className="eyebrow-badge mb-2">
-                        <span className="accent-line" />
-                        <span>Core Deliverables</span>
-                      </div>
-                      <h3 className="section-heading mb-3">
-                        Scope of Capabilities
+                      <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
+                        Included Modules
+                      </span>
+                      <h3 className="font-serif font-bold text-2xl text-[#0B1120] mb-2">
+                        Service Scope &amp; Capabilities
                       </h3>
-                      <p className="text-sm text-[var(--bns-gray-500)] leading-relaxed">
-                        Every engagement is tailored to client specifications under clear SLAs and professional ethics.
+                      <p className="text-sm text-[#586477]">
+                        Tailored deliverables executed in accordance with client objectives and professional standards.
                       </p>
                     </div>
 
-                    {/* Deliverables List */}
-                    <div className="grid sm:grid-cols-2 gap-4 mb-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                       {service.items.map((item, itemIdx) => (
                         <div
                           key={item}
-                          className="bns-card p-5 border border-slate-200 flex items-start gap-3.5 group"
+                          className="bg-white border border-slate-200 rounded-xl p-5 flex items-start gap-3.5 shadow-sm"
                         >
-                          <div
-                            className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                            style={{
-                              background: 'rgba(201, 168, 76, 0.12)',
-                              color: 'var(--bns-gold)',
-                            }}
-                          >
+                          <div className="w-7 h-7 rounded-lg bg-[#D4AF55]/15 text-[#D4AF55] flex items-center justify-center shrink-0 mt-0.5">
                             <CheckCircle size={15} />
                           </div>
                           <div>
-                            <p className="text-xs font-bold uppercase tracking-wider text-[var(--bns-gray-400)] mb-1">
-                              Module {String(itemIdx + 1).padStart(2, '0')}
-                            </p>
-                            <h4 className="text-sm font-semibold text-[var(--bns-navy)] leading-snug">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
+                              Deliverable {String(itemIdx + 1).padStart(2, '0')}
+                            </span>
+                            <p className="text-sm font-semibold text-[#0B1120] leading-snug">
                               {item}
-                            </h4>
+                            </p>
                           </div>
                         </div>
                       ))}
                     </div>
 
-                    {/* Compliance Note */}
-                    <div className="p-4 rounded-xl border border-slate-200 bg-white flex items-start gap-3 text-xs text-[var(--bns-gray-500)]">
-                      <ShieldCheck size={16} className="text-[var(--bns-gold)] flex-shrink-0 mt-0.5" />
+                    <div className="p-4 rounded-xl border border-slate-200 bg-white flex items-start gap-3 text-xs text-[#586477]">
+                      <ShieldCheck size={16} className="text-[#D4AF55] shrink-0 mt-0.5" />
                       <span>
-                        All media relations and promotional deliverables comply with Press Council of India standards
-                        and relevant advertising codes.
+                        All services are delivered under formal consultation agreements and in compliance with Indian regulatory and advertising codes.
                       </span>
                     </div>
-                  </motion.div>
+                  </div>
 
                 </div>
               </div>
@@ -242,33 +178,21 @@ export default function Services() {
       </div>
 
       {/* ── CALL TO ACTION ────────────────────────────── */}
-      <section
-        className="section-py text-white text-center"
-        style={{
-          background: 'linear-gradient(135deg, #070c16 0%, #14223d 50%, #7a1717 100%)',
-        }}
-      >
-        <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="max-w-2xl mx-auto"
+      <section className="bg-[#0B1120] text-white py-16 text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#FAF9F6] mb-4">
+            Ready to Discuss Your Requirements?
+          </h2>
+          <p className="text-slate-300 text-sm sm:text-base mb-8">
+            Contact us for a detailed project consultation or retainer proposal.
+          </p>
+          <Link
+            to="/contact"
+            className="bg-[#D4AF55] hover:bg-[#e0be67] text-[#0B1120] font-bold text-sm px-7 py-3.5 rounded-md shadow-sm transition-colors inline-flex items-center gap-2"
           >
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold mb-4">
-              Begin an Institutional Engagement
-            </h2>
-            <p className="text-white/75 text-sm sm:text-base mb-8 leading-relaxed">
-              Contact our corporate advisory team to discuss retainers, media briefings, or communication audits.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link to="/contact" className="btn-gold !rounded-full">
-                <span>Submit Business Brief</span>
-                <ArrowRight size={15} />
-              </Link>
-            </div>
-          </motion.div>
+            <span>Send a Business Enquiry</span>
+            <ArrowRight size={15} />
+          </Link>
         </div>
       </section>
     </div>

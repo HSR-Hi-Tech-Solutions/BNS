@@ -1,62 +1,48 @@
 import { Link } from 'react-router-dom';
 import { COMPANY, NAV_LINKS } from '../constants';
-import { Mail, MapPin, Globe, Share2, Video, Rss, X as Twitter, ShieldCheck } from 'lucide-react';
+import { Mail, MapPin, Globe, Share2, Video, Rss, X as Twitter } from 'lucide-react';
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer
-      className="text-gray-300 relative overflow-hidden"
-      style={{ background: 'var(--bns-navy-dark)' }}
+      className="bg-[#070c16] text-slate-300 border-t border-slate-800"
       role="contentinfo"
       aria-label="Site footer"
     >
-      {/* Top Hairline Gold Accent */}
-      <div
-        className="h-[2px]"
-        style={{
-          background:
-            'linear-gradient(90deg, transparent 0%, var(--bns-gold) 35%, var(--bns-gold-light) 65%, transparent 100%)',
-        }}
-      />
-
-      {/* Main Footer Container */}
-      <div className="container py-14 sm:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
 
-          {/* Brand & Identity Column */}
+          {/* Brand Column */}
           <div className="lg:col-span-5">
             <Link to="/" aria-label="BNS home" className="inline-flex items-center gap-3.5 mb-5 group">
               <img
                 src="/bns-logo-icon.png"
                 alt="BNS logo"
-                className="navbar-logo"
+                className="h-10 w-auto object-contain shrink-0"
               />
               <div className="flex flex-col">
-                <span className="font-serif font-bold text-white text-lg tracking-tight leading-tight">
+                <span className="font-serif font-bold text-white text-lg tracking-tight leading-none">
                   Bengal News Service
                 </span>
-                <span
-                  className="text-[11px] font-semibold tracking-widest uppercase mt-0.5"
-                  style={{ color: 'var(--bns-gold)' }}
-                >
-                  PR &amp; Consultancy Pvt. Ltd.
+                <span className="text-[10px] font-semibold text-[#D4AF55] tracking-[0.2em] uppercase leading-none mt-1">
+                  PR &amp; CONSULTANCY PVT. LTD.
                 </span>
               </div>
             </Link>
 
-            <p className="text-sm text-white/55 leading-relaxed mb-6 max-w-md">
+            <p className="text-sm text-slate-400 leading-relaxed mb-5 max-w-md">
               A digital-first media enterprise and corporate communications practice.
-              Connecting Bengal&apos;s cultural and policy landscape with national perspectives
-              while delivering newsroom-backed strategic PR and advisory services.
+              Delivering credible journalism from Bengal to Bharat, alongside strategic PR,
+              corporate communications, and consultancy for businesses and institutions.
             </p>
 
-            <div className="flex items-center gap-2 mb-6 text-xs text-[var(--bns-gold)] font-serif italic">
-              <span>&ldquo;Voice Of Bengal, Vision For Bharat&rdquo;</span>
-            </div>
+            <p className="text-xs text-[#D4AF55] font-serif italic mb-6">
+              &ldquo;Voice of Bengal, Vision for Bharat&rdquo;
+            </p>
 
-            {/* Social Icons Strip */}
+            {/* Social Icons */}
             <div className="flex items-center gap-2">
               {[
                 { Icon: Globe, href: COMPANY.socialMedia.facebook, label: 'Facebook' },
@@ -69,22 +55,7 @@ export default function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200"
-                  style={{
-                    background: 'rgba(255,255,255,0.05)',
-                    color: 'rgba(255,255,255,0.45)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'var(--bns-gold)';
-                    e.currentTarget.style.color = 'var(--bns-navy-dark)';
-                    e.currentTarget.style.borderColor = 'var(--bns-gold)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
-                    e.currentTarget.style.color = 'rgba(255,255,255,0.45)';
-                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
-                  }}
+                  className="w-8 h-8 rounded-md bg-white/5 hover:bg-[#D4AF55] text-slate-400 hover:text-[#0B1120] border border-white/10 flex items-center justify-center transition-all duration-150"
                 >
                   <Icon size={14} />
                 </a>
@@ -92,9 +63,9 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Practice Areas Column */}
+          {/* Services Column */}
           <div className="lg:col-span-3">
-            <h3 className="font-sans font-bold text-xs uppercase tracking-widest mb-5 text-white/70">
+            <h3 className="font-bold text-xs uppercase tracking-wider text-slate-200 mb-5">
               Practice Areas
             </h3>
             <ul className="space-y-2.5 text-sm">
@@ -103,23 +74,23 @@ export default function Footer() {
                 { label: 'Public Relations', anchor: 'public-relations' },
                 { label: 'Corporate Communications', anchor: 'public-relations' },
                 { label: 'Digital Marketing & Ads', anchor: 'digital-marketing' },
-                { label: 'Strategic Media Advisory', anchor: 'consultancy' },
+                { label: 'Media Consultancy', anchor: 'consultancy' },
               ].map(({ label, anchor }) => (
                 <li key={label}>
                   <Link
                     to={`/services#${anchor}`}
-                    className="text-white/55 hover:text-white transition-colors flex items-center gap-1.5"
+                    className="text-slate-400 hover:text-[#D4AF55] transition-colors"
                   >
-                    <span>{label}</span>
+                    {label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Quick Navigation Column */}
+          {/* Navigation Column */}
           <div className="lg:col-span-2">
-            <h3 className="font-sans font-bold text-xs uppercase tracking-widest mb-5 text-white/70">
+            <h3 className="font-bold text-xs uppercase tracking-wider text-slate-200 mb-5">
               Navigation
             </h3>
             <ul className="space-y-2.5 text-sm">
@@ -127,75 +98,67 @@ export default function Footer() {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-white/55 hover:text-white transition-colors"
+                    className="text-slate-400 hover:text-[#D4AF55] transition-colors"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link
-                  to="/privacy-policy"
-                  className="text-white/55 hover:text-white transition-colors"
-                >
+                <Link to="/privacy-policy" className="text-slate-400 hover:text-[#D4AF55] transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/terms"
-                  className="text-white/55 hover:text-white transition-colors"
-                >
+                <Link to="/terms" className="text-slate-400 hover:text-[#D4AF55] transition-colors">
                   Terms &amp; Conditions
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Corporate Office & Direct Reach */}
+          {/* Contact Column */}
           <div className="lg:col-span-2">
-            <h3 className="font-sans font-bold text-xs uppercase tracking-widest mb-5 text-white/70">
-              Corporate Desk
+            <h3 className="font-bold text-xs uppercase tracking-wider text-slate-200 mb-5">
+              Corporate Office
             </h3>
-            <div className="space-y-3.5 text-xs text-white/55 mb-5">
+            <div className="space-y-3 text-xs text-slate-400 mb-5">
               <a
                 href={`mailto:${COMPANY.email}`}
                 className="flex items-start gap-2 hover:text-white transition-colors"
               >
-                <Mail size={14} className="mt-0.5 text-[var(--bns-gold)] flex-shrink-0" />
+                <Mail size={14} className="text-[#D4AF55] shrink-0 mt-0.5" />
                 <span>{COMPANY.email}</span>
               </a>
               <div className="flex items-start gap-2">
-                <MapPin size={14} className="mt-0.5 text-[var(--bns-gold)] flex-shrink-0" />
+                <MapPin size={14} className="text-[#D4AF55] shrink-0 mt-0.5" />
                 <span>Kolkata, West Bengal, India</span>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-white/[0.08] text-[11px] text-white/40">
+            <div className="pt-3 border-t border-slate-800 text-[11px] text-slate-500">
               <p>CIN: {COMPANY.cin}</p>
-              <p className="mt-0.5">Incorporated in West Bengal</p>
+              <p className="mt-0.5">RoC Kolkata, West Bengal</p>
             </div>
           </div>
 
         </div>
       </div>
 
-      {/* Bottom Legal Band */}
-      <div className="border-t border-white/[0.07]">
-        <div className="container py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
+      {/* Bottom Bar */}
+      <div className="border-t border-slate-800/80 bg-[#05080f]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <p>
             &copy; {year} Bengal News Service PR &amp; Consultancy Private Limited. All rights reserved.
           </p>
-          <div className="flex items-center gap-4 text-xs">
-            <Link to="/privacy-policy" className="hover:text-white transition-colors">
+          <div className="flex items-center gap-4">
+            <Link to="/privacy-policy" className="hover:text-slate-400 transition-colors">
               Privacy Policy
             </Link>
             <span>·</span>
-            <Link to="/terms" className="hover:text-white transition-colors">
+            <Link to="/terms" className="hover:text-slate-400 transition-colors">
               Terms of Use
             </Link>
-            <span>·</span>
-            <span className="text-white/30">RoC Kolkata</span>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { NAV_LINKS, COMPANY } from '../constants';
-import { Menu, X, Mail, Phone, ArrowRight } from 'lucide-react';
+import { Menu, X, Mail, ArrowRight } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,160 +17,82 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  // Close mobile drawer on route change
+  // Close mobile menu on navigation
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
-      style={{
-        background: scrolled
-          ? 'rgba(7, 12, 22, 0.97)'
-          : 'rgba(9, 15, 28, 0.92)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        borderBottom: '1px solid rgba(201, 168, 76, 0.18)',
-        boxShadow: scrolled ? '0 10px 30px -5px rgba(0, 0, 0, 0.4)' : 'none',
-      }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        scrolled ? 'shadow-lg shadow-black/20' : ''
+      }`}
       role="banner"
     >
       {/* ── TOP UTILITY TICKER (Desktop) ────────────────── */}
-      <div
-        className="hidden md:block py-2 border-b border-white/[0.06]"
-        style={{ background: 'rgba(5, 9, 17, 0.8)' }}
-      >
-        <div className="container flex justify-between items-center text-xs">
-          <div className="flex items-center gap-2.5">
-            <span
-              className="inline-block w-1.5 h-1.5 rounded-full"
-              style={{ background: 'var(--bns-gold)' }}
-            />
-            <span
-              className="font-semibold tracking-widest uppercase text-[11px]"
-              style={{ color: 'var(--bns-gold)' }}
-            >
-              Voice Of Bengal, Vision For Bharat
-            </span>
-            <span className="text-white/20">|</span>
-            <span className="text-white/45 text-[11px]">
-              Corporate Communications &amp; Media Platform
+      <div className="hidden md:block bg-[#070c16] border-b border-slate-800/80 py-1.5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center text-xs">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF55]" />
+            <span className="font-semibold tracking-wider uppercase text-[11px] text-[#D4AF55]">
+              Voice of Bengal, Vision for Bharat
             </span>
           </div>
 
-          <div className="flex items-center gap-6 text-white/55 text-xs">
+          <div className="flex items-center gap-5 text-slate-300 text-xs">
             <a
               href={`mailto:${COMPANY.email}`}
               className="flex items-center gap-1.5 hover:text-white transition-colors"
               aria-label="Email BNS"
             >
-              <Mail size={12} style={{ color: 'var(--bns-gold)' }} />
+              <Mail size={12} className="text-[#D4AF55]" />
               <span>{COMPANY.email}</span>
             </a>
-            <span className="text-white/20">|</span>
-            <span className="text-white/45 text-[11px]">CIN: {COMPANY.cin}</span>
+            <span className="text-slate-600">|</span>
+            <span className="text-slate-400 text-[11px]">CIN: {COMPANY.cin}</span>
           </div>
         </div>
       </div>
 
       {/* ── MAIN NAVIGATION ─────────────────────────────── */}
-      <nav className="container" aria-label="Main navigation">
-        <div className="flex items-center justify-between h-18 lg:h-20">
+      <nav
+        className="bg-[#0B1120] border-b border-[#D4AF55]/20"
+        aria-label="Main navigation"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-18 lg:h-20">
 
           {/* Logo & Brand Identity */}
           <Link
             to="/"
-            className="flex items-center gap-3.5 flex-shrink-0 group py-1"
+            className="flex items-center gap-3.5 shrink-0 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF55] rounded-md"
             aria-label="BNS — Bengal News Service home"
           >
             <img
               src="/bns-logo-icon.png"
               alt="BNS emblem"
-              className="navbar-logo flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
+              className="h-10 sm:h-11 w-auto object-contain shrink-0"
             />
             <div className="flex flex-col justify-center">
-              <span
-                className="font-serif font-bold text-white text-base lg:text-lg tracking-tight leading-tight group-hover:text-[var(--bns-gold)] transition-colors"
-              >
+              <span className="font-serif font-bold text-base sm:text-lg text-[#FAF9F6] tracking-tight leading-none">
                 Bengal News Service
               </span>
-              <span
-                className="text-[10px] sm:text-[11px] font-semibold tracking-widest uppercase leading-tight mt-0.5"
-                style={{ color: 'var(--bns-gold)' }}
-              >
-                PR &amp; Consultancy
+              <span className="text-[10px] sm:text-[11px] font-semibold text-[#D4AF55] tracking-[0.2em] uppercase leading-none mt-1">
+                PR &amp; CONSULTANCY
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-2">
-            <div className="flex items-center gap-1 rounded-full bg-white/[0.04] border border-white/[0.08] p-1.5 mr-3">
-              {NAV_LINKS.map((link) => (
-                <NavLink
-                  key={link.path}
-                  to={link.path}
-                  className={({ isActive }) =>
-                    `px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 ${
-                      isActive
-                        ? 'text-white bg-[var(--bns-navy-light)] shadow-sm'
-                        : 'text-white/70 hover:text-white hover:bg-white/[0.06]'
-                    }`
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              ))}
-            </div>
-
-            {/* CTA Button */}
-            <Link
-              to="/contact"
-              className="btn-gold !py-2.5 !px-5 !text-xs !rounded-full shadow-sm"
-            >
-              <span>Get In Touch</span>
-              <ArrowRight size={13} />
-            </Link>
-          </div>
-
-          {/* Mobile Menu Toggle Button */}
-          <button
-            onClick={() => setIsOpen((prev) => !prev)}
-            className="lg:hidden p-2 rounded-lg text-white/90 hover:text-white transition-colors"
-            style={{
-              background: isOpen ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-            }}
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-          >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
-
-        {/* ── MOBILE MENU ─────────────────────────────────── */}
-        <div
-          id="mobile-menu"
-          className={`lg:hidden overflow-hidden transition-all duration-300 ${
-            isOpen ? 'max-h-[460px] opacity-100 pb-5 pt-1' : 'max-h-0 opacity-0'
-          }`}
-          aria-hidden={!isOpen}
-        >
-          <div
-            className="pt-3 space-y-1 rounded-2xl bg-white/[0.03] border border-white/[0.08] p-3"
-          >
+          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
             {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
-                onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
-                  `block px-4 py-2.5 text-sm font-medium rounded-xl transition-colors ${
+                  `px-3.5 py-2 rounded-md text-sm font-medium tracking-wide transition-colors duration-150 ${
                     isActive
-                      ? 'text-[var(--bns-gold)] bg-white/[0.08] font-semibold'
-                      : 'text-white/80 hover:text-white hover:bg-white/[0.04]'
+                      ? 'text-[#D4AF55] font-semibold bg-white/5'
+                      : 'text-[#FAF9F6] hover:text-[#D4AF55] hover:bg-white/5'
                   }`
                 }
               >
@@ -178,14 +100,60 @@ export default function Navbar() {
               </NavLink>
             ))}
 
-            <div className="pt-2">
+            <Link
+              to="/contact"
+              className="ml-4 bg-[#D4AF55] hover:bg-[#e0be67] text-[#0B1120] font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-md shadow-sm transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-1.5 shrink-0"
+            >
+              <span>Get in Touch</span>
+              <ArrowRight size={13} />
+            </Link>
+          </div>
+
+          {/* Mobile Menu Toggle Button */}
+          <button
+            onClick={() => setIsOpen((prev) => !prev)}
+            className="lg:hidden p-2 rounded-md text-[#FAF9F6] hover:text-[#D4AF55] hover:bg-white/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF55]"
+            aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* ── MOBILE MENU DROPDOWN ────────────────────────── */}
+        <div
+          id="mobile-menu"
+          className={`lg:hidden overflow-hidden transition-all duration-300 ${
+            isOpen ? 'max-h-96 opacity-100 border-t border-slate-800' : 'max-h-0 opacity-0'
+          }`}
+          aria-hidden={!isOpen}
+        >
+          <div className="px-4 py-4 space-y-1 bg-[#0B1120]">
+            {NAV_LINKS.map((link) => (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  `block px-3.5 py-2.5 rounded-md text-sm font-medium transition-colors ${
+                    isActive
+                      ? 'text-[#D4AF55] bg-white/5 font-semibold'
+                      : 'text-[#FAF9F6] hover:text-[#D4AF55] hover:bg-white/5'
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
+
+            <div className="pt-3">
               <Link
                 to="/contact"
                 onClick={() => setIsOpen(false)}
-                className="btn-gold w-full !rounded-xl !py-3 !text-xs"
+                className="w-full bg-[#D4AF55] hover:bg-[#e0be67] text-[#0B1120] font-bold text-xs uppercase tracking-wider py-3 rounded-md text-center block shadow-sm"
               >
-                <span>Get In Touch</span>
-                <ArrowRight size={13} />
+                Get in Touch
               </Link>
             </div>
           </div>

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import {
   Mail,
   MapPin,
@@ -9,21 +8,11 @@ import {
   AlertCircle,
   Loader,
   ChevronDown,
-  ShieldCheck,
 } from 'lucide-react';
 import { COMPANY, SERVICES } from '../constants';
 import { validateContactForm, sanitizeInput } from '../utils/validation';
 import { contactService } from '../services/api';
 import { setPageMeta } from '../utils/seo';
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1], delay },
-  }),
-};
 
 const INITIAL_FORM = {
   name: '',
@@ -36,24 +25,24 @@ const INITIAL_FORM = {
 
 const FAQS = [
   {
-    q: 'What types of organizations and clients does BNS work with?',
-    a: 'BNS collaborates with corporate enterprises, startups, MSMEs, public sector institutions, trade associations, non-profits, and public figures seeking strategic PR, brand reputation architecture, or digital media visibility.',
+    q: 'What types of clients does BNS work with?',
+    a: 'BNS works with businesses of all sizes, institutions, public sector organizations, political entities, NGOs, and individuals seeking professional media, PR, or communications support.',
   },
   {
-    q: 'Does BNS handle engagements across India or strictly in West Bengal?',
-    a: 'While our primary editorial base and regional roots are in West Bengal, our public relations, corporate communications, and digital marketing services operate pan-India with key media networks in Kolkata and New Delhi.',
+    q: 'Do you offer services outside West Bengal?',
+    a: 'While our editorial focus and primary market is West Bengal and eastern India, our PR, communications, and digital marketing services are available to clients across India.',
   },
   {
-    q: 'How does BNS ensure editorial independence from commercial clients?',
-    a: 'BNS enforces a strict ethical firewall separating independent news coverage from sponsored or commercial advisory retainers. Editorial decisions are never dictated by client accounts, ensuring lasting credibility.',
+    q: 'How long does it typically take to begin a project?',
+    a: 'Following receipt of your enquiry and an initial consultation, project timelines are agreed upon based on scope, requirements, and availability.',
   },
   {
-    q: 'What is the standard onboarding timeline for new communications retainers?',
-    a: 'Following an initial discovery briefing and requirements review, we develop strategic proposals within 3 to 5 business days. Retainers or campaign rollouts typically commence within 1 to 2 weeks upon mutual agreement.',
+    q: 'Is the news content independent of commercial clients?',
+    a: 'Yes. BNS maintains a strict separation between editorial news content and commercial client work. Our journalism operates with editorial independence.',
   },
   {
-    q: 'How can our company request a customized PR or consultancy proposal?',
-    a: 'Submit your requirements via the business enquiry form on this page. Our corporate development team will respond within 2 business days to schedule an introductory consultation.',
+    q: 'How do I request a quote or proposal?',
+    a: 'Please use the contact form above and describe your requirements. One of our team members will follow up to understand your needs and provide a relevant proposal.',
   },
 ];
 
@@ -121,76 +110,52 @@ export default function Contact() {
   };
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="w-full">
       {/* ── PAGE HERO ─────────────────────────────────── */}
-      <section className="page-hero">
-        <div className="container relative z-10">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeUp}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <div className="eyebrow-badge justify-center mb-4">
-              <span className="accent-line" />
-              <span>Direct Engagement</span>
-              <span className="accent-line" />
-            </div>
-            <h1 className="font-serif text-white mb-4">Connect with BNS</h1>
-            <p className="text-white/75 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-              Discuss business retainers, media partnerships, press releases, or corporate
-              communications advisory with our executive team.
-            </p>
-          </motion.div>
+      <section className="bg-[#0B1120] text-[#FAF9F6] pt-32 sm:pt-36 pb-16 sm:pb-20 border-b border-slate-800 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55] mb-3 block">
+            Get in Touch
+          </span>
+          <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-[#FAF9F6] mb-4">
+            Contact BNS
+          </h1>
+          <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            For business enquiries, media partnerships, PR projects, or general information — we would love to hear from you.
+          </p>
         </div>
       </section>
 
-      {/* ── CONTACT FORM & CHANNELS SECTION ───────────── */}
-      <section className="section-py bg-white" aria-label="Contact channels and form">
-        <div className="container">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+      {/* ── CONTACT FORM & INFORMATION ────────────────── */}
+      <section className="bg-white py-16 sm:py-20 border-b border-slate-200" aria-label="Contact Section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
 
-            {/* Left Column: Direct Info Card */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              className="lg:col-span-5"
-            >
-              <div
-                className="rounded-2xl p-8 border border-white/10 text-white"
-                style={{
-                  background: 'linear-gradient(150deg, #070c16 0%, #111d33 60%, #0c1424 100%)',
-                  boxShadow: '0 20px 40px -10px rgba(0,0,0,0.3)',
-                }}
-              >
-                <div className="eyebrow-badge mb-2">
-                  <span>Corporate Office</span>
-                </div>
-                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-2">
-                  Official Channels
+            {/* Left Column: Contact Information */}
+            <div className="lg:col-span-5">
+              <div className="bg-[#0B1120] border border-slate-800 rounded-2xl p-8 text-white shadow-xl">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#D4AF55] block mb-2">
+                  Communication
+                </span>
+                <h2 className="font-serif font-bold text-2xl text-[#FAF9F6] mb-2">
+                  Contact Information
                 </h2>
-                <p className="text-white/65 text-sm leading-relaxed mb-8">
-                  Connect through our formal channels or submit your RFP details below.
+                <p className="text-slate-300 text-sm leading-relaxed mb-8">
+                  Reach out through our enquiry form or contact our office directly.
                 </p>
 
-                {/* Contact Items */}
                 <div className="space-y-6 mb-8">
                   <div className="flex items-start gap-4">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: 'rgba(201,168,76,0.15)', color: 'var(--bns-gold)' }}
-                    >
+                    <div className="w-10 h-10 rounded-lg bg-[#D4AF55]/15 text-[#D4AF55] flex items-center justify-center shrink-0">
                       <Mail size={18} />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-1">
-                        Corporate Email
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+                        Email Address
                       </p>
                       <a
                         href={`mailto:${COMPANY.email}`}
-                        className="text-white text-sm font-medium hover:text-[var(--bns-gold)] transition-colors"
+                        className="text-white text-sm font-medium hover:text-[#D4AF55] transition-colors"
                       >
                         {COMPANY.email}
                       </a>
@@ -198,108 +163,94 @@ export default function Contact() {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: 'rgba(201,168,76,0.15)', color: 'var(--bns-gold)' }}
-                    >
+                    <div className="w-10 h-10 rounded-lg bg-[#D4AF55]/15 text-[#D4AF55] flex items-center justify-center shrink-0">
                       <MapPin size={18} />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-1">
-                        Registered Jurisdiction
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
+                        Registered Office
                       </p>
-                      <p className="text-white text-sm font-medium">West Bengal, India</p>
+                      <p className="text-white text-sm">West Bengal, India</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: 'rgba(201,168,76,0.15)', color: 'var(--bns-gold)' }}
-                    >
+                    <div className="w-10 h-10 rounded-lg bg-[#D4AF55]/15 text-[#D4AF55] flex items-center justify-center shrink-0">
                       <Clock size={18} />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-1">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
                         Response Turnaround
                       </p>
-                      <p className="text-white text-sm font-medium">
-                        Within 2 business days for enterprise briefs
+                      <p className="text-white text-sm">
+                        Within 2 business days
                       </p>
                     </div>
                   </div>
                 </div>
 
-                {/* Statutory badge */}
-                <div className="pt-6 border-t border-white/10 text-xs text-white/50 space-y-1">
-                  <p className="font-semibold text-white/80">
+                <div className="pt-6 border-t border-slate-800 text-xs text-slate-400 space-y-1">
+                  <p className="font-semibold text-slate-200">
                     Bengal News Service PR &amp; Consultancy Pvt. Ltd.
                   </p>
                   <p>CIN: {COMPANY.cin}</p>
-                  <p>Incorporated under the Companies Act, 2013</p>
+                  <p>Incorporated in West Bengal, India</p>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Right Column: High-Polish Form Card */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={0.12}
-              variants={fadeUp}
-              className="lg:col-span-7"
-            >
+            {/* Right Column: Enquiry Form */}
+            <div className="lg:col-span-7">
               {status === 'success' ? (
-                <div className="bns-card p-10 sm:p-14 text-center border border-slate-200">
+                <div className="bg-[#FAF9F6] border border-slate-200 rounded-2xl p-10 sm:p-14 text-center shadow-sm">
                   <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-6">
                     <CheckCircle size={32} />
                   </div>
-                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[var(--bns-navy)] mb-3">
-                    Enquiry Submitted Successfully
+                  <h2 className="font-serif font-bold text-2xl text-[#0B1120] mb-3">
+                    Message Sent Successfully
                   </h2>
-                  <p className="text-slate-600 max-w-md mx-auto mb-8 text-sm sm:text-base leading-relaxed">
-                    Thank you for reaching out to Bengal News Service. Our corporate advisory team
-                    will review your message and contact you within 2 business days.
+                  <p className="text-[#586477] max-w-md mx-auto mb-8 text-sm leading-relaxed">
+                    Thank you for your enquiry. Our team will review your message and respond within 2 business days.
                   </p>
-                  <button onClick={resetForm} className="btn-primary !rounded-full">
-                    <span>Submit Another Enquiry</span>
+                  <button
+                    onClick={resetForm}
+                    className="bg-[#0B1120] hover:bg-[#16233D] text-white font-semibold text-sm px-6 py-3 rounded-md transition-colors"
+                  >
+                    Send Another Message
                   </button>
                 </div>
               ) : (
                 <form
                   onSubmit={handleSubmit}
                   noValidate
-                  aria-label="Corporate enquiry form"
-                  className="bns-card p-8 sm:p-10 border border-slate-200"
+                  aria-label="Contact form"
+                  className="bg-[#FAF9F6] border border-slate-200 rounded-2xl p-8 sm:p-10 shadow-sm"
                 >
-                  <div className="eyebrow-badge mb-2">
-                    <span className="accent-line" />
-                    <span>Project Brief</span>
-                  </div>
-                  <h2 className="font-serif text-2xl font-bold text-[var(--bns-navy)] mb-2">
-                    Send a Business Brief
+                  <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
+                    Message Form
+                  </span>
+                  <h2 className="font-serif font-bold text-2xl text-[#0B1120] mb-2">
+                    Send Us a Message
                   </h2>
-                  <p className="text-slate-500 text-xs sm:text-sm mb-7">
-                    Please provide your contact information and requirements. Fields with{' '}
-                    <span className="text-[var(--bns-burgundy)] font-bold">*</span> are required.
+                  <p className="text-xs sm:text-sm text-[#586477] mb-7">
+                    All fields marked <span className="text-[#8E252B] font-bold">*</span> are required.
                   </p>
 
                   {serverError && (
                     <div
                       role="alert"
-                      className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-xl p-4 mb-6"
+                      className="flex items-start gap-3 bg-red-50 border border-red-200 rounded-md p-4 mb-6"
                     >
-                      <AlertCircle size={18} className="text-red-600 flex-shrink-0 mt-0.5" />
+                      <AlertCircle size={18} className="text-red-600 shrink-0 mt-0.5" />
                       <p className="text-red-700 text-sm">{serverError}</p>
                     </div>
                   )}
 
-                  <div className="grid sm:grid-cols-2 gap-5 mb-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                     {/* Full Name */}
                     <div>
-                      <label htmlFor="name" className="form-label">
-                        Full Name <span className="text-[var(--bns-burgundy)]">*</span>
+                      <label htmlFor="name" className="block text-xs font-semibold text-[#0B1120] mb-1.5">
+                        Full Name <span className="text-[#8E252B]">*</span>
                       </label>
                       <input
                         id="name"
@@ -307,14 +258,16 @@ export default function Contact() {
                         name="name"
                         value={form.name}
                         onChange={handleChange}
-                        className={`form-input ${errors.name ? 'error' : ''}`}
+                        className={`w-full px-3.5 py-2.5 rounded-md border text-sm text-[#263247] bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1120] ${
+                          errors.name ? 'border-red-500 ring-1 ring-red-500' : 'border-slate-300'
+                        }`}
                         placeholder="Your full name"
                         autoComplete="name"
                         aria-describedby={errors.name ? 'name-error' : undefined}
                         aria-invalid={!!errors.name}
                       />
                       {errors.name && (
-                        <p id="name-error" className="form-error" role="alert">
+                        <p id="name-error" className="text-red-600 text-xs mt-1" role="alert">
                           {errors.name}
                         </p>
                       )}
@@ -322,8 +275,8 @@ export default function Contact() {
 
                     {/* Email */}
                     <div>
-                      <label htmlFor="email" className="form-label">
-                        Corporate Email <span className="text-[var(--bns-burgundy)]">*</span>
+                      <label htmlFor="email" className="block text-xs font-semibold text-[#0B1120] mb-1.5">
+                        Email Address <span className="text-[#8E252B]">*</span>
                       </label>
                       <input
                         id="email"
@@ -331,14 +284,16 @@ export default function Contact() {
                         name="email"
                         value={form.email}
                         onChange={handleChange}
-                        className={`form-input ${errors.email ? 'error' : ''}`}
-                        placeholder="name@company.com"
+                        className={`w-full px-3.5 py-2.5 rounded-md border text-sm text-[#263247] bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1120] ${
+                          errors.email ? 'border-red-500 ring-1 ring-red-500' : 'border-slate-300'
+                        }`}
+                        placeholder="you@example.com"
                         autoComplete="email"
                         aria-describedby={errors.email ? 'email-error' : undefined}
                         aria-invalid={!!errors.email}
                       />
                       {errors.email && (
-                        <p id="email-error" className="form-error" role="alert">
+                        <p id="email-error" className="text-red-600 text-xs mt-1" role="alert">
                           {errors.email}
                         </p>
                       )}
@@ -346,9 +301,8 @@ export default function Contact() {
 
                     {/* Phone */}
                     <div>
-                      <label htmlFor="phone" className="form-label">
-                        Phone Number
-                        <span className="text-slate-400 font-normal ml-1 text-xs">(optional)</span>
+                      <label htmlFor="phone" className="block text-xs font-semibold text-[#0B1120] mb-1.5">
+                        Phone Number <span className="text-slate-400 font-normal text-xs">(optional)</span>
                       </label>
                       <input
                         id="phone"
@@ -356,14 +310,16 @@ export default function Contact() {
                         name="phone"
                         value={form.phone}
                         onChange={handleChange}
-                        className={`form-input ${errors.phone ? 'error' : ''}`}
+                        className={`w-full px-3.5 py-2.5 rounded-md border text-sm text-[#263247] bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1120] ${
+                          errors.phone ? 'border-red-500 ring-1 ring-red-500' : 'border-slate-300'
+                        }`}
                         placeholder="+91 XXXXX XXXXX"
                         autoComplete="tel"
                         aria-describedby={errors.phone ? 'phone-error' : undefined}
                         aria-invalid={!!errors.phone}
                       />
                       {errors.phone && (
-                        <p id="phone-error" className="form-error" role="alert">
+                        <p id="phone-error" className="text-red-600 text-xs mt-1" role="alert">
                           {errors.phone}
                         </p>
                       )}
@@ -371,9 +327,8 @@ export default function Contact() {
 
                     {/* Organization */}
                     <div>
-                      <label htmlFor="organization" className="form-label">
-                        Organization / Brand
-                        <span className="text-slate-400 font-normal ml-1 text-xs">(optional)</span>
+                      <label htmlFor="organization" className="block text-xs font-semibold text-[#0B1120] mb-1.5">
+                        Organisation <span className="text-slate-400 font-normal text-xs">(optional)</span>
                       </label>
                       <input
                         id="organization"
@@ -381,42 +336,41 @@ export default function Contact() {
                         name="organization"
                         value={form.organization}
                         onChange={handleChange}
-                        className="form-input"
-                        placeholder="Company or institution name"
+                        className="w-full px-3.5 py-2.5 rounded-md border border-slate-300 text-sm text-[#263247] bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1120]"
+                        placeholder="Your company or organization"
                         autoComplete="organization"
                       />
                     </div>
                   </div>
 
-                  {/* Practice Area Selection */}
+                  {/* Service Selection */}
                   <div className="mb-5">
-                    <label htmlFor="service" className="form-label">
-                      Practice Area of Interest
-                      <span className="text-slate-400 font-normal ml-1 text-xs">(optional)</span>
+                    <label htmlFor="service" className="block text-xs font-semibold text-[#0B1120] mb-1.5">
+                      Service of Interest <span className="text-slate-400 font-normal text-xs">(optional)</span>
                     </label>
                     <select
                       id="service"
                       name="service"
                       value={form.service}
                       onChange={handleChange}
-                      className="form-input bg-white cursor-pointer"
+                      className="w-full px-3.5 py-2.5 rounded-md border border-slate-300 text-sm text-[#263247] bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1120]"
                     >
-                      <option value="">— Select a Practice Area —</option>
+                      <option value="">— Select a service —</option>
                       {SERVICES.map((s) => (
                         <option key={s.id} value={s.title}>
                           {s.title}
                         </option>
                       ))}
-                      <option value="General Corporate Enquiry">General Corporate Enquiry</option>
-                      <option value="Media & Press Partnership">Media &amp; Press Partnership</option>
-                      <option value="Executive Advisory Retainer">Executive Advisory Retainer</option>
+                      <option value="General Enquiry">General Enquiry</option>
+                      <option value="Partnership">Partnership</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
 
                   {/* Message */}
                   <div className="mb-6">
-                    <label htmlFor="message" className="form-label">
-                      Project Details / Message <span className="text-[var(--bns-burgundy)]">*</span>
+                    <label htmlFor="message" className="block text-xs font-semibold text-[#0B1120] mb-1.5">
+                      Message <span className="text-[#8E252B]">*</span>
                     </label>
                     <textarea
                       id="message"
@@ -424,24 +378,22 @@ export default function Contact() {
                       value={form.message}
                       onChange={handleChange}
                       rows={5}
-                      className={`form-input resize-y min-h-[120px] ${
-                        errors.message ? 'error' : ''
+                      className={`w-full px-3.5 py-2.5 rounded-md border text-sm text-[#263247] bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1120] ${
+                        errors.message ? 'border-red-500 ring-1 ring-red-500' : 'border-slate-300'
                       }`}
-                      placeholder="Please summarize your communication goals, key timelines, or specific scope of work..."
+                      placeholder="Please describe your requirements or enquiry..."
                       aria-describedby={errors.message ? 'message-error' : 'message-hint'}
                       aria-invalid={!!errors.message}
                     />
                     <div id="message-hint" className="flex justify-between mt-1 text-xs">
                       {errors.message ? (
-                        <p id="message-error" className="form-error" role="alert">
+                        <p id="message-error" className="text-red-600" role="alert">
                           {errors.message}
                         </p>
                       ) : (
-                        <span className="text-slate-400">
-                          Please provide as much operational context as possible.
-                        </span>
+                        <span />
                       )}
-                      <span className="text-slate-400 font-mono">
+                      <span className="text-slate-400">
                         {form.message.length}/2000
                       </span>
                     </div>
@@ -449,90 +401,69 @@ export default function Contact() {
 
                   <button
                     type="submit"
-                    className="btn-gold !rounded-full w-full sm:w-auto !py-3 !px-8 justify-center shadow-md"
+                    className="w-full sm:w-auto bg-[#D4AF55] hover:bg-[#e0be67] text-[#0B1120] font-bold text-xs uppercase tracking-wider px-7 py-3 rounded-md shadow-sm transition-all duration-200 inline-flex items-center justify-center gap-2"
                     disabled={status === 'loading'}
                     aria-busy={status === 'loading'}
                   >
                     {status === 'loading' ? (
                       <>
-                        <Loader size={16} className="animate-spin" />
-                        <span>Transmitting Brief…</span>
+                        <Loader size={15} className="animate-spin" />
+                        <span>Sending…</span>
                       </>
                     ) : (
                       <>
-                        <span>Submit Corporate Enquiry</span>
                         <Send size={14} />
+                        <span>Send Enquiry</span>
                       </>
                     )}
                   </button>
 
                   <p className="text-slate-400 text-xs mt-4 leading-relaxed">
-                    By submitting, you consent to our{' '}
-                    <a
-                      href="/privacy-policy"
-                      className="text-[var(--bns-navy)] underline hover:text-[var(--bns-gold)] font-medium"
-                    >
+                    By submitting this form you agree to our{' '}
+                    <a href="/privacy-policy" className="text-[#0B1120] underline hover:text-[#D4AF55]">
                       Privacy Policy
                     </a>
-                    . Your information is treated under strict non-disclosure.
+                    . We will only use your information to respond to your enquiry.
                   </p>
                 </form>
               )}
-            </motion.div>
+            </div>
 
           </div>
         </div>
       </section>
 
-      {/* ── FREQUENTLY ASKED QUESTIONS (Royal Decor Pattern) ── */}
-      <section
-        className="section-py"
-        style={{ background: 'var(--bns-gray-50)' }}
-        aria-label="Frequently Asked Questions"
-      >
-        <div className="container max-w-4xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="section-header text-center"
-          >
-            <div className="eyebrow-badge justify-center mb-3">
-              <span className="accent-line" />
-              <span>Common Inquiries</span>
-              <span className="accent-line" />
-            </div>
-            <h2 className="section-heading">Frequently Asked Questions</h2>
-            <p className="section-subheading">
-              Answers regarding our scope of work, engagement frameworks, and regional capabilities.
+      {/* ── FREQUENTLY ASKED QUESTIONS ────────────────── */}
+      <section className="bg-[#FAF9F6] py-16 sm:py-20" aria-label="Frequently Asked Questions">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
+              Common Inquiries
+            </span>
+            <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#0B1120]">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-sm text-[#586477] mt-2">
+              Quick answers about our scope of work and engagement framework.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="space-y-3.5">
-            {FAQS.map(({ q, a }, idx) => (
-              <motion.details
+          <div className="space-y-4">
+            {FAQS.map(({ q, a }) => (
+              <details
                 key={q}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={idx * 0.05}
-                variants={fadeUp}
-                className="bns-card overflow-hidden group border border-slate-200"
+                className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm group"
               >
-                <summary className="flex items-center justify-between gap-4 px-6 py-5 cursor-pointer list-none font-semibold text-[var(--bns-navy)] text-sm sm:text-base hover:text-[var(--bns-gold)] transition-colors select-none">
+                <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm sm:text-base text-[#0B1120] hover:text-[#D4AF55] transition-colors select-none">
                   <span>{q}</span>
-                  <div className="w-6 h-6 rounded-full flex items-center justify-center bg-slate-100 group-open:bg-[var(--bns-navy)] group-open:text-white transition-colors flex-shrink-0">
-                    <ChevronDown
-                      size={14}
-                      className="transition-transform duration-300 group-open:rotate-180"
-                    />
+                  <div className="w-6 h-6 rounded-full flex items-center justify-center bg-slate-100 group-open:bg-[#0B1120] group-open:text-white transition-colors shrink-0">
+                    <ChevronDown size={14} className="transition-transform duration-200 group-open:rotate-180" />
                   </div>
                 </summary>
-                <div className="px-6 pb-5 text-xs sm:text-sm text-[var(--bns-gray-600)] leading-relaxed border-t border-slate-100 pt-4">
+                <div className="text-xs sm:text-sm text-[#586477] leading-relaxed pt-3 border-t border-slate-100 mt-3">
                   {a}
                 </div>
-              </motion.details>
+              </details>
             ))}
           </div>
         </div>

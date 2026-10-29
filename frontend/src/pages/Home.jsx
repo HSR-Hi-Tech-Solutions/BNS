@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import {
   Newspaper,
   Megaphone,
@@ -19,15 +18,6 @@ import {
 import { COMPANY, SERVICES } from '../constants';
 import { setPageMeta } from '../utils/seo';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (delay = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1], delay },
-  }),
-};
-
 const SERVICE_ICONS = {
   Newspaper,
   Megaphone,
@@ -38,7 +28,7 @@ const SERVICE_ICONS = {
 export default function Home() {
   useEffect(() => {
     setPageMeta({
-      title: 'BNS — Bengal News Service | Voice Of Bengal, Vision For Bharat',
+      title: 'BNS — Bengal News Service | Voice of Bengal, Vision for Bharat',
       description:
         'Bengal News Service PR & Consultancy Private Limited — Digital news, media, public relations, corporate communications, digital marketing, and consultancy services.',
       ogImage: '/bns-logo-full.png',
@@ -46,185 +36,123 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="w-full">
       {/* ══════════════════════════════════════════════════
-          1. HERO SECTION
+          1. HERO SECTION (Dark Editorial)
       ══════════════════════════════════════════════════ */}
       <section
-        className="relative min-h-[90vh] flex items-center overflow-hidden pt-36 pb-20 lg:pt-44 lg:pb-28"
-        style={{
-          background: 'linear-gradient(160deg, #070c16 0%, #0d1629 45%, #14223d 100%)',
-        }}
+        className="bg-[#0B1120] text-[#FAF9F6] pt-32 sm:pt-36 lg:pt-44 pb-16 sm:pb-20 lg:pb-24 border-b border-slate-800"
         aria-label="Hero section"
       >
-        {/* Subtle radial ambient light */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 75% 35%, rgba(201, 168, 76, 0.12) 0%, transparent 60%), radial-gradient(circle at 20% 80%, rgba(122, 23, 23, 0.14) 0%, transparent 50%)',
-          }}
-        />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
 
-        {/* Faint technical grid */}
-        <div
-          className="absolute inset-0 opacity-[0.03] pointer-events-none"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(201,168,76,1) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,1) 1px, transparent 1px)',
-            backgroundSize: '56px 56px',
-          }}
-        />
-
-        <div className="container relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-
-            {/* Left Column: Editorial Headline & Actions */}
+            {/* Left Column: Clear Contrast Headline & CTAs */}
             <div className="lg:col-span-7">
-              {/* Eyebrow badge */}
-              <motion.div
-                initial={{ opacity: 0, x: -16 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                className="eyebrow-badge mb-6"
-              >
-                <span className="accent-line" />
-                <span>Digital Media &amp; Communications Platform</span>
-              </motion.div>
+              <div className="flex items-center gap-2.5 mb-5">
+                <span className="w-6 h-0.5 bg-[#D4AF55]" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55]">
+                  Digital Media &amp; Communications Platform
+                </span>
+              </div>
 
-              {/* Main Display Headline */}
-              <motion.h1
-                initial="hidden"
-                animate="visible"
-                custom={0.06}
-                variants={fadeUp}
-                className="font-serif text-white leading-[1.12] mb-6"
-                style={{ fontSize: 'var(--text-hero)' }}
-              >
-                Voice Of Bengal.{' '}
-                <span style={{ color: 'var(--bns-gold)' }}>Vision For Bharat.</span>
-              </motion.h1>
+              {/* Both phrases have high-contrast text */}
+              <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#FAF9F6] leading-[1.16] tracking-tight mb-5">
+                Voice of Bengal.{' '}
+                <span className="text-[#D4AF55] block sm:inline">Vision for Bharat.</span>
+              </h1>
 
-              {/* Tagline / Subtitle */}
-              <motion.p
-                initial="hidden"
-                animate="visible"
-                custom={0.14}
-                variants={fadeUp}
-                className="text-white/80 font-serif italic text-lg sm:text-xl mb-6"
-              >
+              <p className="font-serif italic text-slate-300 text-lg sm:text-xl mb-5">
                 Bengal News Service PR &amp; Consultancy Private Limited
-              </motion.p>
+              </p>
 
-              {/* Lead Paragraph */}
-              <motion.p
-                initial="hidden"
-                animate="visible"
-                custom={0.2}
-                variants={fadeUp}
-                className="text-white/70 leading-relaxed mb-8 max-w-2xl text-base sm:text-lg"
-              >
-                A digital-first media and communications enterprise delivering authentic,
-                credible news reporting from Bengal to the nation — coupled with
-                strategic public relations, corporate communications, and consultancy
-                for businesses and institutions.
-              </motion.p>
+              <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl">
+                A digital-first media enterprise delivering credible regional reporting
+                alongside strategic public relations, corporate communications, and consultancy
+                for businesses and institutions across West Bengal and India.
+              </p>
 
-              {/* CTAs */}
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                custom={0.28}
-                variants={fadeUp}
-                className="flex flex-wrap gap-4 items-center"
-              >
-                <Link to="/services" className="btn-gold !rounded-full">
-                  <span>Explore Practice Areas</span>
+              <div className="flex flex-wrap gap-4 items-center">
+                <Link
+                  to="/services"
+                  className="bg-[#D4AF55] hover:bg-[#e0be67] text-[#0B1120] font-bold text-sm px-6 py-3.5 rounded-md shadow-md transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2"
+                >
+                  <span>Explore Our Services</span>
                   <ArrowRight size={15} />
                 </Link>
-                <Link to="/contact" className="btn-outline-white !rounded-full">
-                  <span>Business Consultation</span>
+                <Link
+                  to="/contact"
+                  className="border border-slate-500/50 hover:border-[#D4AF55] text-[#FAF9F6] hover:text-[#D4AF55] font-semibold text-sm px-6 py-3.5 rounded-md transition-all duration-200 inline-flex items-center gap-2"
+                >
+                  <span>Get in Touch</span>
                 </Link>
-              </motion.div>
+              </div>
             </div>
 
-            {/* Right Column: Corporate Highlights Card (Visual anchor) */}
+            {/* Right Column: Balanced Professional Brand Panel */}
             <div className="lg:col-span-5">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="rounded-2xl p-7 sm:p-9 border border-white/10"
-                style={{
-                  background: 'rgba(14, 24, 42, 0.75)',
-                  backdropFilter: 'blur(20px)',
-                  boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.45)',
-                }}
-              >
-                {/* Header row with logo emblem */}
-                <div className="flex items-center gap-4 pb-6 mb-6 border-b border-white/10">
+              <div className="bg-[#16233D] border border-slate-700/60 rounded-xl p-7 sm:p-9 shadow-2xl">
+                {/* Brand header */}
+                <div className="flex items-center gap-4 pb-6 border-b border-slate-700/60 mb-6">
                   <img
                     src="/bns-logo-icon.png"
-                    alt="BNS emblem"
-                    className="h-12 w-auto object-contain flex-shrink-0"
+                    alt="Bengal News Service logo"
+                    className="h-12 sm:h-14 w-auto object-contain shrink-0"
                   />
                   <div>
-                    <h2 className="font-serif text-white font-bold text-lg leading-tight">
+                    <h2 className="font-serif font-bold text-lg sm:text-xl text-[#FAF9F6] leading-tight">
                       Bengal News Service
                     </h2>
-                    <p className="text-xs text-[var(--bns-gold)] font-semibold tracking-wider uppercase mt-0.5">
-                      PR &amp; Consultancy Pvt. Ltd.
+                    <p className="text-xs font-semibold text-[#D4AF55] tracking-widest uppercase mt-1">
+                      PR &amp; CONSULTANCY PVT. LTD.
                     </p>
                   </div>
                 </div>
 
-                {/* Highlights List */}
-                <div className="space-y-4 mb-7">
-                  {[
-                    {
-                      title: 'Digital-First Journalism',
-                      desc: 'Regional focus across West Bengal with pan-India national policy perspectives.',
-                    },
-                    {
-                      title: 'Strategic Public Relations',
-                      desc: 'Newsroom-informed narrative strategy, executive profiling, and media relations.',
-                    },
-                    {
-                      title: 'Corporate Communications',
-                      desc: 'Brand reputation management, digital campaigns, and consultancy retainers.',
-                    },
-                  ].map((item, i) => (
-                    <div key={item.title} className="flex gap-3.5 items-start">
-                      <div
-                        className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                        style={{ background: 'rgba(201, 168, 76, 0.15)', color: 'var(--bns-gold)' }}
-                      >
-                        <CheckCircle size={13} />
-                      </div>
-                      <div>
-                        <h3 className="text-sm font-semibold text-white leading-tight">
-                          {item.title}
-                        </h3>
-                        <p className="text-xs text-white/55 leading-relaxed mt-1">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <p className="text-slate-300 text-sm leading-relaxed mb-6">
+                  Bridging ground-level journalism with high-impact corporate communications counsel,
+                  backed by senior editorial leadership.
+                </p>
 
-                {/* Verified metadata strip */}
-                <div
-                  className="rounded-xl p-3.5 flex items-center justify-between text-xs"
-                  style={{ background: 'rgba(255, 255, 255, 0.04)', border: '1px solid rgba(255, 255, 255, 0.08)' }}
-                >
-                  <div className="flex items-center gap-2">
-                    <ShieldCheck size={16} className="text-[var(--bns-gold)] flex-shrink-0" />
-                    <span className="text-white/70">CIN: {COMPANY.cin}</span>
+                {/* Verified facts */}
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle size={17} className="text-[#D4AF55] shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-semibold text-[#FAF9F6]">
+                        Digital News &amp; Multimedia Platform
+                      </p>
+                      <p className="text-xs text-slate-400 mt-0.5">
+                        Authentic reporting on Bengal affairs, politics, economy, and society.
+                      </p>
+                    </div>
                   </div>
-                  <span className="text-white/45 font-medium">West Bengal, India</span>
+
+                  <div className="flex items-start gap-3">
+                    <CheckCircle size={17} className="text-[#D4AF55] shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-semibold text-[#FAF9F6]">
+                        Strategic PR &amp; Corporate Advisory
+                      </p>
+                      <p className="text-xs text-slate-400 mt-0.5">
+                        Executive profiling, reputation management, and media relations.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <CheckCircle size={17} className="text-[#D4AF55] shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-sm font-semibold text-[#FAF9F6]">
+                        Statutory Registration
+                      </p>
+                      <p className="text-xs text-slate-400 mt-0.5">
+                        CIN: {COMPANY.cin} · Registered in West Bengal, India
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
           </div>
@@ -232,252 +160,210 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          2. ABOUT / PURPOSE (Fixing Defect 1: Unified Cards)
+          2. ABOUT SECTION (Light Content)
       ══════════════════════════════════════════════════ */}
-      <section className="section-py bg-white" aria-label="About BNS">
-        <div className="container">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <section className="bg-[#FAF9F6] py-16 sm:py-20 lg:py-24 border-b border-slate-200" aria-label="About BNS">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
 
-            {/* Left: Editorial Narrative */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeUp}
-              className="lg:col-span-6"
-            >
-              <div className="eyebrow-badge mb-4">
-                <span className="accent-line" />
-                <span>Who We Are</span>
+            {/* Left: Introduction */}
+            <div className="lg:col-span-6">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-5 h-0.5 bg-[#8E252B]" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B]">
+                  Company Overview
+                </span>
               </div>
-              <h2 className="section-heading mb-6">
+              <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0B1120] leading-tight mb-5">
                 A New Voice for Bengal and Bharat
               </h2>
 
-              <p
-                className="text-base sm:text-lg leading-relaxed text-[var(--bns-navy)] font-medium mb-5 pl-4 border-l-2"
-                style={{ borderColor: 'var(--bns-gold)' }}
-              >
+              <p className="text-base sm:text-lg leading-relaxed text-[#263247] font-medium mb-5 border-l-2 border-[#D4AF55] pl-4">
                 Bengal News Service PR &amp; Consultancy Private Limited operates at the
-                intersection of credible media reporting and corporate communications strategy.
+                intersection of authentic journalism and strategic communication.
               </p>
 
-              <div className="space-y-4 text-[var(--bns-gray-600)] text-sm sm:text-base leading-relaxed mb-8">
+              <div className="space-y-4 text-sm sm:text-base text-[#586477] leading-relaxed mb-8">
                 <p>
-                  Incorporated in West Bengal, BNS was founded with a dual commitment:
-                  to provide thoughtful, authoritative digital news coverage representing
-                  Bengal&apos;s cultural and economic dynamism, while simultaneously delivering
-                  high-impact PR, reputation management, and marketing consultancy to corporate clients.
+                  Incorporated in West Bengal, BNS provides credible, balanced news coverage
+                  of regional and national developments while simultaneously delivering
+                  specialized PR, media relations, and digital marketing services to enterprises and institutions.
                 </p>
                 <p>
-                  Led by experienced journalism professionals with extensive backgrounds in
-                  parliamentary reporting and national policy coverage, we bring genuine media
-                  acumen to every communications partnership.
+                  Our practice is guided by seasoned journalism professionals with extensive experience
+                  in parliamentary reporting and political journalism, ensuring every communications
+                  effort is rooted in real-world media insight.
                 </p>
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <Link to="/about" className="btn-primary">
-                  <span>Our Full Story</span>
+                <Link
+                  to="/about"
+                  className="bg-[#0B1120] hover:bg-[#16233D] text-[#FAF9F6] font-semibold text-sm px-6 py-3 rounded-md transition-colors inline-flex items-center gap-2"
+                >
+                  <span>Learn More About Us</span>
                   <ChevronRight size={15} />
                 </Link>
-                <Link to="/leadership" className="btn-secondary">
-                  <span>Executive Leadership</span>
+                <Link
+                  to="/leadership"
+                  className="border border-slate-300 hover:border-[#0B1120] text-[#0B1120] font-semibold text-sm px-6 py-3 rounded-md transition-colors inline-flex items-center gap-2"
+                >
+                  <span>Meet Our Leadership</span>
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
-            {/* Right: Harmonized Vision & Mission (Uniform card language) */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={0.12}
-              variants={fadeUp}
-              className="lg:col-span-6 space-y-5"
-            >
+            {/* Right: Consistent Vision, Mission, and Verification Cards */}
+            <div className="lg:col-span-6 space-y-5">
               {/* Vision Card */}
-              <div className="bns-card p-6 sm:p-7 border border-slate-200">
-                <div className="flex items-center gap-3.5 mb-3.5">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(14, 24, 42, 0.05)', color: 'var(--bns-navy)' }}
-                  >
+              <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-7 shadow-sm">
+                <div className="flex items-center gap-3.5 mb-3">
+                  <div className="w-10 h-10 rounded-lg bg-slate-100 text-[#0B1120] flex items-center justify-center shrink-0">
                     <Eye size={20} />
                   </div>
                   <div>
-                    <span className="eyebrow !text-xs !mb-0 text-[var(--bns-gold)]">Strategic Horizon</span>
-                    <h3 className="font-serif text-lg font-bold text-[var(--bns-navy)] leading-tight">
-                      Our Vision
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#D4AF55]">
+                      Vision
+                    </span>
+                    <h3 className="font-serif font-bold text-lg text-[#0B1120]">
+                      Our Strategic Vision
                     </h3>
                   </div>
                 </div>
-                <p className="text-sm text-[var(--bns-gray-600)] leading-relaxed">
-                  To be the most respected and authoritative digital media and communications
-                  enterprise in eastern India — delivering credible news and strategic counsel
-                  that shapes meaningful conversations on the national stage.
+                <p className="text-sm text-[#586477] leading-relaxed pl-13">
+                  To be the most trusted and impactful digital news and communications platform
+                  representing Bengal&apos;s voice with integrity, depth, and national relevance.
                 </p>
               </div>
 
-              {/* Mission Card (Exactly matching Vision Card design) */}
-              <div className="bns-card p-6 sm:p-7 border border-slate-200">
-                <div className="flex items-center gap-3.5 mb-3.5">
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: 'rgba(201, 168, 76, 0.12)', color: 'var(--bns-gold)' }}
-                  >
+              {/* Mission Card (Exact same styling as Vision) */}
+              <div className="bg-white border border-slate-200 rounded-xl p-6 sm:p-7 shadow-sm">
+                <div className="flex items-center gap-3.5 mb-3">
+                  <div className="w-10 h-10 rounded-lg bg-[#D4AF55]/15 text-[#D4AF55] flex items-center justify-center shrink-0">
                     <Target size={20} />
                   </div>
                   <div>
-                    <span className="eyebrow !text-xs !mb-0 text-[var(--bns-gold)]">Core Purpose</span>
-                    <h3 className="font-serif text-lg font-bold text-[var(--bns-navy)] leading-tight">
-                      Our Mission
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#D4AF55]">
+                      Mission
+                    </span>
+                    <h3 className="font-serif font-bold text-lg text-[#0B1120]">
+                      Our Core Mission
                     </h3>
                   </div>
                 </div>
-                <p className="text-sm text-[var(--bns-gray-600)] leading-relaxed">
-                  To uphold unwavering editorial standards in digital journalism while providing
-                  businesses, public figures, and institutions with strategic communications,
-                  public relations, and digital marketing that deliver measurable outcomes.
+                <p className="text-sm text-[#586477] leading-relaxed pl-13">
+                  To deliver responsible digital journalism while equipping organizations with
+                  expert public relations, media strategy, and marketing solutions that build lasting credibility.
                 </p>
               </div>
 
-              {/* Corporate Registration Banner (Harmonized) */}
-              <div
-                className="rounded-xl p-5 border border-slate-200"
-                style={{ background: 'var(--bns-gray-50)' }}
-              >
-                <div className="flex items-center justify-between text-xs text-[var(--bns-gray-500)] pb-3 mb-3 border-b border-slate-200">
-                  <span className="font-bold uppercase tracking-wider text-[var(--bns-navy)]">
+              {/* Separate Corporate Registration Panel */}
+              <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+                <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#0B1120] pb-3 mb-3 border-b border-slate-100">
+                  <span className="flex items-center gap-1.5">
+                    <ShieldCheck size={15} className="text-[#D4AF55]" />
                     Corporate Verification
                   </span>
-                  <span>Ministry of Corporate Affairs</span>
+                  <span className="text-slate-400 font-normal">RoC Kolkata</span>
                 </div>
                 <div className="grid grid-cols-2 gap-4 text-xs">
                   <div>
-                    <p className="text-slate-400">Corporate Identity Number</p>
-                    <p className="font-semibold text-[var(--bns-navy)] mt-0.5">{COMPANY.cin}</p>
+                    <span className="text-slate-400">Company Name</span>
+                    <p className="font-semibold text-[#0B1120] mt-0.5">
+                      Bengal News Service PR &amp; Consultancy Pvt. Ltd.
+                    </p>
                   </div>
                   <div>
-                    <p className="text-slate-400">Registered Office</p>
-                    <p className="font-semibold text-[var(--bns-navy)] mt-0.5">West Bengal, India</p>
+                    <span className="text-slate-400">Corporate Identity Number</span>
+                    <p className="font-semibold text-[#0B1120] mt-0.5">{COMPANY.cin}</p>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════
-          3. CORE SERVICES (Fixing Defect 2: Polished Cards & Balanced Header)
+          3. SERVICES SECTION (Premium Grid)
       ══════════════════════════════════════════════════ */}
-      <section
-        className="section-py"
-        style={{ background: 'var(--bns-gray-50)' }}
-        aria-label="Core Practice Areas"
-        id="services"
-      >
-        <div className="container">
-          {/* Header row with inline CTA (Royal Decor pattern) */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-14 gap-4"
-          >
+      <section className="bg-white py-16 sm:py-20 lg:py-24 border-b border-slate-200" aria-label="Core Services">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header row with inline CTA */}
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-14 gap-4">
             <div>
-              <div className="eyebrow-badge mb-3">
-                <span className="accent-line" />
-                <span>What We Do</span>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-5 h-0.5 bg-[#8E252B]" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B]">
+                  What We Offer
+                </span>
               </div>
-              <h2 className="section-heading mb-2">Our Core Practice Areas</h2>
-              <p className="section-subheading">
-                Integrated media, communications, digital marketing, and consultancy
-                tailored to corporate and institutional requirements.
+              <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0B1120]">
+                Our Core Practice Areas
+              </h2>
+              <p className="text-[#586477] text-sm sm:text-base mt-2 max-w-xl">
+                An integrated suite of media publishing, communications, marketing, and consultancy services.
               </p>
             </div>
 
-            <Link to="/services" className="btn-secondary !rounded-full flex-shrink-0 self-start sm:self-auto">
+            <Link
+              to="/services"
+              className="border border-slate-300 hover:border-[#0B1120] text-[#0B1120] font-semibold text-sm px-5 py-2.5 rounded-md transition-colors inline-flex items-center gap-2 self-start sm:self-auto"
+            >
               <span>View All Services</span>
               <ArrowRight size={14} />
             </Link>
-          </motion.div>
+          </div>
 
-          {/* 4 Practice Cards Grid */}
+          {/* 4 Practice Area Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {SERVICES.map((service, idx) => {
               const Icon = SERVICE_ICONS[service.icon];
               return (
-                <motion.div
+                <div
                   key={service.id}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={idx * 0.08}
-                  variants={fadeUp}
-                  className="bns-card p-7 flex flex-col justify-between group"
+                  className="bg-[#FAF9F6] border border-slate-200 rounded-xl p-6 sm:p-7 flex flex-col justify-between shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200"
                 >
                   <div>
-                    {/* Icon & Counter */}
-                    <div className="flex items-center justify-between mb-6">
-                      <div
-                        className="w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-300 group-hover:bg-[var(--bns-navy)] group-hover:text-white"
-                        style={{
-                          background: 'rgba(14, 24, 42, 0.05)',
-                          color: 'var(--bns-navy)',
-                        }}
-                      >
-                        <Icon size={22} />
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-11 h-11 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#0B1120]">
+                        <Icon size={20} />
                       </div>
-                      <span
-                        className="font-serif font-bold text-sm tracking-widest text-[var(--bns-gold)]"
-                      >
+                      <span className="font-serif font-bold text-xs tracking-widest text-[#D4AF55]">
                         0{idx + 1}
                       </span>
                     </div>
 
-                    {/* Title */}
-                    <h3 className="font-serif text-xl font-bold text-[var(--bns-navy)] mb-3 leading-snug group-hover:text-[var(--bns-gold)] transition-colors">
+                    <h3 className="font-serif font-bold text-lg text-[#0B1120] mb-2 leading-snug">
                       {service.title}
                     </h3>
 
-                    {/* Description */}
-                    <p className="text-sm text-[var(--bns-gray-500)] leading-relaxed mb-6">
+                    <p className="text-xs sm:text-sm text-[#586477] leading-relaxed mb-5">
                       {service.description}
                     </p>
 
-                    {/* Offerings snippet */}
-                    <ul className="space-y-2 mb-6 pt-4 border-t border-slate-100">
+                    <ul className="space-y-2 mb-6 pt-3 border-t border-slate-200/60">
                       {service.items.slice(0, 3).map((item) => (
                         <li
                           key={item}
-                          className="text-xs text-[var(--bns-gray-600)] flex items-start gap-2"
+                          className="text-xs text-[#263247] flex items-start gap-2"
                         >
-                          <CheckCircle
-                            size={12}
-                            className="text-[var(--bns-gold)] mt-0.5 flex-shrink-0"
-                          />
+                          <CheckCircle size={13} className="text-[#D4AF55] shrink-0 mt-0.5" />
                           <span>{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* Card footer CTA link */}
                   <Link
                     to={`/services#${service.id}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[var(--bns-navy)] group-hover:text-[var(--bns-gold)] transition-all pt-2"
+                    className="text-xs font-bold uppercase tracking-wider text-[#0B1120] hover:text-[#D4AF55] inline-flex items-center gap-1 pt-3 border-t border-slate-200/80 transition-colors"
                   >
-                    <span>Explore Practice</span>
-                    <ArrowRight
-                      size={13}
-                      className="transition-transform group-hover:translate-x-1"
-                    />
+                    <span>View Details</span>
+                    <ArrowRight size={13} />
                   </Link>
-                </motion.div>
+                </div>
               );
             })}
           </div>
@@ -485,67 +371,42 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          4. LEADERSHIP & QUOTE (Fixing Defect 3: Balanced Layout)
+          4. LEADERSHIP SECTION (Balanced Proportions)
       ══════════════════════════════════════════════════ */}
       <section
-        className="section-py"
-        style={{ background: 'var(--bns-navy-dark)' }}
-        aria-label="Executive Leadership"
+        className="bg-[#0B1120] text-white py-16 sm:py-20 lg:py-24 border-b border-slate-800"
+        aria-label="Leadership section"
       >
-        <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="rounded-3xl p-8 sm:p-12 lg:p-14 border border-white/10"
-            style={{
-              background: 'linear-gradient(145deg, #0a1120 0%, #111d33 60%, #0c1424 100%)',
-            }}
-          >
-            <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#16233D] border border-slate-700/60 rounded-2xl p-8 sm:p-12 shadow-xl">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
-              {/* Left Column: Director Medallion & Credentials */}
-              <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left border-b lg:border-b-0 lg:border-r border-white/10 pb-8 lg:pb-0 lg:pr-10">
-                {/* Monogram Seal */}
-                <div
-                  className="w-24 h-24 rounded-full flex items-center justify-center mb-5 shadow-lg"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(201,168,76,0.2) 0%, rgba(201,168,76,0.05) 100%)',
-                    border: '2px solid var(--bns-gold)',
-                  }}
-                >
-                  <span
-                    className="font-serif font-bold text-3xl tracking-tight"
-                    style={{ color: 'var(--bns-gold)' }}
-                  >
-                    UR
-                  </span>
+              {/* Left Column: Director Medallion & Role */}
+              <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left border-b lg:border-b-0 lg:border-r border-slate-700/60 pb-8 lg:pb-0 lg:pr-8">
+                <div className="w-20 h-20 rounded-full border-2 border-[#D4AF55] bg-[#0B1120] flex items-center justify-center text-[#D4AF55] font-serif font-bold text-2xl shadow-inner mb-4">
+                  UR
                 </div>
 
-                <div className="eyebrow-badge mb-2">
-                  <span className="accent-line" />
-                  <span>Executive Direction</span>
-                </div>
-
-                <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-1">
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55] mb-1">
+                  Executive Direction
+                </span>
+                <h3 className="font-serif font-bold text-2xl text-[#FAF9F6]">
                   Ujjwal Roy
                 </h3>
-                <p className="text-sm font-semibold text-[var(--bns-gold)] mb-4">
+                <p className="text-xs font-semibold text-[#D4AF55] uppercase tracking-wider mt-0.5 mb-3">
                   Founder &amp; Director
                 </p>
 
-                <p className="text-xs text-white/55 leading-relaxed mb-6 max-w-sm">
-                  Veteran journalist and media consultant with decades of experience
-                  covering national parliament, legislative affairs, and corporate communication strategies.
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-5 max-w-sm">
+                  Veteran journalist and media consultant with decades of experience covering
+                  national parliament, political policy, and corporate communications strategy.
                 </p>
 
-                {/* Expertise tags */}
                 <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-6">
-                  {['Parliamentary Reporter', 'Political Analysis', 'Media Relations'].map((tag) => (
+                  {['Parliamentary Reporting', 'Political Analysis', 'Media Relations'].map((tag) => (
                     <span
                       key={tag}
-                      className="text-[11px] font-medium px-3 py-1 rounded-full text-white/75 bg-white/[0.06] border border-white/10"
+                      className="text-[11px] font-medium px-2.5 py-1 rounded bg-[#0B1120] text-slate-300 border border-slate-700"
                     >
                       {tag}
                     </span>
@@ -554,118 +415,94 @@ export default function Home() {
 
                 <Link
                   to="/leadership"
-                  className="btn-outline-white !rounded-full !py-2.5 !px-5 !text-xs"
+                  className="border border-slate-600 hover:border-[#D4AF55] text-white hover:text-[#D4AF55] text-xs font-semibold px-4 py-2 rounded-md transition-colors inline-flex items-center gap-1.5"
                 >
-                  <span>Complete Leadership Profile</span>
+                  <span>View Leadership Profile</span>
                   <ChevronRight size={14} />
                 </Link>
               </div>
 
-              {/* Right Column: Balanced Serif Quotation */}
+              {/* Right Column: Balanced Quotation */}
               <div className="lg:col-span-7">
-                <Quote
-                  size={42}
-                  className="text-[var(--bns-gold)] opacity-40 mb-6"
-                />
+                <Quote size={32} className="text-[#D4AF55]/60 mb-4" />
 
-                <blockquote className="font-serif text-white text-xl sm:text-2xl lg:text-3xl leading-snug font-normal italic mb-8">
-                  &ldquo;Bengal possesses a narrative of immense intellectual, political,
-                  and cultural depth. BNS is our solemn commitment to report that story with
-                  uncompromising truth — and to equip our clients with communications that
-                  command respect.&rdquo;
+                <blockquote className="font-serif italic text-lg sm:text-xl lg:text-2xl text-[#FAF9F6] leading-relaxed mb-6 font-normal">
+                  &ldquo;Bengal has a story that deserves to be told with depth, accuracy,
+                  and pride. BNS is our commitment to telling that story — and to helping
+                  institutions communicate with the credibility they deserve.&rdquo;
                 </blockquote>
 
-                <div className="pt-6 border-t border-white/10 flex items-center justify-between">
-                  <div>
-                    <p className="font-serif font-bold text-white text-base">
-                      Ujjwal Roy
-                    </p>
-                    <p className="text-xs text-[var(--bns-gold)]">
-                      Director, Bengal News Service PR &amp; Consultancy Pvt. Ltd.
-                    </p>
-                  </div>
-                  <span className="text-xs text-white/40 hidden sm:inline-block">
-                    Kolkata · West Bengal · New Delhi
-                  </span>
+                <div className="pt-4 border-t border-slate-700/60">
+                  <p className="font-serif font-bold text-base text-[#FAF9F6]">
+                    Ujjwal Roy
+                  </p>
+                  <p className="text-xs text-[#D4AF55] mt-0.5">
+                    Director, Bengal News Service PR &amp; Consultancy Pvt. Ltd.
+                  </p>
                 </div>
               </div>
 
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════
-          5. WHY WORK WITH BNS (Differentiators)
+          5. WHY CHOOSE BNS (Differentiators)
       ══════════════════════════════════════════════════ */}
-      <section className="section-py bg-white" aria-label="Why choose BNS">
-        <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="section-header text-center"
-          >
-            <div className="eyebrow-badge justify-center mb-3">
-              <span className="accent-line" />
-              <span>Institutional Strengths</span>
-              <span className="accent-line" />
-            </div>
-            <h2 className="section-heading">Why Leading Organisations Choose BNS</h2>
-            <p className="section-subheading">
-              Our rare combination of authentic editorial credibility and strategic
-              communications expertise sets our practice apart.
+      <section className="bg-[#FAF9F6] py-16 sm:py-20 border-b border-slate-200" aria-label="Why choose BNS">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
+              Institutional Strengths
+            </span>
+            <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#0B1120]">
+              Why Work With BNS
+            </h2>
+            <p className="text-sm text-[#586477] mt-2 max-w-xl mx-auto">
+              Combining newsroom rigor with strategic corporate communication capabilities.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: Award,
                 title: 'Journalism-Led PR',
-                desc: 'Our communications strategy is crafted by seasoned journalists who understand editorial gatekeeping and what drives news value.',
+                desc: 'Strategy shaped by journalists who understand editorial decision-making and genuine story value.',
               },
               {
                 icon: Globe,
                 title: 'Bengal & National Insight',
-                desc: 'Unmatched regional roots across West Bengal connected to deep national policy networks in New Delhi.',
+                desc: 'Deep regional roots in West Bengal combined with national policy perspectives.',
               },
               {
                 icon: ShieldCheck,
-                title: 'Editorial Independence',
-                desc: 'We maintain clear, ethical firewalls between our independent news journalism and our commercial consultancy practice.',
+                title: 'Editorial Standards',
+                desc: 'Clear boundaries separating independent journalism from commercial advisory retainers.',
               },
               {
                 icon: TrendingUp,
-                title: 'Integrated Capabilities',
-                desc: 'Digital news, press management, crisis communications, and performance marketing unified under one partner.',
+                title: 'Integrated Reach',
+                desc: 'Digital news, press management, and digital promotion coordinated under one roof.',
               },
-            ].map((item, idx) => {
+            ].map((item) => {
               const Icon = item.icon;
               return (
-                <motion.div
+                <div
                   key={item.title}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  custom={idx * 0.08}
-                  variants={fadeUp}
-                  className="bns-card p-7 text-center group"
+                  className="bg-white border border-slate-200 rounded-xl p-6 text-center shadow-sm"
                 >
-                  <div
-                    className="w-14 h-14 rounded-2xl mx-auto flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
-                    style={{ background: 'rgba(201, 168, 76, 0.12)', color: 'var(--bns-gold)' }}
-                  >
-                    <Icon size={26} />
+                  <div className="w-12 h-12 rounded-xl bg-slate-100 text-[#0B1120] flex items-center justify-center mx-auto mb-4">
+                    <Icon size={22} />
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-[var(--bns-navy)] mb-2.5">
+                  <h3 className="font-serif font-bold text-base text-[#0B1120] mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-[var(--bns-gray-500)] leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#586477] leading-relaxed">
                     {item.desc}
                   </p>
-                </motion.div>
+                </div>
               );
             })}
           </div>
@@ -673,56 +510,38 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════
-          6. CALL TO ACTION (Harmonious Transition)
+          6. CALL TO ACTION
       ══════════════════════════════════════════════════ */}
       <section
-        className="section-py relative overflow-hidden text-white"
-        style={{
-          background: 'linear-gradient(135deg, #070c16 0%, #14223d 50%, #7a1717 100%)',
-        }}
+        className="bg-[#0B1120] text-white py-16 sm:py-20 text-center"
         aria-label="Call to Action"
       >
-        <div
-          className="absolute inset-0 pointer-events-none opacity-20"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 80% 20%, rgba(201, 168, 76, 0.4) 0%, transparent 60%)',
-          }}
-        />
-
-        <div className="container relative z-10 text-center">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="max-w-3xl mx-auto"
-          >
-            <div className="eyebrow-badge justify-center mb-4">
-              <span className="accent-line" />
-              <span>Engage Our Practice</span>
-              <span className="accent-line" />
-            </div>
-
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
-              Ready to Advance Your Communications Strategy?
-            </h2>
-
-            <p className="text-white/75 text-base sm:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">
-              Whether you require strategic public relations, crisis management, digital media
-              reach, or executive consultancy — our team is ready to discuss your objectives.
-            </p>
-
-            <div className="flex flex-wrap gap-4 justify-center items-center">
-              <Link to="/contact" className="btn-gold !rounded-full !py-3 !px-8">
-                <span>Send a Business Enquiry</span>
-                <ArrowRight size={15} />
-              </Link>
-              <Link to="/services" className="btn-outline-white !rounded-full !py-3 !px-7">
-                <span>Explore All Services</span>
-              </Link>
-            </div>
-          </motion.div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55] mb-3 block">
+            Engage Our Team
+          </span>
+          <h2 className="font-serif font-bold text-3xl sm:text-4xl text-[#FAF9F6] mb-4">
+            Ready to Work With Bengal News Service?
+          </h2>
+          <p className="text-slate-300 text-sm sm:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
+            Whether you require media coverage, PR strategy, digital marketing, or
+            communications consultancy — our team is ready to assist.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center items-center">
+            <Link
+              to="/contact"
+              className="bg-[#D4AF55] hover:bg-[#e0be67] text-[#0B1120] font-bold text-sm px-7 py-3.5 rounded-md shadow-md transition-all duration-200 hover:-translate-y-0.5 inline-flex items-center gap-2"
+            >
+              <span>Send a Business Enquiry</span>
+              <ArrowRight size={15} />
+            </Link>
+            <Link
+              to="/services"
+              className="border border-slate-500 hover:border-white text-[#FAF9F6] font-semibold text-sm px-6 py-3.5 rounded-md transition-colors"
+            >
+              <span>View All Services</span>
+            </Link>
+          </div>
         </div>
       </section>
     </div>
