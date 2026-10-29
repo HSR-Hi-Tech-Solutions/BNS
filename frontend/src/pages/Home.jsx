@@ -65,7 +65,7 @@ export default function Home() {
           }}
         />
 
-        <div className="container mx-auto px-4 lg:px-6 py-36 lg:py-44 relative z-10">
+        <div className="container mx-auto px-4 lg:px-6 pt-36 pb-20 lg:pt-48 lg:pb-32 relative z-10">
           <div className="max-w-4xl">
             {/* Eyebrow */}
             <motion.p

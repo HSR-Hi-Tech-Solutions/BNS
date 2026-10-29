@@ -75,6 +75,14 @@ a {
 img {
   max-width: 100%;
   height: auto;
+  vertical-align: middle;
+}
+
+.navbar-logo {
+  height: 44px !important;
+  max-height: 44px !important;
+  width: auto !important;
+  object-fit: contain;
 }
 
 /* ─── FONT UTILITIES ────────────────────────────────────────────── */
