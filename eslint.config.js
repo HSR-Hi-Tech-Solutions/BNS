@@ -65,6 +65,6 @@ export default [
     },
   },
   {
-    ignores: ['dist/', 'node_modules/', 'server/'],
+    ignores: ['dist/', 'node_modules/', 'server/', 'tests/'],
   },
 ];

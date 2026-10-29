@@ -50,9 +50,6 @@ test('Build output verification - dist directory contains generated assets', () 
 });
 
 test('Environment verification - no secrets committed', () => {
-  const envFile = path.join(projectRoot, '.env');
-  const serverEnv = path.join(projectRoot, 'server', '.env');
-
   // Verify .env files are either not present or gitignored
   const gitignore = fs.readFileSync(path.join(projectRoot, '.gitignore'), 'utf8');
   assert.ok(gitignore.includes('.env'), '.gitignore excludes .env');
