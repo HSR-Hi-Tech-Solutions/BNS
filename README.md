@@ -3,9 +3,9 @@
 **Bengal News Service PR & Consultancy Private Limited**  
 *“Voice Of Bengal, Vision For Bharat”*
 
-[![Frontend Build](https://img.shields.io/badge/Frontend-React%2019%20%7C%20Vite%208-blue.svg)](file:///d:/projects/BNS/frontend)
-[![Backend API](https://img.shields.io/badge/Backend-Node.js%20%7C%20Express-green.svg)](file:///d:/projects/BNS/backend)
-[![Security](https://img.shields.io/badge/Security-Helmet%20%7C%20CORS%20%7C%20Rate%20Limit-red.svg)](file:///d:/projects/BNS/backend)
+[![Website Build](https://img.shields.io/badge/Frontend-React%2019%20%7C%20Vite%208-blue.svg)](file:///d:/projects/BNS/frontend)
+[![Styling](https://img.shields.io/badge/CSS-Tailwind%20CSS%20v4-38bdf8.svg)](file:///d:/projects/BNS/frontend)
+[![Integration](https://img.shields.io/badge/Form%20Backend-Google%20Sheets-34a853.svg)](file:///d:/projects/BNS/google-apps-script)
 [![License](https://img.shields.io/badge/License-Proprietary-yellow.svg)](#license)
 
 ---
@@ -14,59 +14,70 @@
 
 **Bengal News Service PR & Consultancy Private Limited** (CIN: `U73100WB2024PTC275987`) is a modern digital media and corporate communications enterprise rooted in West Bengal, dedicated to delivering credible regional journalism, corporate public relations, brand advocacy, and strategic consultancy.
 
-The official BNS corporate digital platform provides a fast, mobile-first, and highly accessible online presence. It showcases the company's core services, editorial leadership, corporate identity, and provides a direct, validated channel for client enquiries and commercial partnerships.
+The official BNS corporate digital platform is a **fully static, high-performance website** built with React 19, Vite 8, and Tailwind CSS v4. It features a completely serverless contact enquiry system integrated directly with **Google Sheets** via **Google Apps Script**, eliminating the need for database servers, email notification daemons, or separate Node.js/Express backends.
 
-### Key Implemented Features
-- **Responsive Brand Design**: Clean corporate visual identity utilizing deep navy, rich burgundy, and warm gold accents matching the official BNS crest.
-- **Dedicated Service Verticals**: In-depth overviews of digital news publishing, corporate PR & reputation management, strategic advisory, and performance marketing.
+### Key Features
+- **Fully Static Architecture**: Pre-compiled static assets deployable on modern global CDNs (Cloudflare Pages, Vercel, Netlify, AWS S3/CloudFront) with zero server maintenance.
+- **Direct Google Sheets Contact Integration**: Enquiries submitted by visitors are recorded directly into a designated Google Sheet via a lightweight Google Apps Script Web App.
+- **Zero Server & Database Overhead**: No MongoDB, no Mongoose, no Node.js backend, and no SMTP/Nodemailer email configurations required.
+- **Responsive Brand Design**: Clean corporate visual identity utilizing deep navy (`#0B1120`), rich burgundy (`#8E252B`), and warm gold (`#D4AF55`) accents matching the official BNS crest.
+- **Dedicated Service Verticals**: In-depth overviews of digital news publishing, corporate PR & reputation management, strategic advisory, and digital marketing.
 - **Leadership Showcase**: Executive profile highlighting Editor-in-Chief & Managing Director Ujjwal Roy's journalistic vision and industry track record.
-- **Validated Contact System**: Multi-step client-side validation with real-time feedback, backed by strict server-side schema verification.
-- **RESTful Diagnostics & Health Checks**: Integrated `/api/v1/health` endpoint monitoring server uptime, memory usage, and persistent database connectivity.
-- **Enterprise Security Hardening**: Defense-in-depth protection including Content Security Policy (CSP), origin allowlisting (CORS), tiered IP-based rate limiting, NoSQL injection filtering, and SHA-256 IP hashing.
-- **Search Engine Optimization**: Dynamic meta tags, semantic HTML5, pre-generated `robots.txt`, and XML sitemap covering all canonical routes.
+- **Bulletproof Client Validation**: Real-time client-side validation with instant visual feedback and server-side validation inside Apps Script.
+- **Search Engine Optimization (SEO)**: Dynamic meta tags, semantic HTML5, pre-generated `robots.txt`, and XML sitemap covering all canonical routes.
+- **SPA Deep Linking**: Out-of-the-box support for client-side routing on all hosting platforms via `_redirects` and `vercel.json`.
 
 ---
 
-## 2. Architecture & Technology Stack
+## 2. Updated Project Architecture
 
-The project adheres to a strict two-tier architecture where the client interface and server API operate as two decoupled applications within a single mono-repository:
+The application operates as an independently deployable static web application interacting directly with a serverless Google Apps Script endpoint:
 
 ```text
-                           ┌──────────────────────────┐
-                           │    User Web Browser      │
-                           └─────────────┬────────────┘
-                                         │  HTTPS
-                                         ▼
-                      ┌────────────────────────────────────┐
-                      │      Frontend Application          │
-                      │  (React 19 + Vite 8 + Tailwind CSS)│
-                      └──────────────────┬─────────────────┘
-                                         │  REST API (JSON)
-                                         ▼
-                      ┌────────────────────────────────────┐
-                      │       Backend Application          │
-                      │   (Node.js + Express.js API)       │
-                      └──────────────────┬─────────────────┘
-                                         │  Mongoose ODM
-                                         ▼
-                      ┌────────────────────────────────────┐
-                      │        MongoDB Atlas Database      │
-                      └────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────┐
+│                   Visitor Web Browser                    │
+└────────────────────────────┬─────────────────────────────┘
+                             │
+                             ▼
+┌──────────────────────────────────────────────────────────┐
+│                BNS Static Frontend (SPA)                 │
+│         (React 19 + Vite 8 + Tailwind CSS v4)            │
+│  - Instant page transitions & lazy-loaded routes         │
+│  - Client-side form sanitization & regex validation      │
+└────────────────────────────┬─────────────────────────────┘
+                             │
+                             │ HTTPS POST (text/plain;charset=utf-8)
+                             │ [Avoids CORS preflight OPTIONS blocking]
+                             ▼
+┌──────────────────────────────────────────────────────────┐
+│             Google Apps Script Web App                   │
+│             (google-apps-script/Code.gs)                 │
+│  - Concurrency control via LockService                   │
+│  - Server-side input & format validation                 │
+│  - Auto-initializes styled headers on blank sheets       │
+│  - Returns 302 redirect with CORS-compliant JSON         │
+└────────────────────────────┬─────────────────────────────┘
+                             │
+                             │ Internal Google Workspace API
+                             ▼
+┌──────────────────────────────────────────────────────────┐
+│                Designated Google Sheet                   │
+│            ("BNS Corporate Enquiries" Sheet)             │
+│  - Instant row logging for incoming leads & enquiries    │
+│  - Real-time team visibility, sorting & filtering        │
+└──────────────────────────────────────────────────────────┘
 ```
 
 ### Technology Matrix
 
 | Layer | Component | Technologies |
 |---|---|---|
-| **Frontend** | Framework & Bundler | React 19, Vite 8, JavaScript (strictly ES modules, NO TypeScript) |
-| | Styling & Icons | Tailwind CSS v4, Ant Design (AntD), Lucide React, Custom CSS Tokens |
-| | Animations & UX | Framer Motion (page transitions, micro-interactions) |
-| | Routing & State | React Router v7 (lazy-loaded routes, scroll restoration) |
-| | HTTP Client | Centralized Axios service with unified error interceptor |
-| **Backend** | Runtime & Server | Node.js (v18+ / v20+), Express.js |
-| | Database & ORM | MongoDB Atlas, Mongoose v8 |
-| | Validation | Joi schema validation with `stripUnknown` filtering |
-| | Security | Helmet, CORS, Express-Rate-Limit, Express-Mongo-Sanitize |
+| **Frontend** | Framework & Bundler | React 19, Vite 8, JavaScript (ES modules, strictly NO TypeScript) |
+| | Styling & Icons | Tailwind CSS v4, Lucide React, Custom CSS Tokens |
+| | Routing & Navigation | React Router v7 (lazy routes, scroll restoration, 404 catch-all) |
+| | HTTP Client | Native Fetch API with `text/plain` CORS-bypass strategy |
+| **Backend** | Integration Endpoint | Google Apps Script (Serverless Web App) |
+| | Storage | Google Sheets (automatic row insertion with `LockService`) |
 | **Tooling** | Testing | Node.js native test runner (`node:test`, `node:assert/strict`) |
 | | Code Quality | ESLint (flat config), Prettier |
 
@@ -75,263 +86,296 @@ The project adheres to a strict two-tier architecture where the client interface
 ## 3. Repository Directory Structure
 
 ```text
-bns-website/
-├── frontend/                          # Client-side React application
+BNS/
+├── frontend/                          # Client-side React 19 + Vite application
 │   ├── public/                        # Static assets, logos, favicon, robots.txt, sitemap.xml
 │   │   ├── bns-logo-full.png          # High-resolution corporate logo
 │   │   ├── bns-logo-icon.png          # Crest/icon emblem
 │   │   ├── favicon.svg                # Vector browser favicon
 │   │   ├── robots.txt                 # Search engine crawler instructions
 │   │   ├── sitemap.xml                # Canonical route index
-│   │   └── _redirects                 # Static hosting SPA routing rules
+│   │   └── _redirects                 # Static hosting SPA routing rules (Netlify/Cloudflare)
 │   ├── src/
 │   │   ├── components/                # Reusable UI elements (Navbar, Footer, etc.)
 │   │   ├── constants/                 # Navigation links, corporate data, services list
 │   │   ├── layouts/                   # MainLayout shell
 │   │   ├── pages/                     # Routed views (Home, About, Services, Leadership, Contact, etc.)
-│   │   ├── services/                  # Centralized Axios API client (api.js)
+│   │   ├── services/                  # Serverless Google Apps Script API client (api.js)
 │   │   ├── styles/                    # Global Tailwind CSS definitions and custom design tokens
 │   │   ├── utils/                     # SEO metadata updater (seo.js) & form validation (validation.js)
 │   │   ├── App.jsx                    # Route provider with lazy loading and fallback loaders
 │   │   └── main.jsx                   # React DOM entry point
-│   ├── tests/                         # Client validation & asset verification tests
+│   ├── tests/                         # Node.js automated test suites
+│   │   ├── assets.test.js             # Asset & SEO file verification
+│   │   ├── contactService.test.js     # Form service & CORS redirect mock tests
+│   │   ├── googleAppsScript.test.js   # Apps Script file & column contract tests
+│   │   └── validation.test.js         # Input validation & sanitization tests
 │   ├── .env.example                   # Client environment variable template
 │   ├── .gitignore                     # Frontend-specific ignore file
 │   ├── .prettierrc                    # Code formatting configuration
-│   ├── eslint.config.js               # ESLint rules and globals
-│   ├── index.html                     # Single-page HTML mount point
-│   ├── package.json                   # Frontend scripts and dependencies
-│   ├── package-lock.json              # Frontend reproducible lockfile
-│   ├── vercel.json                    # Vercel deployment rewrite rules
-│   └── vite.config.js                 # Vite build settings, chunk splitting & dev proxy
-├── backend/                           # Server-side REST API application
-│   ├── src/
-│   │   ├── config/                    # MongoDB connection lifecycle (db.js)
-│   │   ├── controllers/               # Route handlers (contactController.js)
-│   │   ├── middlewares/               # Error handler & request logging
-│   │   ├── models/                    # Mongoose Contact schema definition
-│   │   ├── routes/                    # API routes (/api/v1/health, /api/v1/contact)
-│   │   ├── validators/                # Joi request schema validation
-│   │   ├── app.js                     # Express pipeline & security middleware configuration
-│   │   └── server.js                  # HTTP server entry point & graceful shutdown hooks
-│   ├── tests/                         # Integration test suite for HTTP API endpoints
-│   ├── .env.example                   # Backend environment variable template (sanitized)
-│   ├── .gitignore                     # Backend-specific ignore file
-│   ├── package.json                   # Backend scripts and dependencies
-│   └── package-lock.json              # Backend reproducible lockfile
+│   ├── eslint.config.js               # ESLint configuration
+│   ├── index.html                     # HTML5 shell with brand metadata
+│   ├── package.json                   # Frontend package definition
+│   ├── vercel.json                    # Vercel SPA rewrite and security headers config
+│   └── vite.config.js                 # Vite bundler configuration
+├── google-apps-script/                # Google Sheets serverless integration
+│   ├── Code.gs                        # Production-ready Google Apps Script endpoint
+│   └── README.md                      # Apps Script setup & deployment guide
 ├── .gitignore                         # Repository-level ignore rules
-└── README.md                          # Full project documentation and setup guide
+├── package.json                       # Root workspace convenience scripts
+└── README.md                          # Comprehensive project documentation
 ```
 
 ---
 
-## 4. Prerequisites
+## 4. Frontend Installation & Local Development
 
-Before installing, ensure the host machine has:
-- **Node.js**: `v18.18.0` or higher (LTS `v20.x` or `v22.x` recommended)
-- **npm**: `v9.0.0` or higher
-- **MongoDB**: MongoDB Atlas cluster or local MongoDB instance (optional in development; persistent storage activates automatically when `MONGODB_URI` is provided).
+### Prerequisites
+- **Node.js**: v18.0.0 or higher (v20+ recommended)
+- **npm**: v9.0.0 or higher
 
----
-
-## 5. Quick Start & Local Development
-
-Clone the repository:
+### Step 1: Clone the Repository
 ```bash
 git clone https://github.com/HSR-Hi-Tech-Solutions/BNS.git
 cd BNS
 ```
 
-### 5.1 Frontend Setup
+### Step 2: Install Dependencies
+You can install dependencies from the root or inside the `frontend` folder:
 ```bash
-cd frontend
+# From root:
+npm --prefix frontend install
 
-# Install exact dependencies
-npm ci
-
-# Configure environment variables
-cp .env.example .env
-
-# Start Vite dev server on http://localhost:5173
-npm run dev
+# Or inside frontend:
+cd frontend && npm install
 ```
 
-### 5.2 Backend Setup
-Open a separate terminal:
+### Step 3: Configure Environment Variables
+Copy `.env.example` to create your local `.env`:
 ```bash
-cd backend
+cp frontend/.env.example frontend/.env
+```
+Open `frontend/.env` and configure your Google Apps Script URL:
+```env
+VITE_GOOGLE_SHEETS_SCRIPT_URL=https://script.google.com/macros/s/your_google_apps_script_web_app_url_here/exec
+```
+*(For initial frontend UI development before deploying Apps Script, you can leave the placeholder in place; the UI will display a helpful configuration message if a submission is attempted).*
 
-# Install exact dependencies
-npm ci
-
-# Configure environment variables
-cp .env.example .env
-
-# Start Express server with auto-reload on http://localhost:3001
+### Step 4: Start the Development Server
+```bash
+# From root:
 npm run dev
+
+# Or inside frontend:
+npm run dev
+```
+The application will start with Hot Module Replacement (HMR) at:
+```
+http://localhost:5173
 ```
 
 ---
 
-## 6. Available Scripts
+## 5. Production Build Instructions
 
-### Frontend Scripts (`/frontend`)
-| Command | Action |
-|---|---|
-| `npm run dev` | Starts Vite local development server on port 5173 with HMR |
-| `npm run build` | Compiles optimized production bundle into `frontend/dist/` |
-| `npm run preview` | Spins up a local web server serving the production `dist/` build |
-| `npm test` | Executes native Node.js tests for client-side validation and static assets |
-| `npm run lint` | Runs ESLint over all source files with zero allowed warnings |
-| `npm run lint:fix` | Automatically fixes ESLint-correctable styling or syntax errors |
-| `npm run format` | Runs Prettier code formatting on JSX, JS, and CSS files |
+To generate optimized, production-ready static assets:
 
-### Backend Scripts (`/backend`)
-| Command | Action |
-|---|---|
-| `npm run dev` | Runs backend with Node `--watch` flag for continuous development |
-| `npm start` | Launches production server entry point (`node src/server.js`) |
-| `npm test` | Executes integration tests against server routes and security headers |
+```bash
+# From root:
+npm run build
 
----
+# Or inside frontend:
+npm run build
+```
 
-## 7. Environment Variables & Secret Management
+The output files are compiled into `frontend/dist/`.
 
-### Frontend Configuration (`frontend/.env`)
-Variables prefixed with `VITE_` are bundled into the client distribution. Never add secrets here.
+### Previewing the Production Build Locally
+```bash
+# From root:
+npm run preview
 
-| Variable | Description | Default | Example |
-|---|---|---|---|
-| `VITE_API_BASE_URL` | Backend REST API root URL | `/api/v1` (via Vite proxy) | `http://localhost:3001/api/v1` |
-
-### Backend Configuration (`backend/.env`)
-Kept strictly on the server; never exposed to version control or browsers.
-
-| Variable | Description | Required | Default |
-|---|---|---|---|
-| `NODE_ENV` | Application environment (`development` / `production`) | No | `development` |
-| `PORT` | Local HTTP listen port | No | `3001` |
-| `ALLOWED_ORIGINS` | Comma-delimited list of permitted CORS web origins | No | `http://localhost:5173` |
-| `MONGODB_URI` | MongoDB connection URI string | Optional | `""` (runs ephemeral in dev) |
+# Or inside frontend:
+npm run preview
+```
+This boots a lightweight local static server previewing the exact production output.
 
 ---
 
-## 8. REST API Documentation
+## 6. Running Automated Tests & Code Quality
 
-Base URL: `/api/v1`
+The repository uses Node's native test runner (`node:test`) and strict linting:
 
-### 8.1 Health & Diagnostics
-- **Method / Path**: `GET /api/v1/health`
-- **Access**: Public
-- **Description**: Verifies API availability, uptime, and database connection state.
-- **Success Response (`200 OK`)**:
-  ```json
-  {
-    "success": true,
-    "service": "BNS API",
-    "status": "ok",
-    "timestamp": "2026-10-29T11:26:42.763Z",
-    "environment": "development",
-    "database": "connected"
-  }
-  ```
+```bash
+# Run all automated tests (18 tests covering assets, SEO, validation, & contact service)
+npm test
 
-### 8.2 Contact Enquiry Submission
-- **Method / Path**: `POST /api/v1/contact`
-- **Rate Limit**: 5 submissions per hour per IP.
-- **Allowed Services**:
-  - `Digital News & Media`
-  - `Public Relations & Corporate Communications`
-  - `Digital Marketing & Advertising`
-  - `Consultancy`
-  - `General Enquiry`
-  - `Partnership`
-  - `Other`
-- **Request Payload**:
-  ```json
-  {
-    "name": "Corporate Partner",
-    "email": "partner@bnsmedia.in",
-    "phone": "+91 9876543210",
-    "organization": "BNS Media Network",
-    "service": "Public Relations & Corporate Communications",
-    "message": "Enquiry regarding corporate PR and communications advisory retainer."
-  }
-  ```
-- **Success Response (`201 Created`)**:
-  ```json
-  {
-    "success": true,
-    "message": "Your enquiry has been received. We will respond within 2 business days."
-  }
-  ```
-- **Validation Error (`422 Unprocessable Entity`)**:
-  ```json
-  {
-    "success": false,
-    "message": "Validation failed. Please check the highlighted fields.",
-    "errors": {
-      "email": "Please provide a valid email address.",
-      "service": "Please select a valid service."
-    }
-  }
-  ```
+# Run ESLint check
+npm run lint
+
+# Auto-fix linting issues
+npm run lint:fix
+
+# Check Prettier code formatting
+npm run format:check
+
+# Auto-format all source code
+npm run format
+```
 
 ---
 
-## 9. Security Architecture
+## 7. Google Sheets & Apps Script Setup Guide
 
-1. **Network Decoupling**: Frontend never initiates direct database calls. All persistent storage operations occur exclusively behind the Express API layer.
-2. **Strict Origin Control (CORS)**: Requests from untrusted domains are blocked with a `403 Forbidden` response.
-3. **HTTP Header Hardening**: Helmet sets Content Security Policy (CSP), prevents frame clickjacking (`X-Frame-Options`), and restricts MIME-type sniffing.
-4. **NoSQL Injection Defense**: `express-mongo-sanitize` scrubs all incoming payload keys containing prohibited operators (`$` or `.`).
-5. **Rate Limiting**: Dual-tier limiter protects against DOS attacks (200 requests/15 mins globally) and form spam (5 submissions/hr per IP).
-6. **Privacy-Preserving Spam Protection**: IP addresses are SHA-256 hashed before storage; plain IPs are never persisted.
-7. **Production Error Masking**: Internal exceptions and database stack traces are sanitized from API responses in production environments.
+Follow this guide to set up the serverless Google Sheets integration in less than 3 minutes.
 
----
+### Step 1: Create the Destination Google Sheet
+1. Navigate to [Google Sheets](https://sheets.google.com) and create a **Blank spreadsheet**.
+2. Name the spreadsheet: **BNS Corporate Enquiries**.
+3. (Optional) Name the first tab: **Enquiries**. If left as "Sheet1", the script will automatically create the "Enquiries" tab on first run.
 
-## 10. Production Deployment Guide
+### Step 2: Open the Apps Script Editor
+1. In the Google Sheets menu, click **Extensions** → **Apps Script**.
+2. Rename the Apps Script project (top left) to: **BNS Contact Form Web App**.
 
-### Deploying the Frontend (Vercel, Netlify, Cloudflare Pages, AWS S3/CloudFront)
-1. **Root Directory**: `frontend`
-2. **Build Command**: `npm run build`
-3. **Output Directory**: `dist`
-4. **Environment Variables**:
-   - `VITE_API_BASE_URL`: Set to production API URL (e.g., `https://api.bengalnewsservice.com/api/v1`).
-5. **Single-Page Application (SPA) Rewrites**: Pre-configured via `frontend/vercel.json` and `frontend/public/_redirects`.
+### Step 3: Insert the Apps Script Code
+1. Erase any placeholder code inside `Code.gs`.
+2. Copy the entire content of [`google-apps-script/Code.gs`](./google-apps-script/Code.gs) from this repository and paste it into the editor.
+3. Save the script (`Ctrl + S` or click the floppy disk icon).
 
-### Deploying the Backend (Render, Railway, Fly.io, AWS ECS, VPS)
-1. **Root Directory**: `backend`
-2. **Build Command**: `npm ci`
-3. **Start Command**: `npm start` (runs `node src/server.js`)
-4. **Environment Variables**:
-   - `NODE_ENV`: `production`
-   - `PORT`: Provided by host environment (or `3001`)
-   - `ALLOWED_ORIGINS`: Set to production frontend domain (e.g., `https://bengalnewsservice.com`)
-   - `MONGODB_URI`: Production MongoDB Atlas connection URI with strong credentials
-5. **Health Check Endpoint**: `/api/v1/health`
+### Step 4: Authorize & Verify Initial Permissions
+1. In the toolbar function dropdown, select `testSubmission`.
+2. Click **Run**.
+3. When prompted with **Authorization Required**, click:
+   - **Review permissions**
+   - Choose your Google account
+   - Click **Advanced** (at the bottom-left of the dialog)
+   - Click **Go to BNS Contact Form Web App (unsafe)**
+   - Click **Allow**
+4. The test execution will complete. Switch back to your Google Sheet tab:
+   - Row 1 will now feature bold, styled headers with the BNS corporate navy palette (`#0B1120`).
+   - A sample test row will be appended. You can delete this test row after verifying.
 
----
-
-## 11. Troubleshooting Common Setup Issues
-
-- **CORS Error in Browser Console**: Verify that the port and protocol of your frontend URL match an entry in `ALLOWED_ORIGINS` in `backend/.env`.
-- **Form Submission Returns 422**: The `service` field must match one of the allowed categories enumerated in [contactValidator.js](file:///d:/projects/BNS/backend/src/validators/contactValidator.js).
-- **MongoDB Connection Timeout**: Ensure your current IP is allowlisted in the MongoDB Atlas Network Access console, and that `MONGODB_URI` includes appropriate TLS parameters.
-- **Port 3001 Already in Use**: Specify another port in `backend/.env` (e.g. `PORT=5000`) and update `VITE_API_BASE_URL` in `frontend/.env`.
-
----
-
-## 12. Git Workflow & Contribution
-
-- **Main Branch**: `main` is protected and represents production-ready code.
-- **Feature Branches**: Branch from `main` using descriptive naming (`feat/`, `fix/`, `chore/`).
-- **Pre-Commit Verification**: Run `npm test` and `npm run lint` in both `frontend` and `backend` prior to pushing.
+### Step 5: Deploy as a Public Web App
+1. At the top right of the Apps Script window, click **Deploy** → **New deployment**.
+2. Click the gear icon (**Select type**) next to "Select type" and choose **Web app**.
+3. Configure the deployment settings:
+   - **Description**: `BNS Production Contact Form v1`
+   - **Execute as**: `Me (<your-email>@...)`  
+     *(Essential: Grants the script permission to write rows into your private Google Sheet).*
+   - **Who has access**: `Anyone`  
+     *(Essential: Allows website visitors to submit enquiries without needing a Google sign-in).*
+4. Click **Deploy**.
+5. Copy the generated **Web App URL** (e.g. `https://script.google.com/macros/s/AKfycb.../exec`).
 
 ---
 
-## 13. License
+## 8. Environment Variable Configuration
 
-Copyright © 2024–2026 **Bengal News Service PR & Consultancy Private Limited**. All rights reserved.  
-Unauthorized copying, modification, distribution, or commercial deployment of this software is strictly prohibited.
+| Variable | Description | Default / Example | Required |
+|---|---|---|:---:|
+| `VITE_GOOGLE_SHEETS_SCRIPT_URL` | Deployed Google Apps Script Web App endpoint URL | `https://script.google.com/macros/s/.../exec` | **Yes** (in production) |
+
+### Setting Environment Variables in Hosting Platforms
+- **Vercel**: Project Settings → Environment Variables → Add `VITE_GOOGLE_SHEETS_SCRIPT_URL`.
+- **Netlify**: Site configuration → Environment variables → Add `VITE_GOOGLE_SHEETS_SCRIPT_URL`.
+- **Cloudflare Pages**: Settings → Environment variables → Add `VITE_GOOGLE_SHEETS_SCRIPT_URL`.
+
+> [!NOTE]
+> Variables prefixed with `VITE_` are embedded into the client bundle at build time. Never store private API keys or service account credentials in Vite environment variables. The Google Apps Script Web App URL is safe for client-side use because all write permissions are managed on Google's server side.
+
+---
+
+## 9. Google Sheet Column Specification
+
+Each valid submission is appended as a distinct new row formatted as follows:
+
+| Column | Header | Description | Sample Data |
+|:---:|---|---|---|
+| **A** | `Submission Date` | Timestamp in IST (`Asia/Kolkata`) | `2026-10-30 17:15:00 IST` |
+| **B** | `Full Name` | Visitor full name (2–120 chars) | `Subhasish Mukherjee` |
+| **C** | `Email` | Sanitized email address | `contact@bengalnewsservice.com` |
+| **D** | `Phone Number` | Contact phone (optional) | `+91 9876543210` |
+| **E** | `Organization` | Organisation / Company (optional) | `Bengal News Service Corporate` |
+| **F** | `Service / Subject` | Inquired service category | `Public Relations & Corporate Communications` |
+| **G** | `Message` | Enquiry message (10–2000 chars) | `We would like to discuss a corporate PR retainer.` |
+| **H** | `Status` | Processing workflow status | `New` |
+
+---
+
+## 10. Contact Form Testing Instructions
+
+### Local Integration Test
+1. Set `VITE_GOOGLE_SHEETS_SCRIPT_URL` in `frontend/.env` to your deployed Apps Script URL.
+2. Start the local server: `npm run dev`.
+3. Open `http://localhost:5173/contact`.
+4. Test validation states:
+   - Try submitting with empty fields → field errors appear and focus jumps to the first error.
+   - Enter an invalid email (e.g., `invalid@`) → email format error appears.
+   - Enter a message under 10 characters → minimum length error appears.
+5. Test valid submission:
+   - Fill all required fields and click **Send Enquiry**.
+   - The button shows a spinner with text **"Sending…"** and is disabled against double-clicks.
+   - On success, the form is replaced by the green **"Message Sent Successfully"** confirmation screen.
+   - Check your Google Sheet: the new submission row appears immediately.
+
+### Automated Test Verification
+Run the integrated test suite anytime:
+```bash
+npm test
+```
+This tests:
+- Unconfigured endpoint handling (throws informative error instead of silent failure).
+- Browser-compatible `text/plain` POST submission and 302 redirect following.
+- Server-side validation failure handling.
+- HTTP status failure handling.
+- Asset and SEO file integrity.
+
+---
+
+## 11. Static Hosting Deployment Guide
+
+Because the application is 100% static, it can be deployed on any global static hosting platform.
+
+### Option A: Vercel (Recommended)
+1. Push your repository to GitHub / GitLab / Bitbucket.
+2. Log in to [Vercel](https://vercel.com) and click **Add New Project**.
+3. Import the `BNS` repository.
+4. Configure Project Settings:
+   - **Framework Preset**: `Vite`
+   - **Root Directory**: `frontend`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+5. In **Environment Variables**, add:
+   - `VITE_GOOGLE_SHEETS_SCRIPT_URL` = your Google Apps Script URL.
+6. Click **Deploy**. Vercel will build the site and provide a production URL.
+*(SPA routing and cache headers are pre-configured in `frontend/vercel.json`).*
+
+### Option B: Netlify
+1. Log in to [Netlify](https://www.netlify.com) and click **Add new site** → **Import an existing project**.
+2. Select the repository.
+3. Configure Build Settings:
+   - **Base directory**: `frontend`
+   - **Build command**: `npm run build`
+   - **Publish directory**: `frontend/dist`
+4. In **Site configuration** → **Environment variables**, add `VITE_GOOGLE_SHEETS_SCRIPT_URL`.
+5. Click **Deploy Site**.
+*(SPA routing is handled automatically by `frontend/public/_redirects`).*
+
+### Option C: Cloudflare Pages
+1. Log in to the Cloudflare dashboard and go to **Workers & Pages** → **Create application** → **Pages**.
+2. Connect your Git repository.
+3. Set the build configuration:
+   - **Framework preset**: `Vite`
+   - **Root directory**: `frontend`
+   - **Build command**: `npm run build`
+   - **Build output directory**: `dist`
+4. Under **Environment variables**, add `VITE_GOOGLE_SHEETS_SCRIPT_URL`.
+5. Click **Save and Deploy**.
+
+---
+
+## 12. License & Legal
+
+© 2024–2026 **Bengal News Service PR & Consultancy Private Limited** (CIN: `U73100WB2024PTC275987`). All Rights Reserved.  
+All content, branding, trademarks, and source code are the exclusive property of Bengal News Service PR & Consultancy Pvt. Ltd.

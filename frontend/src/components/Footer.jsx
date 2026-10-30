@@ -13,10 +13,13 @@ export default function Footer() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12">
-
           {/* Brand Column */}
           <div className="lg:col-span-5">
-            <Link to="/" aria-label="BNS home" className="inline-flex items-center gap-3.5 mb-5 group">
+            <Link
+              to="/"
+              aria-label="BNS home"
+              className="inline-flex items-center gap-3.5 mb-5 group"
+            >
               <img
                 src="/bns-logo-icon.png"
                 alt="BNS logo"
@@ -34,8 +37,9 @@ export default function Footer() {
 
             <p className="text-sm text-slate-400 leading-relaxed mb-5 max-w-md">
               A digital-first media enterprise and corporate communications practice.
-              Delivering credible journalism from Bengal to Bharat, alongside strategic PR,
-              corporate communications, and consultancy for businesses and institutions.
+              Delivering credible journalism from Bengal to Bharat, alongside strategic
+              PR, corporate communications, and consultancy for businesses and
+              institutions.
             </p>
 
             <p className="text-xs text-[#D4AF55] font-serif italic mb-6">
@@ -105,12 +109,18 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <Link to="/privacy-policy" className="text-slate-400 hover:text-[#D4AF55] transition-colors">
+                <Link
+                  to="/privacy-policy"
+                  className="text-slate-400 hover:text-[#D4AF55] transition-colors"
+                >
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="text-slate-400 hover:text-[#D4AF55] transition-colors">
+                <Link
+                  to="/terms"
+                  className="text-slate-400 hover:text-[#D4AF55] transition-colors"
+                >
                   Terms &amp; Conditions
                 </Link>
               </li>
@@ -141,7 +151,6 @@ export default function Footer() {
               <p className="mt-0.5">RoC Kolkata, West Bengal</p>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -149,7 +158,8 @@ export default function Footer() {
       <div className="border-t border-slate-800/80 bg-[#05080f]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
           <p>
-            &copy; {year} Bengal News Service PR &amp; Consultancy Private Limited. All rights reserved.
+            &copy; {year} Bengal News Service PR &amp; Consultancy Private Limited. All
+            rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link to="/privacy-policy" className="hover:text-slate-400 transition-colors">

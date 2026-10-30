@@ -1,19 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --color-bns-navy: #0B1120;
-  --color-bns-navy-secondary: #16233D;
-  --color-bns-burgundy: #8E252B;
-  --color-bns-gold: #D4AF55;
-  --color-bns-warm-white: #FAF9F6;
+  --color-bns-navy: #0b1120;
+  --color-bns-navy-secondary: #16233d;
+  --color-bns-burgundy: #8e252b;
+  --color-bns-gold: #d4af55;
+  --color-bns-warm-white: #faf9f6;
   --color-bns-text-main: #263247;
   --color-bns-text-muted: #586477;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -25,14 +27,19 @@ html {
 body {
   font-family: var(--font-sans);
   color: #263247;
-  background-color: #FAF9F6;
+  background-color: #faf9f6;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
 }
 
@@ -41,9 +48,9 @@ h1, h2, h3, h4, h5, h6 {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B1120;
+  background: #0b1120;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4AF55;
+  background: #d4af55;
   border-radius: 3px;
 }

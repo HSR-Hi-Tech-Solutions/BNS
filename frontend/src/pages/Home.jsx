@@ -46,7 +46,6 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-
             {/* Left Column: Clear Contrast Headline & CTAs */}
             <div className="lg:col-span-7">
               <div className="flex items-center gap-2.5 mb-5">
@@ -68,8 +67,8 @@ export default function Home() {
 
               <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl">
                 A digital-first media enterprise delivering credible regional reporting
-                alongside strategic public relations, corporate communications, and consultancy
-                for businesses and institutions across West Bengal and India.
+                alongside strategic public relations, corporate communications, and
+                consultancy for businesses and institutions across West Bengal and India.
               </p>
 
               <div className="flex flex-wrap gap-4 items-center">
@@ -110,8 +109,8 @@ export default function Home() {
                 </div>
 
                 <p className="text-slate-300 text-sm leading-relaxed mb-6">
-                  Bridging ground-level journalism with high-impact corporate communications counsel,
-                  backed by senior editorial leadership.
+                  Bridging ground-level journalism with high-impact corporate
+                  communications counsel, backed by senior editorial leadership.
                 </p>
 
                 {/* Verified facts */}
@@ -123,7 +122,8 @@ export default function Home() {
                         Digital News &amp; Multimedia Platform
                       </p>
                       <p className="text-xs text-slate-400 mt-0.5">
-                        Authentic reporting on Bengal affairs, politics, economy, and society.
+                        Authentic reporting on Bengal affairs, politics, economy, and
+                        society.
                       </p>
                     </div>
                   </div>
@@ -154,7 +154,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -162,10 +161,12 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════
           2. ABOUT SECTION (Light Content)
       ══════════════════════════════════════════════════ */}
-      <section className="bg-[#FAF9F6] py-16 sm:py-20 lg:py-24 border-b border-slate-200" aria-label="About BNS">
+      <section
+        className="bg-[#FAF9F6] py-16 sm:py-20 lg:py-24 border-b border-slate-200"
+        aria-label="About BNS"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
-
             {/* Left: Introduction */}
             <div className="lg:col-span-6">
               <div className="flex items-center gap-2 mb-3">
@@ -185,14 +186,16 @@ export default function Home() {
 
               <div className="space-y-4 text-sm sm:text-base text-[#586477] leading-relaxed mb-8">
                 <p>
-                  Incorporated in West Bengal, BNS provides credible, balanced news coverage
-                  of regional and national developments while simultaneously delivering
-                  specialized PR, media relations, and digital marketing services to enterprises and institutions.
+                  Incorporated in West Bengal, BNS provides credible, balanced news
+                  coverage of regional and national developments while simultaneously
+                  delivering specialized PR, media relations, and digital marketing
+                  services to enterprises and institutions.
                 </p>
                 <p>
-                  Our practice is guided by seasoned journalism professionals with extensive experience
-                  in parliamentary reporting and political journalism, ensuring every communications
-                  effort is rooted in real-world media insight.
+                  Our practice is guided by seasoned journalism professionals with
+                  extensive experience in parliamentary reporting and political
+                  journalism, ensuring every communications effort is rooted in real-world
+                  media insight.
                 </p>
               </div>
 
@@ -231,8 +234,9 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-sm text-[#586477] leading-relaxed pl-13">
-                  To be the most trusted and impactful digital news and communications platform
-                  representing Bengal&apos;s voice with integrity, depth, and national relevance.
+                  To be the most trusted and impactful digital news and communications
+                  platform representing Bengal&apos;s voice with integrity, depth, and
+                  national relevance.
                 </p>
               </div>
 
@@ -252,8 +256,9 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-sm text-[#586477] leading-relaxed pl-13">
-                  To deliver responsible digital journalism while equipping organizations with
-                  expert public relations, media strategy, and marketing solutions that build lasting credibility.
+                  To deliver responsible digital journalism while equipping organizations
+                  with expert public relations, media strategy, and marketing solutions
+                  that build lasting credibility.
                 </p>
               </div>
 
@@ -280,7 +285,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -288,7 +292,10 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════
           3. SERVICES SECTION (Premium Grid)
       ══════════════════════════════════════════════════ */}
-      <section className="bg-white py-16 sm:py-20 lg:py-24 border-b border-slate-200" aria-label="Core Services">
+      <section
+        className="bg-white py-16 sm:py-20 lg:py-24 border-b border-slate-200"
+        aria-label="Core Services"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header row with inline CTA */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-14 gap-4">
@@ -303,7 +310,8 @@ export default function Home() {
                 Our Core Practice Areas
               </h2>
               <p className="text-[#586477] text-sm sm:text-base mt-2 max-w-xl">
-                An integrated suite of media publishing, communications, marketing, and consultancy services.
+                An integrated suite of media publishing, communications, marketing, and
+                consultancy services.
               </p>
             </div>
 
@@ -349,7 +357,10 @@ export default function Home() {
                           key={item}
                           className="text-xs text-[#263247] flex items-start gap-2"
                         >
-                          <CheckCircle size={13} className="text-[#D4AF55] shrink-0 mt-0.5" />
+                          <CheckCircle
+                            size={13}
+                            className="text-[#D4AF55] shrink-0 mt-0.5"
+                          />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -380,7 +391,6 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#16233D] border border-slate-700/60 rounded-2xl p-8 sm:p-12 shadow-xl">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-
               {/* Left Column: Director Medallion & Role */}
               <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left border-b lg:border-b-0 lg:border-r border-slate-700/60 pb-8 lg:pb-0 lg:pr-8">
                 <div className="w-20 h-20 rounded-full border-2 border-[#D4AF55] bg-[#0B1120] flex items-center justify-center text-[#D4AF55] font-serif font-bold text-2xl shadow-inner mb-4">
@@ -398,12 +408,17 @@ export default function Home() {
                 </p>
 
                 <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-5 max-w-sm">
-                  Veteran journalist and media consultant with decades of experience covering
-                  national parliament, political policy, and corporate communications strategy.
+                  Veteran journalist and media consultant with decades of experience
+                  covering national parliament, political policy, and corporate
+                  communications strategy.
                 </p>
 
                 <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-6">
-                  {['Parliamentary Reporting', 'Political Analysis', 'Media Relations'].map((tag) => (
+                  {[
+                    'Parliamentary Reporting',
+                    'Political Analysis',
+                    'Media Relations',
+                  ].map((tag) => (
                     <span
                       key={tag}
                       className="text-[11px] font-medium px-2.5 py-1 rounded bg-[#0B1120] text-slate-300 border border-slate-700"
@@ -441,7 +456,6 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -450,7 +464,10 @@ export default function Home() {
       {/* ══════════════════════════════════════════════════
           5. WHY CHOOSE BNS (Differentiators)
       ══════════════════════════════════════════════════ */}
-      <section className="bg-[#FAF9F6] py-16 sm:py-20 border-b border-slate-200" aria-label="Why choose BNS">
+      <section
+        className="bg-[#FAF9F6] py-16 sm:py-20 border-b border-slate-200"
+        aria-label="Why choose BNS"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
@@ -460,7 +477,8 @@ export default function Home() {
               Why Work With BNS
             </h2>
             <p className="text-sm text-[#586477] mt-2 max-w-xl mx-auto">
-              Combining newsroom rigor with strategic corporate communication capabilities.
+              Combining newsroom rigor with strategic corporate communication
+              capabilities.
             </p>
           </div>
 

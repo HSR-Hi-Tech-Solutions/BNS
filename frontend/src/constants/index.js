@@ -34,7 +34,8 @@ export const SERVICES = [
     id: 'digital-news-media',
     title: 'Digital News & Media',
     icon: 'Newspaper',
-    description: 'Comprehensive digital news and media services covering regional, national, and international developments.',
+    description:
+      'Comprehensive digital news and media services covering regional, national, and international developments.',
     items: [
       'Online news publishing and digital media',
       'News articles, features, and editorial content',
@@ -49,7 +50,8 @@ export const SERVICES = [
     id: 'public-relations',
     title: 'Public Relations & Corporate Communications',
     icon: 'Megaphone',
-    description: 'Strategic public relations and corporate communications to shape and protect your brand narrative.',
+    description:
+      'Strategic public relations and corporate communications to shape and protect your brand narrative.',
     items: [
       'Public relations strategy and execution',
       'Media relations and media outreach',
@@ -65,7 +67,8 @@ export const SERVICES = [
     id: 'digital-marketing',
     title: 'Digital Marketing & Advertising',
     icon: 'TrendingUp',
-    description: 'Data-driven digital marketing and advertising solutions to amplify your brand reach.',
+    description:
+      'Data-driven digital marketing and advertising solutions to amplify your brand reach.',
     items: [
       'Digital advertising strategy and campaigns',
       'Social media marketing and management',
@@ -80,7 +83,8 @@ export const SERVICES = [
     id: 'consultancy',
     title: 'Consultancy',
     icon: 'Briefcase',
-    description: 'Expert advisory services across media, PR, communications, and branding for businesses and organizations.',
+    description:
+      'Expert advisory services across media, PR, communications, and branding for businesses and organizations.',
     items: [
       'Media consultancy and advisory',
       'PR strategy consultancy',
@@ -97,7 +101,8 @@ export const SERVICES = [
 export const META = {
   defaultTitle: 'BNS — Bengal News Service | PR & Consultancy',
   titleTemplate: '%s | BNS Bengal News Service',
-  defaultDescription: 'Bengal News Service PR & Consultancy Private Limited — Voice Of Bengal, Vision For Bharat. Digital news, media, public relations, corporate communications, digital marketing, and consultancy.',
+  defaultDescription:
+    'Bengal News Service PR & Consultancy Private Limited — Voice Of Bengal, Vision For Bharat. Digital news, media, public relations, corporate communications, digital marketing, and consultancy.',
   ogImage: '/bns-logo-full.png',
   twitterHandle: '@BengalNewsService',
 };

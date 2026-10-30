@@ -7,6 +7,12 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const [prevPathname, setPrevPathname] = useState(location.pathname);
+
+  if (prevPathname !== location.pathname) {
+    setPrevPathname(location.pathname);
+    setIsOpen(false);
+  }
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 20);
@@ -16,11 +22,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
-
-  // Close mobile menu on navigation
-  useEffect(() => {
-    setIsOpen(false);
-  }, [location.pathname]);
 
   return (
     <header
@@ -60,7 +61,6 @@ export default function Navbar() {
         aria-label="Main navigation"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-18 lg:h-20">
-
           {/* Logo & Brand Identity */}
           <Link
             to="/"
@@ -125,7 +125,9 @@ export default function Navbar() {
         <div
           id="mobile-menu"
           className={`lg:hidden overflow-hidden transition-all duration-300 ${
-            isOpen ? 'max-h-96 opacity-100 border-t border-slate-800' : 'max-h-0 opacity-0'
+            isOpen
+              ? 'max-h-96 opacity-100 border-t border-slate-800'
+              : 'max-h-0 opacity-0'
           }`}
           aria-hidden={!isOpen}
         >

@@ -53,7 +53,8 @@ export default function Services() {
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             An integrated suite of media, communications, digital marketing, and
-            consultancy services designed to inform audiences and deliver results for clients.
+            consultancy services designed to inform audiences and deliver results for
+            clients.
           </p>
         </div>
       </section>
@@ -93,7 +94,6 @@ export default function Services() {
             >
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-
                   {/* Left Column: Practice Overview Card */}
                   <div className="lg:col-span-5">
                     <div className="bg-[#0B1120] border border-slate-800 rounded-2xl p-8 text-white shadow-xl">
@@ -137,7 +137,8 @@ export default function Services() {
                         Service Scope &amp; Capabilities
                       </h3>
                       <p className="text-sm text-[#586477]">
-                        Tailored deliverables executed in accordance with client objectives and professional standards.
+                        Tailored deliverables executed in accordance with client
+                        objectives and professional standards.
                       </p>
                     </div>
 
@@ -165,11 +166,11 @@ export default function Services() {
                     <div className="p-4 rounded-xl border border-slate-200 bg-white flex items-start gap-3 text-xs text-[#586477]">
                       <ShieldCheck size={16} className="text-[#D4AF55] shrink-0 mt-0.5" />
                       <span>
-                        All services are delivered under formal consultation agreements and in compliance with Indian regulatory and advertising codes.
+                        All services are delivered under formal consultation agreements
+                        and in compliance with Indian regulatory and advertising codes.
                       </span>
                     </div>
                   </div>
-
                 </div>
               </div>
             </section>

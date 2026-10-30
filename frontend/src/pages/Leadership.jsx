@@ -77,16 +77,19 @@ export default function Leadership() {
             The Vision Behind BNS
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Led by a veteran journalist and media professional with decades of national reporting experience.
+            Led by a veteran journalist and media professional with decades of national
+            reporting experience.
           </p>
         </div>
       </section>
 
       {/* ── DIRECTOR PROFILE SECTION ──────────────────── */}
-      <section className="bg-white py-16 sm:py-20 border-b border-slate-200" aria-label="Director Profile">
+      <section
+        className="bg-white py-16 sm:py-20 border-b border-slate-200"
+        aria-label="Director Profile"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
-
             {/* Left Column: Profile Card */}
             <div className="lg:col-span-4">
               <div className="bg-[#0B1120] border border-slate-800 rounded-2xl overflow-hidden text-white shadow-xl">
@@ -111,7 +114,10 @@ export default function Leadership() {
                   {[
                     { label: 'Role', value: 'Founder & Director' },
                     { label: 'Expertise', value: 'Journalism, PR, Media Relations' },
-                    { label: 'Specialization', value: 'Parliamentary & Political Reporting' },
+                    {
+                      label: 'Specialization',
+                      value: 'Parliamentary & Political Reporting',
+                    },
                     { label: 'Coverage', value: 'National & Regional Affairs' },
                     { label: 'Location', value: 'West Bengal, India' },
                   ].map((row) => (
@@ -120,7 +126,9 @@ export default function Leadership() {
                       className="flex justify-between gap-3 pb-3 border-b border-slate-800/80 last:border-0 last:pb-0"
                     >
                       <span className="text-slate-400 shrink-0">{row.label}</span>
-                      <span className="text-slate-200 text-right font-medium">{row.value}</span>
+                      <span className="text-slate-200 text-right font-medium">
+                        {row.value}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -147,17 +155,30 @@ export default function Leadership() {
 
               <div className="space-y-4 text-sm sm:text-base text-[#586477] leading-relaxed mb-8">
                 <p>
-                  Ujjwal Roy is the Founder and Director of Bengal News Service PR &amp; Consultancy Private Limited.
-                  A veteran journalist and media professional, he brings decades of experience spanning some of India’s most demanding and significant reporting environments.
+                  Ujjwal Roy is the Founder and Director of Bengal News Service PR &amp;
+                  Consultancy Private Limited. A veteran journalist and media
+                  professional, he brings decades of experience spanning some of India’s
+                  most demanding and significant reporting environments.
                 </p>
                 <p>
-                  His journalistic career encompasses comprehensive coverage of parliamentary affairs — reporting from the corridors of India’s Parliament on debates, legislation, and the policy decisions that shape national affairs. This experience provides an authoritative understanding of the intersection between politics, governance, and media.
+                  His journalistic career encompasses comprehensive coverage of
+                  parliamentary affairs — reporting from the corridors of India’s
+                  Parliament on debates, legislation, and the policy decisions that shape
+                  national affairs. This experience provides an authoritative
+                  understanding of the intersection between politics, governance, and
+                  media.
                 </p>
                 <p>
-                  His background includes extensive political coverage across West Bengal and nationally — tracking electoral politics, party dynamics, and the socio-political currents of modern India. His professional assignments have covered state-level Bengal politics as well as national and international developments.
+                  His background includes extensive political coverage across West Bengal
+                  and nationally — tracking electoral politics, party dynamics, and the
+                  socio-political currents of modern India. His professional assignments
+                  have covered state-level Bengal politics as well as national and
+                  international developments.
                 </p>
                 <p>
-                  With extensive media relations expertise and professional networks built across years in journalism, Ujjwal Roy leads BNS with an emphasis on editorial credibility and disciplined communications consultancy.
+                  With extensive media relations expertise and professional networks built
+                  across years in journalism, Ujjwal Roy leads BNS with an emphasis on
+                  editorial credibility and disciplined communications consultancy.
                 </p>
               </div>
 
@@ -178,13 +199,15 @@ export default function Leadership() {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
       {/* ── KEY EXPERIENCE (6 Cards) ─────────────────── */}
-      <section className="bg-[#FAF9F6] py-16 sm:py-20 border-b border-slate-200" aria-label="Experience Highlights">
+      <section
+        className="bg-[#FAF9F6] py-16 sm:py-20 border-b border-slate-200"
+        aria-label="Experience Highlights"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
@@ -194,7 +217,8 @@ export default function Leadership() {
               Key Experience &amp; Expertise
             </h2>
             <p className="text-sm text-[#586477] mt-2 max-w-xl mx-auto">
-              Foundational journalism experience informing our corporate communications strategy.
+              Foundational journalism experience informing our corporate communications
+              strategy.
             </p>
           </div>
 
@@ -220,20 +244,21 @@ export default function Leadership() {
       </section>
 
       {/* ── QUOTATION SECTION (Balanced Proportions) ─── */}
-      <section className="bg-[#0B1120] text-white py-16 sm:py-20" aria-label="Director Perspective">
+      <section
+        className="bg-[#0B1120] text-white py-16 sm:py-20"
+        aria-label="Director Perspective"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Quote size={36} className="text-[#D4AF55]/60 mx-auto mb-4" />
 
           <blockquote className="font-serif italic text-lg sm:text-xl lg:text-2xl text-[#FAF9F6] leading-relaxed mb-6 font-normal">
-            &ldquo;Bengal has a story that deserves to be told with depth, accuracy, and pride.
-            BNS is our commitment to telling that story — and to helping others communicate
-            their stories with the professionalism they deserve.&rdquo;
+            &ldquo;Bengal has a story that deserves to be told with depth, accuracy, and
+            pride. BNS is our commitment to telling that story — and to helping others
+            communicate their stories with the professionalism they deserve.&rdquo;
           </blockquote>
 
           <div className="pt-4 border-t border-slate-800">
-            <p className="font-serif font-bold text-base text-[#FAF9F6]">
-              Ujjwal Roy
-            </p>
+            <p className="font-serif font-bold text-base text-[#FAF9F6]">Ujjwal Roy</p>
             <p className="text-xs text-[#D4AF55] mt-0.5">
               Founder &amp; Director, Bengal News Service PR &amp; Consultancy Pvt. Ltd.
             </p>
@@ -248,7 +273,8 @@ export default function Leadership() {
             Work With an Experienced Media Professional
           </h2>
           <p className="text-[#586477] text-sm sm:text-base mb-8">
-            Get in touch to discuss how BNS can support your media, PR, or communications objectives.
+            Get in touch to discuss how BNS can support your media, PR, or communications
+            objectives.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

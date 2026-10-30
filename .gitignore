@@ -1,24 +1,21 @@
 # ==============================================================================
 # BNS Project — Root .gitignore
-# Covers both /frontend and /backend applications and development environments
+# Covers static frontend application and development environments
 # ==============================================================================
 
 # Dependencies
 node_modules/
 frontend/node_modules/
-backend/node_modules/
 .pnp
 .pnp.js
 
 # Production build outputs & caches
 dist/
 frontend/dist/
-backend/dist/
 build/
 coverage/
 .vite/
 frontend/.vite/
-backend/.vite/
 .cache/
 tmp/
 temp/
@@ -30,9 +27,6 @@ temp/
 frontend/.env
 frontend/.env.*
 !frontend/.env.example
-backend/.env
-backend/.env.*
-!backend/.env.example
 
 # Private certificates, keys, & credentials
 *.pem

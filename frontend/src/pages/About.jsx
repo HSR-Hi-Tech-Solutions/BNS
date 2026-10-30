@@ -86,7 +86,10 @@ export default function About() {
       </section>
 
       {/* ── COMPANY INTRODUCTION ────────────────────────── */}
-      <section className="bg-[#FAF9F6] py-16 sm:py-20 border-b border-slate-200" aria-label="Company Overview">
+      <section
+        className="bg-[#FAF9F6] py-16 sm:py-20 border-b border-slate-200"
+        aria-label="Company Overview"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
             {/* Left Narrative */}
@@ -99,19 +102,22 @@ export default function About() {
               </h2>
 
               <p className="text-base sm:text-lg text-[#263247] font-medium leading-relaxed mb-5 border-l-2 border-[#D4AF55] pl-4">
-                Bengal News Service PR &amp; Consultancy Private Limited (BNS) is an incorporated
-                enterprise in West Bengal, India, combining newsroom journalistic rigor with strategic communications counsel.
+                Bengal News Service PR &amp; Consultancy Private Limited (BNS) is an
+                incorporated enterprise in West Bengal, India, combining newsroom
+                journalistic rigor with strategic communications counsel.
               </p>
 
               <div className="space-y-4 text-sm sm:text-base text-[#586477] leading-relaxed mb-8">
                 <p>
-                  We operate across digital media publishing, public relations, corporate communications,
-                  and media consultancy. Our platform reports on West Bengal&apos;s affairs, politics, economy,
-                  and society, with a pan-India perspective on national developments.
+                  We operate across digital media publishing, public relations, corporate
+                  communications, and media consultancy. Our platform reports on West
+                  Bengal&apos;s affairs, politics, economy, and society, with a pan-India
+                  perspective on national developments.
                 </p>
                 <p>
-                  Founded on a commitment to editorial integrity and communications excellence,
-                  BNS brings together experienced journalists and communications professionals to serve both audiences and clients.
+                  Founded on a commitment to editorial integrity and communications
+                  excellence, BNS brings together experienced journalists and
+                  communications professionals to serve both audiences and clients.
                 </p>
               </div>
 
@@ -149,7 +155,10 @@ export default function About() {
 
                 <div className="space-y-3.5 text-xs sm:text-sm">
                   {[
-                    { label: 'Company Name', value: 'Bengal News Service PR & Consultancy Private Limited' },
+                    {
+                      label: 'Company Name',
+                      value: 'Bengal News Service PR & Consultancy Private Limited',
+                    },
                     { label: 'Brand', value: 'BNS — Bengal News Service' },
                     { label: 'CIN', value: COMPANY.cin },
                     { label: 'State', value: 'West Bengal, India' },
@@ -160,7 +169,9 @@ export default function About() {
                       className="flex justify-between gap-3 pb-3 border-b border-slate-100 last:border-0 last:pb-0"
                     >
                       <span className="text-slate-400 shrink-0">{row.label}</span>
-                      <span className="font-medium text-[#0B1120] text-right">{row.value}</span>
+                      <span className="font-medium text-[#0B1120] text-right">
+                        {row.value}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -171,7 +182,10 @@ export default function About() {
       </section>
 
       {/* ── VISION & MISSION (Identical Twin Cards) ─────── */}
-      <section className="bg-white py-16 sm:py-20 border-b border-slate-200" aria-label="Vision and Mission">
+      <section
+        className="bg-white py-16 sm:py-20 border-b border-slate-200"
+        aria-label="Vision and Mission"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
@@ -199,8 +213,9 @@ export default function About() {
                   Our Strategic Vision
                 </h3>
                 <p className="text-sm text-[#586477] leading-relaxed">
-                  To be the most trusted and impactful digital news and communications platform
-                  representing Bengal&apos;s voice with credibility, professional excellence, and national reach.
+                  To be the most trusted and impactful digital news and communications
+                  platform representing Bengal&apos;s voice with credibility, professional
+                  excellence, and national reach.
                 </p>
               </div>
               <div className="pt-6 mt-6 border-t border-slate-200/80 flex items-center gap-2 text-xs font-semibold text-[#D4AF55]">
@@ -223,7 +238,8 @@ export default function About() {
                 </h3>
                 <p className="text-sm text-[#586477] leading-relaxed">
                   To deliver responsible digital journalism while equipping businesses and
-                  organizations with newsroom-informed PR, communications, and marketing solutions that generate real trust.
+                  organizations with newsroom-informed PR, communications, and marketing
+                  solutions that generate real trust.
                 </p>
               </div>
               <div className="pt-6 mt-6 border-t border-slate-200/80 flex items-center gap-2 text-xs font-semibold text-[#D4AF55]">
@@ -236,7 +252,10 @@ export default function About() {
       </section>
 
       {/* ── BUSINESS POSITIONING (6 Pillars) ──────────── */}
-      <section className="bg-[#FAF9F6] py-16 sm:py-20 border-b border-slate-200" aria-label="Business Positioning">
+      <section
+        className="bg-[#FAF9F6] py-16 sm:py-20 border-b border-slate-200"
+        aria-label="Business Positioning"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
@@ -246,7 +265,8 @@ export default function About() {
               Our Business Positioning
             </h2>
             <p className="text-sm text-[#586477] mt-2 max-w-xl mx-auto">
-              What sets BNS apart in the regional media and corporate communications sector.
+              What sets BNS apart in the regional media and corporate communications
+              sector.
             </p>
           </div>
 
@@ -272,7 +292,10 @@ export default function About() {
       </section>
 
       {/* ── REGIONAL & NATIONAL FOCUS ─────────────────── */}
-      <section className="bg-white py-16 sm:py-20 border-b border-slate-200" aria-label="Regional Focus">
+      <section
+        className="bg-white py-16 sm:py-20 border-b border-slate-200"
+        aria-label="Regional Focus"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-6">
@@ -283,8 +306,10 @@ export default function About() {
                 West Bengal &amp; Wider Indian Developments
               </h2>
               <p className="text-sm sm:text-base text-[#586477] leading-relaxed mb-6">
-                West Bengal is one of India&apos;s most politically significant and culturally rich states.
-                BNS brings authentic, in-depth coverage of Bengal’s affairs while contextualizing them within broader national and international developments.
+                West Bengal is one of India&apos;s most politically significant and
+                culturally rich states. BNS brings authentic, in-depth coverage of
+                Bengal’s affairs while contextualizing them within broader national and
+                international developments.
               </p>
 
               <div className="flex flex-wrap gap-2">
@@ -308,8 +333,9 @@ export default function About() {
                   Multi-Format &amp; Multi-Language
                 </h3>
                 <p className="text-slate-300 text-sm leading-relaxed mb-6">
-                  Serving diverse audiences across English and Bengali through online articles,
-                  video reporting, podcasts, and digital broadcasts tailored to modern information consumption.
+                  Serving diverse audiences across English and Bengali through online
+                  articles, video reporting, podcasts, and digital broadcasts tailored to
+                  modern information consumption.
                 </p>
                 <div className="space-y-3 pt-5 border-t border-slate-800 text-xs text-slate-300">
                   <div className="flex items-center gap-2">
@@ -334,7 +360,8 @@ export default function About() {
             Explore What BNS Offers
           </h2>
           <p className="text-slate-300 text-sm sm:text-base mb-8">
-            Discover our full range of services or get in touch for a business consultation.
+            Discover our full range of services or get in touch for a business
+            consultation.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

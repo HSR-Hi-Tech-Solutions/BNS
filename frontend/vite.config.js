@@ -14,12 +14,6 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3001',
-        changeOrigin: true,
-      },
-    },
   },
   build: {
     outDir: 'dist',
@@ -27,14 +21,15 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/react-router-dom')) {
+          if (
+            id.includes('node_modules/react') ||
+            id.includes('node_modules/react-dom') ||
+            id.includes('node_modules/react-router-dom')
+          ) {
             return 'vendor';
           }
-          if (id.includes('node_modules/antd') || id.includes('node_modules/@ant-design')) {
-            return 'antd';
-          }
-          if (id.includes('node_modules/framer-motion')) {
-            return 'motion';
+          if (id.includes('node_modules/lucide-react')) {
+            return 'lucide';
           }
         },
       },

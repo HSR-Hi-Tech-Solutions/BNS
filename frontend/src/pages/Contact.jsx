@@ -70,6 +70,7 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (status === 'loading') return;
     setServerError('');
 
     const validationErrors = validateContactForm(form);
@@ -89,6 +90,7 @@ export default function Contact() {
         phone: sanitizeInput(form.phone),
         organization: sanitizeInput(form.organization),
         service: sanitizeInput(form.service),
+        subject: sanitizeInput(form.service) || 'General Enquiry',
         message: sanitizeInput(form.message),
       };
       await contactService.submit(payload);
@@ -121,16 +123,19 @@ export default function Contact() {
             Contact BNS
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            For business enquiries, media partnerships, PR projects, or general information — we would love to hear from you.
+            For business enquiries, media partnerships, PR projects, or general
+            information — we would love to hear from you.
           </p>
         </div>
       </section>
 
       {/* ── CONTACT FORM & INFORMATION ────────────────── */}
-      <section className="bg-white py-16 sm:py-20 border-b border-slate-200" aria-label="Contact Section">
+      <section
+        className="bg-white py-16 sm:py-20 border-b border-slate-200"
+        aria-label="Contact Section"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
-
             {/* Left Column: Contact Information */}
             <div className="lg:col-span-5">
               <div className="bg-[#0B1120] border border-slate-800 rounded-2xl p-8 text-white shadow-xl">
@@ -182,9 +187,7 @@ export default function Contact() {
                       <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
                         Response Turnaround
                       </p>
-                      <p className="text-white text-sm">
-                        Within 2 business days
-                      </p>
+                      <p className="text-white text-sm">Within 2 business days</p>
                     </div>
                   </div>
                 </div>
@@ -210,7 +213,8 @@ export default function Contact() {
                     Message Sent Successfully
                   </h2>
                   <p className="text-[#586477] max-w-md mx-auto mb-8 text-sm leading-relaxed">
-                    Thank you for your enquiry. Our team will review your message and respond within 2 business days.
+                    Thank you for your enquiry. Our team will review your message and
+                    respond within 2 business days.
                   </p>
                   <button
                     onClick={resetForm}
@@ -233,7 +237,8 @@ export default function Contact() {
                     Send Us a Message
                   </h2>
                   <p className="text-xs sm:text-sm text-[#586477] mb-7">
-                    All fields marked <span className="text-[#8E252B] font-bold">*</span> are required.
+                    All fields marked <span className="text-[#8E252B] font-bold">*</span>{' '}
+                    are required.
                   </p>
 
                   {serverError && (
@@ -249,7 +254,10 @@ export default function Contact() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                     {/* Full Name */}
                     <div>
-                      <label htmlFor="name" className="block text-xs font-semibold text-[#0B1120] mb-1.5">
+                      <label
+                        htmlFor="name"
+                        className="block text-xs font-semibold text-[#0B1120] mb-1.5"
+                      >
                         Full Name <span className="text-[#8E252B]">*</span>
                       </label>
                       <input
@@ -259,7 +267,9 @@ export default function Contact() {
                         value={form.name}
                         onChange={handleChange}
                         className={`w-full px-3.5 py-2.5 rounded-md border text-sm text-[#263247] bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1120] ${
-                          errors.name ? 'border-red-500 ring-1 ring-red-500' : 'border-slate-300'
+                          errors.name
+                            ? 'border-red-500 ring-1 ring-red-500'
+                            : 'border-slate-300'
                         }`}
                         placeholder="Your full name"
                         autoComplete="name"
@@ -267,7 +277,11 @@ export default function Contact() {
                         aria-invalid={!!errors.name}
                       />
                       {errors.name && (
-                        <p id="name-error" className="text-red-600 text-xs mt-1" role="alert">
+                        <p
+                          id="name-error"
+                          className="text-red-600 text-xs mt-1"
+                          role="alert"
+                        >
                           {errors.name}
                         </p>
                       )}
@@ -275,7 +289,10 @@ export default function Contact() {
 
                     {/* Email */}
                     <div>
-                      <label htmlFor="email" className="block text-xs font-semibold text-[#0B1120] mb-1.5">
+                      <label
+                        htmlFor="email"
+                        className="block text-xs font-semibold text-[#0B1120] mb-1.5"
+                      >
                         Email Address <span className="text-[#8E252B]">*</span>
                       </label>
                       <input
@@ -285,7 +302,9 @@ export default function Contact() {
                         value={form.email}
                         onChange={handleChange}
                         className={`w-full px-3.5 py-2.5 rounded-md border text-sm text-[#263247] bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1120] ${
-                          errors.email ? 'border-red-500 ring-1 ring-red-500' : 'border-slate-300'
+                          errors.email
+                            ? 'border-red-500 ring-1 ring-red-500'
+                            : 'border-slate-300'
                         }`}
                         placeholder="you@example.com"
                         autoComplete="email"
@@ -293,7 +312,11 @@ export default function Contact() {
                         aria-invalid={!!errors.email}
                       />
                       {errors.email && (
-                        <p id="email-error" className="text-red-600 text-xs mt-1" role="alert">
+                        <p
+                          id="email-error"
+                          className="text-red-600 text-xs mt-1"
+                          role="alert"
+                        >
                           {errors.email}
                         </p>
                       )}
@@ -301,8 +324,14 @@ export default function Contact() {
 
                     {/* Phone */}
                     <div>
-                      <label htmlFor="phone" className="block text-xs font-semibold text-[#0B1120] mb-1.5">
-                        Phone Number <span className="text-slate-400 font-normal text-xs">(optional)</span>
+                      <label
+                        htmlFor="phone"
+                        className="block text-xs font-semibold text-[#0B1120] mb-1.5"
+                      >
+                        Phone Number{' '}
+                        <span className="text-slate-400 font-normal text-xs">
+                          (optional)
+                        </span>
                       </label>
                       <input
                         id="phone"
@@ -311,7 +340,9 @@ export default function Contact() {
                         value={form.phone}
                         onChange={handleChange}
                         className={`w-full px-3.5 py-2.5 rounded-md border text-sm text-[#263247] bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1120] ${
-                          errors.phone ? 'border-red-500 ring-1 ring-red-500' : 'border-slate-300'
+                          errors.phone
+                            ? 'border-red-500 ring-1 ring-red-500'
+                            : 'border-slate-300'
                         }`}
                         placeholder="+91 XXXXX XXXXX"
                         autoComplete="tel"
@@ -319,7 +350,11 @@ export default function Contact() {
                         aria-invalid={!!errors.phone}
                       />
                       {errors.phone && (
-                        <p id="phone-error" className="text-red-600 text-xs mt-1" role="alert">
+                        <p
+                          id="phone-error"
+                          className="text-red-600 text-xs mt-1"
+                          role="alert"
+                        >
                           {errors.phone}
                         </p>
                       )}
@@ -327,8 +362,14 @@ export default function Contact() {
 
                     {/* Organization */}
                     <div>
-                      <label htmlFor="organization" className="block text-xs font-semibold text-[#0B1120] mb-1.5">
-                        Organisation <span className="text-slate-400 font-normal text-xs">(optional)</span>
+                      <label
+                        htmlFor="organization"
+                        className="block text-xs font-semibold text-[#0B1120] mb-1.5"
+                      >
+                        Organisation{' '}
+                        <span className="text-slate-400 font-normal text-xs">
+                          (optional)
+                        </span>
                       </label>
                       <input
                         id="organization"
@@ -345,8 +386,14 @@ export default function Contact() {
 
                   {/* Service Selection */}
                   <div className="mb-5">
-                    <label htmlFor="service" className="block text-xs font-semibold text-[#0B1120] mb-1.5">
-                      Service of Interest <span className="text-slate-400 font-normal text-xs">(optional)</span>
+                    <label
+                      htmlFor="service"
+                      className="block text-xs font-semibold text-[#0B1120] mb-1.5"
+                    >
+                      Service of Interest{' '}
+                      <span className="text-slate-400 font-normal text-xs">
+                        (optional)
+                      </span>
                     </label>
                     <select
                       id="service"
@@ -369,7 +416,10 @@ export default function Contact() {
 
                   {/* Message */}
                   <div className="mb-6">
-                    <label htmlFor="message" className="block text-xs font-semibold text-[#0B1120] mb-1.5">
+                    <label
+                      htmlFor="message"
+                      className="block text-xs font-semibold text-[#0B1120] mb-1.5"
+                    >
                       Message <span className="text-[#8E252B]">*</span>
                     </label>
                     <textarea
@@ -379,7 +429,9 @@ export default function Contact() {
                       onChange={handleChange}
                       rows={5}
                       className={`w-full px-3.5 py-2.5 rounded-md border text-sm text-[#263247] bg-white focus:outline-none focus:ring-2 focus:ring-[#0B1120] ${
-                        errors.message ? 'border-red-500 ring-1 ring-red-500' : 'border-slate-300'
+                        errors.message
+                          ? 'border-red-500 ring-1 ring-red-500'
+                          : 'border-slate-300'
                       }`}
                       placeholder="Please describe your requirements or enquiry..."
                       aria-describedby={errors.message ? 'message-error' : 'message-hint'}
@@ -393,9 +445,7 @@ export default function Contact() {
                       ) : (
                         <span />
                       )}
-                      <span className="text-slate-400">
-                        {form.message.length}/2000
-                      </span>
+                      <span className="text-slate-400">{form.message.length}/2000</span>
                     </div>
                   </div>
 
@@ -420,7 +470,10 @@ export default function Contact() {
 
                   <p className="text-slate-400 text-xs mt-4 leading-relaxed">
                     By submitting this form you agree to our{' '}
-                    <a href="/privacy-policy" className="text-[#0B1120] underline hover:text-[#D4AF55]">
+                    <a
+                      href="/privacy-policy"
+                      className="text-[#0B1120] underline hover:text-[#D4AF55]"
+                    >
                       Privacy Policy
                     </a>
                     . We will only use your information to respond to your enquiry.
@@ -428,13 +481,15 @@ export default function Contact() {
                 </form>
               )}
             </div>
-
           </div>
         </div>
       </section>
 
       {/* ── FREQUENTLY ASKED QUESTIONS ────────────────── */}
-      <section className="bg-[#FAF9F6] py-16 sm:py-20" aria-label="Frequently Asked Questions">
+      <section
+        className="bg-[#FAF9F6] py-16 sm:py-20"
+        aria-label="Frequently Asked Questions"
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
@@ -457,7 +512,10 @@ export default function Contact() {
                 <summary className="flex items-center justify-between gap-4 cursor-pointer list-none font-semibold text-sm sm:text-base text-[#0B1120] hover:text-[#D4AF55] transition-colors select-none">
                   <span>{q}</span>
                   <div className="w-6 h-6 rounded-full flex items-center justify-center bg-slate-100 group-open:bg-[#0B1120] group-open:text-white transition-colors shrink-0">
-                    <ChevronDown size={14} className="transition-transform duration-200 group-open:rotate-180" />
+                    <ChevronDown
+                      size={14}
+                      className="transition-transform duration-200 group-open:rotate-180"
+                    />
                   </div>
                 </summary>
                 <div className="text-xs sm:text-sm text-[#586477] leading-relaxed pt-3 border-t border-slate-100 mt-3">
