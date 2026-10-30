@@ -15,19 +15,19 @@ export default function NotFound() {
     <div className="min-h-screen bg-[#0B1120] text-white flex flex-col items-center justify-center px-4 py-24 text-center">
       <div className="max-w-lg mx-auto">
         <img
-          src="/bns-logo-icon.png"
+          src="/favicon.png"
           alt="BNS"
           className="h-12 w-auto mx-auto mb-6 opacity-90"
         />
 
-        <div className="font-serif font-bold text-7xl sm:text-8xl text-[#D4AF55] leading-none mb-4 select-none">
+        <div className="font-display font-bold text-7xl sm:text-8xl text-[#D4AF55] leading-none mb-4 select-none">
           404
         </div>
 
         <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55] mb-2 block">
           Error
         </span>
-        <h1 className="font-serif font-bold text-2xl sm:text-3xl text-[#FAF9F6] mb-4">
+        <h1 className="font-display font-bold text-2xl sm:text-3xl text-[#FAF9F6] mb-4">
           Page Not Found
         </h1>
         <p className="text-slate-300 text-sm leading-relaxed mb-8">

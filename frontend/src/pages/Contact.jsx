@@ -119,7 +119,7 @@ export default function Contact() {
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55] mb-3 block">
             Get in Touch
           </span>
-          <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-[#FAF9F6] mb-4">
+          <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-[#FAF9F6] mb-4">
             Contact BNS
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -142,7 +142,7 @@ export default function Contact() {
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D4AF55] block mb-2">
                   Communication
                 </span>
-                <h2 className="font-serif font-bold text-2xl text-[#FAF9F6] mb-2">
+                <h2 className="font-display font-bold text-2xl text-[#FAF9F6] mb-2">
                   Contact Information
                 </h2>
                 <p className="text-slate-300 text-sm leading-relaxed mb-8">
@@ -209,7 +209,7 @@ export default function Contact() {
                   <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-6">
                     <CheckCircle size={32} />
                   </div>
-                  <h2 className="font-serif font-bold text-2xl text-[#0B1120] mb-3">
+                  <h2 className="font-display font-bold text-2xl text-[#0B1120] mb-3">
                     Message Sent Successfully
                   </h2>
                   <p className="text-[#586477] max-w-md mx-auto mb-8 text-sm leading-relaxed">
@@ -233,7 +233,7 @@ export default function Contact() {
                   <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
                     Message Form
                   </span>
-                  <h2 className="font-serif font-bold text-2xl text-[#0B1120] mb-2">
+                  <h2 className="font-display font-bold text-2xl text-[#0B1120] mb-2">
                     Send Us a Message
                   </h2>
                   <p className="text-xs sm:text-sm text-[#586477] mb-7">
@@ -495,7 +495,7 @@ export default function Contact() {
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
               Common Inquiries
             </span>
-            <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#0B1120]">
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#0B1120]">
               Frequently Asked Questions
             </h2>
             <p className="text-sm text-[#586477] mt-2">

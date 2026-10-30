@@ -11,7 +11,7 @@ const today = new Date().toLocaleDateString('en-IN', {
 function Section({ title, children }) {
   return (
     <div className="space-y-3 pt-6 border-t border-slate-200 first:border-t-0 first:pt-0">
-      <h2 className="font-serif font-bold text-xl sm:text-2xl text-[#0B1120]">{title}</h2>
+      <h2 className="font-display font-bold text-xl sm:text-2xl text-[#0B1120]">{title}</h2>
       <div className="space-y-3 text-sm sm:text-base text-[#586477] leading-relaxed">
         {children}
       </div>
@@ -36,7 +36,7 @@ export default function Terms() {
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55] mb-3 block">
             Terms of Use
           </span>
-          <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-[#FAF9F6] mb-4">
+          <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-[#FAF9F6] mb-4">
             Terms &amp; Conditions
           </h1>
           <p className="text-slate-400 text-xs sm:text-sm">

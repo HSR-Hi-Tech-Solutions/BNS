@@ -6,11 +6,11 @@ import path from 'node:path';
 const projectRoot = path.resolve('.');
 
 test('Asset verification - logos exist and are valid files', () => {
-  const iconLogo = path.join(projectRoot, 'public', 'bns-logo-icon.png');
-  const fullLogo = path.join(projectRoot, 'public', 'bns-logo-full.png');
+  const iconLogo = path.join(projectRoot, 'public', 'favicon.png');
+  const fullLogo = path.join(projectRoot, 'public', 'logo.png');
 
-  assert.ok(fs.existsSync(iconLogo), 'bns-logo-icon.png exists');
-  assert.ok(fs.existsSync(fullLogo), 'bns-logo-full.png exists');
+  assert.ok(fs.existsSync(iconLogo), 'favicon.png exists');
+  assert.ok(fs.existsSync(fullLogo), 'logo.png exists');
 
   const iconStat = fs.statSync(iconLogo);
   const fullStat = fs.statSync(fullLogo);

@@ -75,7 +75,7 @@ export default function About() {
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55] mb-3 block">
             About BNS
           </span>
-          <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-[#FAF9F6] mb-4">
+          <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-[#FAF9F6] mb-4">
             Our Story &amp; Purpose
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -97,7 +97,7 @@ export default function About() {
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
                 Company Overview
               </span>
-              <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0B1120] mb-5 leading-tight">
+              <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0B1120] mb-5 leading-tight">
                 Bengal News Service PR &amp; Consultancy Pvt. Ltd.
               </h2>
 
@@ -144,7 +144,7 @@ export default function About() {
                 <div className="flex items-center gap-3 pb-4 mb-5 border-b border-slate-100">
                   <ShieldCheck size={24} className="text-[#D4AF55] shrink-0" />
                   <div>
-                    <h3 className="font-serif font-bold text-lg text-[#0B1120] leading-tight">
+                    <h3 className="font-display font-bold text-lg text-[#0B1120] leading-tight">
                       Statutory Details
                     </h3>
                     <p className="text-xs text-slate-400 mt-0.5">
@@ -191,7 +191,7 @@ export default function About() {
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
               Foundational Direction
             </span>
-            <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#0B1120]">
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#0B1120]">
               Our Vision &amp; Mission
             </h2>
             <p className="text-sm text-[#586477] mt-2 max-w-xl mx-auto">
@@ -209,7 +209,7 @@ export default function About() {
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D4AF55] block mb-1">
                   Vision
                 </span>
-                <h3 className="font-serif font-bold text-xl text-[#0B1120] mb-3">
+                <h3 className="font-display font-bold text-xl text-[#0B1120] mb-3">
                   Our Strategic Vision
                 </h3>
                 <p className="text-sm text-[#586477] leading-relaxed">
@@ -233,7 +233,7 @@ export default function About() {
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D4AF55] block mb-1">
                   Mission
                 </span>
-                <h3 className="font-serif font-bold text-xl text-[#0B1120] mb-3">
+                <h3 className="font-display font-bold text-xl text-[#0B1120] mb-3">
                   Our Daily Mission
                 </h3>
                 <p className="text-sm text-[#586477] leading-relaxed">
@@ -261,7 +261,7 @@ export default function About() {
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
               Strategic Advantages
             </span>
-            <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#0B1120]">
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#0B1120]">
               Our Business Positioning
             </h2>
             <p className="text-sm text-[#586477] mt-2 max-w-xl mx-auto">
@@ -279,7 +279,7 @@ export default function About() {
                 <div className="w-11 h-11 rounded-lg bg-slate-100 text-[#0B1120] flex items-center justify-center mb-5">
                   <Icon size={20} />
                 </div>
-                <h3 className="font-serif font-bold text-lg text-[#0B1120] mb-2">
+                <h3 className="font-display font-bold text-lg text-[#0B1120] mb-2">
                   {title}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#586477] leading-relaxed">
@@ -302,7 +302,7 @@ export default function About() {
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
                 Regional Focus
               </span>
-              <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#0B1120] mb-5">
+              <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#0B1120] mb-5">
                 West Bengal &amp; Wider Indian Developments
               </h2>
               <p className="text-sm sm:text-base text-[#586477] leading-relaxed mb-6">
@@ -329,7 +329,7 @@ export default function About() {
                 <span className="text-xs font-bold uppercase tracking-wider text-[#D4AF55] block mb-2">
                   Content Architecture
                 </span>
-                <h3 className="font-serif font-bold text-2xl text-[#FAF9F6] mb-4">
+                <h3 className="font-display font-bold text-2xl text-[#FAF9F6] mb-4">
                   Multi-Format &amp; Multi-Language
                 </h3>
                 <p className="text-slate-300 text-sm leading-relaxed mb-6">
@@ -356,7 +356,7 @@ export default function About() {
       {/* ── CALL TO ACTION ────────────────────────────── */}
       <section className="bg-[#0B1120] text-white py-16 text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#FAF9F6] mb-4">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#FAF9F6] mb-4">
             Explore What BNS Offers
           </h2>
           <p className="text-slate-300 text-sm sm:text-base mb-8">

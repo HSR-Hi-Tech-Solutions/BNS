@@ -56,12 +56,12 @@ export default function Home() {
               </div>
 
               {/* Both phrases have high-contrast text */}
-              <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#FAF9F6] leading-[1.16] tracking-tight mb-5">
+              <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#FAF9F6] leading-[1.16] tracking-tight mb-5">
                 Voice of Bengal.{' '}
                 <span className="text-[#D4AF55] block sm:inline">Vision for Bharat.</span>
               </h1>
 
-              <p className="font-serif italic text-slate-300 text-lg sm:text-xl mb-5">
+              <p className="font-display italic text-slate-300 text-lg sm:text-xl mb-5">
                 Bengal News Service PR &amp; Consultancy Private Limited
               </p>
 
@@ -94,12 +94,12 @@ export default function Home() {
                 {/* Brand header */}
                 <div className="flex items-center gap-4 pb-6 border-b border-slate-700/60 mb-6">
                   <img
-                    src="/bns-logo-icon.png"
+                    src="/favicon.png"
                     alt="Bengal News Service logo"
                     className="h-12 sm:h-14 w-auto object-contain shrink-0"
                   />
                   <div>
-                    <h2 className="font-serif font-bold text-lg sm:text-xl text-[#FAF9F6] leading-tight">
+                    <h2 className="font-display font-bold text-lg sm:text-xl text-[#FAF9F6] leading-tight">
                       Bengal News Service
                     </h2>
                     <p className="text-xs font-semibold text-[#D4AF55] tracking-widest uppercase mt-1">
@@ -175,7 +175,7 @@ export default function Home() {
                   Company Overview
                 </span>
               </div>
-              <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0B1120] leading-tight mb-5">
+              <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0B1120] leading-tight mb-5">
                 A New Voice for Bengal and Bharat
               </h2>
 
@@ -228,7 +228,7 @@ export default function Home() {
                     <span className="text-[11px] font-bold uppercase tracking-wider text-[#D4AF55]">
                       Vision
                     </span>
-                    <h3 className="font-serif font-bold text-lg text-[#0B1120]">
+                    <h3 className="font-display font-bold text-lg text-[#0B1120]">
                       Our Strategic Vision
                     </h3>
                   </div>
@@ -250,7 +250,7 @@ export default function Home() {
                     <span className="text-[11px] font-bold uppercase tracking-wider text-[#D4AF55]">
                       Mission
                     </span>
-                    <h3 className="font-serif font-bold text-lg text-[#0B1120]">
+                    <h3 className="font-display font-bold text-lg text-[#0B1120]">
                       Our Core Mission
                     </h3>
                   </div>
@@ -306,7 +306,7 @@ export default function Home() {
                   What We Offer
                 </span>
               </div>
-              <h2 className="font-serif font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0B1120]">
+              <h2 className="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-[#0B1120]">
                 Our Core Practice Areas
               </h2>
               <p className="text-[#586477] text-sm sm:text-base mt-2 max-w-xl">
@@ -338,12 +338,12 @@ export default function Home() {
                       <div className="w-11 h-11 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-[#0B1120]">
                         <Icon size={20} />
                       </div>
-                      <span className="font-serif font-bold text-xs tracking-widest text-[#D4AF55]">
+                      <span className="font-display font-bold text-xs tracking-widest text-[#D4AF55]">
                         0{idx + 1}
                       </span>
                     </div>
 
-                    <h3 className="font-serif font-bold text-lg text-[#0B1120] mb-2 leading-snug">
+                    <h3 className="font-display font-bold text-lg text-[#0B1120] mb-2 leading-snug">
                       {service.title}
                     </h3>
 
@@ -393,14 +393,14 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               {/* Left Column: Director Medallion & Role */}
               <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left border-b lg:border-b-0 lg:border-r border-slate-700/60 pb-8 lg:pb-0 lg:pr-8">
-                <div className="w-20 h-20 rounded-full border-2 border-[#D4AF55] bg-[#0B1120] flex items-center justify-center text-[#D4AF55] font-serif font-bold text-2xl shadow-inner mb-4">
+                <div className="w-20 h-20 rounded-full border-2 border-[#D4AF55] bg-[#0B1120] flex items-center justify-center text-[#D4AF55] font-display font-bold text-2xl shadow-inner mb-4">
                   UR
                 </div>
 
                 <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55] mb-1">
                   Executive Direction
                 </span>
-                <h3 className="font-serif font-bold text-2xl text-[#FAF9F6]">
+                <h3 className="font-display font-bold text-2xl text-[#FAF9F6]">
                   Ujjwal Roy
                 </h3>
                 <p className="text-xs font-semibold text-[#D4AF55] uppercase tracking-wider mt-0.5 mb-3">
@@ -441,14 +441,14 @@ export default function Home() {
               <div className="lg:col-span-7">
                 <Quote size={32} className="text-[#D4AF55]/60 mb-4" />
 
-                <blockquote className="font-serif italic text-lg sm:text-xl lg:text-2xl text-[#FAF9F6] leading-relaxed mb-6 font-normal">
+                <blockquote className="font-display italic text-lg sm:text-xl lg:text-2xl text-[#FAF9F6] leading-relaxed mb-6 font-normal">
                   &ldquo;Bengal has a story that deserves to be told with depth, accuracy,
                   and pride. BNS is our commitment to telling that story — and to helping
                   institutions communicate with the credibility they deserve.&rdquo;
                 </blockquote>
 
                 <div className="pt-4 border-t border-slate-700/60">
-                  <p className="font-serif font-bold text-base text-[#FAF9F6]">
+                  <p className="font-display font-bold text-base text-[#FAF9F6]">
                     Ujjwal Roy
                   </p>
                   <p className="text-xs text-[#D4AF55] mt-0.5">
@@ -473,7 +473,7 @@ export default function Home() {
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
               Institutional Strengths
             </span>
-            <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#0B1120]">
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#0B1120]">
               Why Work With BNS
             </h2>
             <p className="text-sm text-[#586477] mt-2 max-w-xl mx-auto">
@@ -514,7 +514,7 @@ export default function Home() {
                   <div className="w-12 h-12 rounded-xl bg-slate-100 text-[#0B1120] flex items-center justify-center mx-auto mb-4">
                     <Icon size={22} />
                   </div>
-                  <h3 className="font-serif font-bold text-base text-[#0B1120] mb-2">
+                  <h3 className="font-display font-bold text-base text-[#0B1120] mb-2">
                     {item.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-[#586477] leading-relaxed">
@@ -538,7 +538,7 @@ export default function Home() {
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55] mb-3 block">
             Engage Our Team
           </span>
-          <h2 className="font-serif font-bold text-3xl sm:text-4xl text-[#FAF9F6] mb-4">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl text-[#FAF9F6] mb-4">
             Ready to Work With Bengal News Service?
           </h2>
           <p className="text-slate-300 text-sm sm:text-base mb-8 max-w-2xl mx-auto leading-relaxed">

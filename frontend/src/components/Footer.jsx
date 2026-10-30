@@ -18,21 +18,13 @@ export default function Footer() {
             <Link
               to="/"
               aria-label="BNS home"
-              className="inline-flex items-center gap-3.5 mb-5 group"
+              className="inline-flex items-center mb-5 bg-[#FAF9F6] rounded-lg px-3 py-1.5"
             >
               <img
-                src="/bns-logo-icon.png"
-                alt="BNS logo"
-                className="h-10 w-auto object-contain shrink-0"
+                src="/logo.png"
+                alt="Bengal News Service — PR and Consultant Private Limited"
+                className="h-12 sm:h-14 w-auto object-contain"
               />
-              <div className="flex flex-col">
-                <span className="font-serif font-bold text-white text-lg tracking-tight leading-none">
-                  Bengal News Service
-                </span>
-                <span className="text-[10px] font-semibold text-[#D4AF55] tracking-[0.2em] uppercase leading-none mt-1">
-                  PR &amp; CONSULTANCY PVT. LTD.
-                </span>
-              </div>
             </Link>
 
             <p className="text-sm text-slate-400 leading-relaxed mb-5 max-w-md">
@@ -42,7 +34,7 @@ export default function Footer() {
               institutions.
             </p>
 
-            <p className="text-xs text-[#D4AF55] font-serif italic mb-6">
+            <p className="text-xs text-[#D4AF55] font-display italic mb-6">
               &ldquo;Voice of Bengal, Vision for Bharat&rdquo;
             </p>
 

@@ -22,7 +22,7 @@ function PageLoader() {
     <div className="min-h-screen bg-[#1a2744] flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
         <img
-          src="/bns-logo-icon.png"
+          src="/favicon.png"
           alt="Loading BNS…"
           className="h-12 w-auto animate-pulse"
         />

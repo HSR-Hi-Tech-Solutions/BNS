@@ -48,7 +48,7 @@ export default function Services() {
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55] mb-3 block">
             What We Do
           </span>
-          <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-[#FAF9F6] mb-4">
+          <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-[#FAF9F6] mb-4">
             Our Core Services
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -101,7 +101,7 @@ export default function Services() {
                         <div className="w-12 h-12 rounded-xl bg-[#D4AF55]/15 text-[#D4AF55] flex items-center justify-center">
                           <Icon size={24} />
                         </div>
-                        <span className="font-serif font-bold text-2xl text-slate-600">
+                        <span className="font-display font-bold text-2xl text-slate-600">
                           0{idx + 1}
                         </span>
                       </div>
@@ -109,7 +109,7 @@ export default function Services() {
                       <span className="text-xs font-bold uppercase tracking-wider text-[#D4AF55] block mb-2">
                         Practice Area 0{idx + 1}
                       </span>
-                      <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#FAF9F6] mb-4 leading-snug">
+                      <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#FAF9F6] mb-4 leading-snug">
                         {service.title}
                       </h2>
                       <p className="text-slate-300 text-sm leading-relaxed mb-8">
@@ -133,7 +133,7 @@ export default function Services() {
                       <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
                         Included Modules
                       </span>
-                      <h3 className="font-serif font-bold text-2xl text-[#0B1120] mb-2">
+                      <h3 className="font-display font-bold text-2xl text-[#0B1120] mb-2">
                         Service Scope &amp; Capabilities
                       </h3>
                       <p className="text-sm text-[#586477]">
@@ -181,7 +181,7 @@ export default function Services() {
       {/* ── CALL TO ACTION ────────────────────────────── */}
       <section className="bg-[#0B1120] text-white py-16 text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#FAF9F6] mb-4">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#FAF9F6] mb-4">
             Ready to Discuss Your Requirements?
           </h2>
           <p className="text-slate-300 text-sm sm:text-base mb-8">

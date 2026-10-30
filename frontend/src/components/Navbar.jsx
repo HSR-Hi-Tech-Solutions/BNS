@@ -64,22 +64,14 @@ export default function Navbar() {
           {/* Logo & Brand Identity */}
           <Link
             to="/"
-            className="flex items-center gap-3.5 shrink-0 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF55] rounded-md"
+            className="flex items-center shrink-0 bg-[#FAF9F6] rounded-lg px-2.5 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF55]"
             aria-label="BNS — Bengal News Service home"
           >
             <img
-              src="/bns-logo-icon.png"
-              alt="BNS emblem"
-              className="h-10 sm:h-11 w-auto object-contain shrink-0"
+              src="/logo.png"
+              alt="Bengal News Service — PR and Consultant Private Limited"
+              className="h-10 sm:h-12 w-auto object-contain"
             />
-            <div className="flex flex-col justify-center">
-              <span className="font-serif font-bold text-base sm:text-lg text-[#FAF9F6] tracking-tight leading-none">
-                Bengal News Service
-              </span>
-              <span className="text-[10px] sm:text-[11px] font-semibold text-[#D4AF55] tracking-[0.2em] uppercase leading-none mt-1">
-                PR &amp; CONSULTANCY
-              </span>
-            </div>
           </Link>
 
           {/* Desktop Navigation Links */}

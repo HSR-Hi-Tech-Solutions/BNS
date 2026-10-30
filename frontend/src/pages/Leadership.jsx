@@ -73,7 +73,7 @@ export default function Leadership() {
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#D4AF55] mb-3 block">
             Executive Leadership
           </span>
-          <h1 className="font-serif font-bold text-3xl sm:text-4xl md:text-5xl text-[#FAF9F6] mb-4">
+          <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-[#FAF9F6] mb-4">
             The Vision Behind BNS
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -95,10 +95,10 @@ export default function Leadership() {
               <div className="bg-[#0B1120] border border-slate-800 rounded-2xl overflow-hidden text-white shadow-xl">
                 {/* Monogram Seal & Header */}
                 <div className="p-8 text-center border-b border-slate-800">
-                  <div className="w-20 h-20 rounded-full border-2 border-[#D4AF55] bg-[#16233D] flex items-center justify-center mx-auto mb-4 text-[#D4AF55] font-serif font-bold text-2xl shadow-inner">
+                  <div className="w-20 h-20 rounded-full border-2 border-[#D4AF55] bg-[#16233D] flex items-center justify-center mx-auto mb-4 text-[#D4AF55] font-display font-bold text-2xl shadow-inner">
                     UR
                   </div>
-                  <h2 className="font-serif font-bold text-2xl text-[#FAF9F6] mb-1">
+                  <h2 className="font-display font-bold text-2xl text-[#FAF9F6] mb-1">
                     Ujjwal Roy
                   </h2>
                   <p className="text-xs font-semibold text-[#D4AF55] uppercase tracking-wider">
@@ -149,7 +149,7 @@ export default function Leadership() {
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
                 Director Profile
               </span>
-              <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#0B1120] mb-5">
+              <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#0B1120] mb-5">
                 Ujjwal Roy
               </h2>
 
@@ -184,7 +184,7 @@ export default function Leadership() {
 
               {/* Expertise Area Badges */}
               <div className="bg-[#FAF9F6] border border-slate-200 rounded-xl p-6">
-                <h3 className="font-serif font-bold text-base text-[#0B1120] mb-3">
+                <h3 className="font-display font-bold text-base text-[#0B1120] mb-3">
                   Areas of Expertise
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -213,7 +213,7 @@ export default function Leadership() {
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#8E252B] mb-2 block">
               Professional Background
             </span>
-            <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#0B1120]">
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#0B1120]">
               Key Experience &amp; Expertise
             </h2>
             <p className="text-sm text-[#586477] mt-2 max-w-xl mx-auto">
@@ -231,7 +231,7 @@ export default function Leadership() {
                 <div className="w-11 h-11 rounded-lg bg-slate-100 text-[#0B1120] flex items-center justify-center mb-5">
                   <Icon size={20} />
                 </div>
-                <h3 className="font-serif font-bold text-lg text-[#0B1120] mb-2">
+                <h3 className="font-display font-bold text-lg text-[#0B1120] mb-2">
                   {title}
                 </h3>
                 <p className="text-xs sm:text-sm text-[#586477] leading-relaxed">
@@ -251,14 +251,14 @@ export default function Leadership() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Quote size={36} className="text-[#D4AF55]/60 mx-auto mb-4" />
 
-          <blockquote className="font-serif italic text-lg sm:text-xl lg:text-2xl text-[#FAF9F6] leading-relaxed mb-6 font-normal">
+          <blockquote className="font-display italic text-lg sm:text-xl lg:text-2xl text-[#FAF9F6] leading-relaxed mb-6 font-normal">
             &ldquo;Bengal has a story that deserves to be told with depth, accuracy, and
             pride. BNS is our commitment to telling that story — and to helping others
             communicate their stories with the professionalism they deserve.&rdquo;
           </blockquote>
 
           <div className="pt-4 border-t border-slate-800">
-            <p className="font-serif font-bold text-base text-[#FAF9F6]">Ujjwal Roy</p>
+            <p className="font-display font-bold text-base text-[#FAF9F6]">Ujjwal Roy</p>
             <p className="text-xs text-[#D4AF55] mt-0.5">
               Founder &amp; Director, Bengal News Service PR &amp; Consultancy Pvt. Ltd.
             </p>
@@ -269,7 +269,7 @@ export default function Leadership() {
       {/* ── CALL TO ACTION ────────────────────────────── */}
       <section className="bg-[#FAF9F6] py-16 border-t border-slate-200 text-center">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-[#0B1120] mb-3">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#0B1120] mb-3">
             Work With an Experienced Media Professional
           </h2>
           <p className="text-[#586477] text-sm sm:text-base mb-8">
