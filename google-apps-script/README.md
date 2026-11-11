@@ -97,7 +97,7 @@ The script automatically generates and formats the following columns in row 1:
 |:---:|---|---|---|
 | A | **Submission Date** | Timestamp in IST (`Asia/Kolkata`) | `2026-10-30 17:15:00 IST` |
 | B | **Full Name** | Visitor's full name (sanitized) | `Subhasish Mukherjee` |
-| C | **Email** | Visitor's email address (lowercased) | `contact@bengalnewsservice.com` |
+| C | **Email** | Visitor's email address (lowercased) | `bengalnewsservice.id@gmail.com` |
 | D | **Phone Number** | Contact telephone number | `+91 9876543210` |
 | E | **Organization** | Company or institution name | `Bengal News Service Corporate` |
 | F | **Service / Subject**| Selected service vertical or inquiry topic | `Public Relations & Corporate Communications` |

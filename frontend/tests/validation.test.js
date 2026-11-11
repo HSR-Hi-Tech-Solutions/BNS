@@ -59,7 +59,7 @@ test('validateContactForm - validates short name or message', () => {
 test('validateContactForm - passes with valid data', () => {
   const errors = validateContactForm({
     name: 'Subhasish Mukherjee',
-    email: 'contact@bengalnewsservice.com',
+    email: 'bengalnewsservice.id@gmail.com',
     phone: '+91 9876543210',
     message: 'We would like to enquire about your corporate PR services for our organisation.',
   });

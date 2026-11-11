@@ -9,7 +9,7 @@ export const COMPANY = {
   gstin: '[GSTIN - To be confirmed by company]',
   pan: '[PAN - To be confirmed by company]',
   registeredAddress: 'West Bengal, India',
-  email: 'contact@bengalnewsservice.com', // Placeholder - to be confirmed
+  email: 'bengalnewsservice.id@gmail.com', // Placeholder - to be confirmed
   phone: '+91 [Phone - To be confirmed]', // Placeholder - to be confirmed
   website: 'https://bengalnewsservice.com',
   socialMedia: {

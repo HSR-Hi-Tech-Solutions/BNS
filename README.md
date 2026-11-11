@@ -294,7 +294,7 @@ Each valid submission is appended as a distinct new row formatted as follows:
 |:---:|---|---|---|
 | **A** | `Submission Date` | Timestamp in IST (`Asia/Kolkata`) | `2026-10-30 17:15:00 IST` |
 | **B** | `Full Name` | Visitor full name (2–120 chars) | `Subhasish Mukherjee` |
-| **C** | `Email` | Sanitized email address | `contact@bengalnewsservice.com` |
+| **C** | `Email` | Sanitized email address | `bengalnewsservice.id@gmail.com` |
 | **D** | `Phone Number` | Contact phone (optional) | `+91 9876543210` |
 | **E** | `Organization` | Organisation / Company (optional) | `Bengal News Service Corporate` |
 | **F** | `Service / Subject` | Inquired service category | `Public Relations & Corporate Communications` |

@@ -91,7 +91,7 @@ test('contactService - successfully submits payload and follows redirects with t
 
   const payload = {
     name: 'Subhasish Mukherjee',
-    email: 'contact@bengalnewsservice.com',
+    email: 'bengalnewsservice.id@gmail.com',
     phone: '+91 9876543210',
     organization: 'BNS Test',
     service: 'General Enquiry',

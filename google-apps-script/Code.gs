@@ -308,7 +308,7 @@ function testSubmission() {
     postData: {
       contents: JSON.stringify({
         name: 'Subhasish Mukherjee',
-        email: 'contact@bengalnewsservice.com',
+        email: 'bengalnewsservice.id@gmail.com',
         phone: '+91 9876543210',
         organization: 'Bengal News Service Corporate',
         service: 'Public Relations & Corporate Communications',
